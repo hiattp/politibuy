@@ -7,11 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div id="header-blue" class="header-bar"></div>
+  <div id="header-red-top" class="header-bar"></div>
+  <div id="header-red-bottom" class="header-bar"></div>
+  <div id="all-content-outer">
+    <div id="header">
+      <%= image_tag "politibuy.png", :id => "main-logo" %>
+    </div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
-  <%= yield %>
-
+    <%= yield %>
+  </div>
 </body>
 </html>
