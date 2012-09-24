@@ -37,6 +37,15 @@
       <%= image_tag "intro_text.png", :id => "landing-intro-text" %>
     </div>
   </div>
+  <div id="landing-call-to-action-outer">
+    <div id="landing-call-to-action-inner">
+      <div id="landing-call-buttons-wrapper">
+        <%= link_to "Browse Campaigns", "", :class => "landing-callaction-button", :id => "landing-browse-button" %>
+        <%= image_tag "seal.png", :id => "landing-seal" %>
+        <%= link_to "Join the Movement", new_user_registration_path, :class => "landing-callaction-button", :id => "landing-signup-button" %>        
+      </div>
+    </div>
+  </div>
   <% end %>
 </body>
 </html>
