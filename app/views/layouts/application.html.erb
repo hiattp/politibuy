@@ -7,21 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="all-content-outer">
+    <div id="all-content-inner">
+      <div id="header">
+        <%= image_tag "politibuy.png", :id => "main-logo" %>
+        <div id="login-links">
+          <%= link_to "Sign In", new_user_session_url, :class => "header-links" %> | 
+          <%= link_to "Register", new_user_registration_url, :class => "header-links" %>
+        </div>
+      </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <%= yield %>
+    </div>
+    <div id="footer-outer">
+      <div id="footer-inner">
+      </div>
+    </div>
+  </div>
   <div id="header-blue" class="header-bar"></div>
   <div id="header-red-top" class="header-bar"></div>
   <div id="header-red-bottom" class="header-bar"></div>
-  <div id="all-content-outer">
-    <div id="header">
-      <%= image_tag "politibuy.png", :id => "main-logo" %>
-      <div id="login-links">
-        <%= link_to "Sign In", new_user_session_url, :class => "header-links" %> | 
-        <%= link_to "Register", new_user_registration_url, :class => "header-links" %>
-      </div>
-    </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= yield %>
-  </div>
 </body>
 </html>

@@ -5,7 +5,10 @@
 html, body {
   padding: 0px;
   margin: 0px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  width: 100%;
+  height: 100%;
+  background-color: #0000AA;
 }
 
 a{
@@ -19,8 +22,9 @@ a{
 }
 
 #header-blue{
+  top: 0px;
   height: 65px;
-  background-color: #0000CC;
+  background-color: #0000AA;
 }
 
 #header-red-top{
@@ -37,10 +41,16 @@ a{
 
 #all-content-outer{
   position: relative;
+  width: 100%;
+  background-color: white;
+}
+
+#all-content-inner{
+  position: relative;
   width: 900px;
   margin: auto;
-  // background-color: purple;
-  height: 100px;
+  min-height: 800px;
+  z-index: 1;
 }
 
 #header{
@@ -57,10 +67,11 @@ a{
 }
 
 #login-links{
+  font-size: 18px;
   display: inline-block;
   position: absolute;
   right: 0px;
-  top: 22px;
+  top: 24px;
   font-weight: bold;
 }
 
@@ -69,7 +80,18 @@ a{
 }
 
 h1#intro-text{
-  font-size: 30px;
+  font-size: 50px;
   text-align: center;
   margin-top: 60px;
+}
+
+#footer-outer{
+ width: 100%;
+ background-color: #0000AA;
+}
+
+#footer-inner{
+  width: 900px;
+  margin: auto;
+  height: 100px;
 }
