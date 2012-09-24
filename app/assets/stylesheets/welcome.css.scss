@@ -8,25 +8,30 @@ html, body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+a{
+  text-decoration: none;
+}
+
 .header-bar{
   width: 100%;
   position: absolute;
+  min-width: 900px;
 }
 
 #header-blue{
-  height: 75px;
+  height: 65px;
   background-color: #0000CC;
 }
 
 #header-red-top{
-  height: 15px;
-  top: 75px;
+  height: 12px;
+  top: 65px;
   background-color: #CC0000;
 }
 
 #header-red-bottom{
-  top: 105px;
-  height: 15px;
+  top: 89px;
+  height: 12px;
   background-color: #CC0000;
 }
 
@@ -40,12 +45,27 @@ html, body {
 
 #header{
   width: 100%;
-  height: 120px;
+  height: 101px;
+  color: white;
+  position: relative;
 }
 
 #main-logo{
   position: relative;
-  top: 8px;
+  top: 13px;
+  height: 40px;
+}
+
+#login-links{
+  display: inline-block;
+  position: absolute;
+  right: 0px;
+  top: 22px;
+  font-weight: bold;
+}
+
+.header-links{
+  color: white;
 }
 
 h1#intro-text{

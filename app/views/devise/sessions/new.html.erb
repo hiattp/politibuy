@@ -1,0 +1,22 @@
+<div class="register-box-outer">
+  
+  <h2 class="register-header">Sign in <%= link_to "(sign up)", new_user_registration_path, :class => "register-alt-link" %></h2>
+
+  <div class="register-form-wrapper">
+    
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <div><%= f.label :email %><br />
+      <%= f.email_field :email %></div>
+
+      <div><%= f.label :password %> <%= link_to "(forgot password)", new_password_path(resource_name), :id => "forgot-password-link" %><br />
+      <%= f.password_field :password %></div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+      <% end -%>
+
+      <div><%= f.submit "Sign in", :id => "sign-in-button" %></div>
+    <% end %>
+    
+  </div>
+</div>
