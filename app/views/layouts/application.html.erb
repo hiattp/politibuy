@@ -10,9 +10,10 @@
   <div id="all-content-outer">
     <div id="all-content-inner">
       <div id="header">
-        <%= image_tag "politibuy.png", :id => "main-logo" %>
+        <%= link_to((image_tag "politibuy.png", :id => "main-logo"), root_path) %>
         <div id="login-links">
-          <%= link_to "Sign In", new_user_session_path, :class => "header-links" %> | 
+          <%= link_to "Sign In", new_user_session_path, :class => "header-links" %>
+          <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Register", new_user_registration_path, :class => "header-links" %>
         </div>
       </div>
@@ -29,11 +30,13 @@
   <div id="header-blue" class="header-bar"></div>
   <div id="header-red-top" class="header-bar"></div>
   <div id="header-red-bottom" class="header-bar"></div>
+  <% if @is_landing and not user_signed_in? %>
   <div id="landing-image-outer">
     <%= image_tag "landing_image.jpg", :id => "landing-image" %>
     <div id="landing-image-text">
       <%= image_tag "intro_text.png", :id => "landing-intro-text" %>
     </div>
   </div>
+  <% end %>
 </body>
 </html>
