@@ -47,7 +47,6 @@ a{
   overflow: hidden;
   min-width: 900px;
   border-top: solid 1px #0000AA;
-  border-bottom: solid 1px #0000AA;
 }
 
 img#landing-image{
@@ -79,7 +78,7 @@ img#landing-intro-text{
 
 #landing-call-to-action-outer{
   position: absolute;
-  top: 477px;
+  top: 464px;
   width: 100%;
   height: 100px;
   min-width: 900px;
@@ -231,4 +230,39 @@ img#landing-seal{
   position: absolute;
   top: 8px;
   left: 408px;
+}
+
+#landing-how-works-outer{
+  position: absolute;
+  top: 610px;
+  width: 100%;
+  min-width: 900px;
+}
+
+#landing-how-works-inner{
+  height: 100%;
+  width: 900px;
+  margin: auto;
+  padding-left: 20px;
+}
+
+div.landing-how-step{
+  width: 250px;
+  display: inline-block;
+  float: left;
+  margin-right: 50px;
+}
+
+h4.landing-how-step{
+  text-align: center;
+  margin-top: 0px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #880000;
+  border-bottom: solid 1px #880000;
+  padding-bottom: 7px;
+}
+
+p.landing-how-step{
+  line-height: 1.5em;
 }
