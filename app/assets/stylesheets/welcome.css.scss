@@ -5,11 +5,16 @@
 html, body {
   padding: 0px;
   margin: 0px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  width: 100%;
+  height: 100%;
+  background-color: #0000AA;
 }
 
 a{
   text-decoration: none;
+  font-weight: bold;
+  color: white;
 }
 
 .header-bar{
@@ -19,8 +24,9 @@ a{
 }
 
 #header-blue{
+  top: 0px;
   height: 65px;
-  background-color: #0000CC;
+  background-color: #0000AA;
 }
 
 #header-red-top{
@@ -35,12 +41,83 @@ a{
   background-color: #CC0000;
 }
 
+#landing-image-outer{
+  position: absolute;
+  top: 113px;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  min-width: 900px;
+/*  border-top: solid 1px #0000AA;*/
+}
+
+img#landing-image{
+  /* Set rules to fill background */
+	min-height: 350px;
+	min-width: 1000px;
+
+	/* Set up proportionate scaling */
+	width: 100%;
+	height: auto;
+	
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#landing-image-text{
+  width: 900px;
+  margin: auto;
+  position: relative;
+  top: 120px;
+/*  border: solid;*/
+}
+
+img#landing-intro-text{
+  position: relative;
+  left: 163px;
+}
+
+#landing-call-to-action-outer{
+  position: absolute;
+  top: 463px;
+  width: 100%;
+  height: 100px;
+  min-width: 900px;
+  border-top: solid 1px #AA0000;
+  border-bottom: solid 1px #880000;
+  
+  background: #dd0000; /* Old browsers */
+  background: -moz-linear-gradient(top,  #dd0000 0%, #aa0000 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dd0000), color-stop(100%,#aa0000)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #dd0000 0%,#aa0000 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #dd0000 0%,#aa0000 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #dd0000 0%,#aa0000 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #dd0000 0%,#aa0000 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd0000', endColorstr='#aa0000',GradientType=0 ); /* IE6-9 */
+  
+}
+
+#landing-call-to-action-inner{
+  width: 100%;
+  height: 100%;
+  min-width: 900px;
+  background-image: url("texture_1.png");
+}
+
 #all-content-outer{
+  position: relative;
+  width: 100%;
+  background-color: white;
+  min-width: 900px;
+}
+
+#all-content-inner{
   position: relative;
   width: 900px;
   margin: auto;
-  // background-color: purple;
-  height: 100px;
+  min-height: 800px;
+  z-index: 1;
 }
 
 #header{
@@ -57,19 +134,152 @@ a{
 }
 
 #login-links{
-  display: inline-block;
+  font-size: 18px;
   position: absolute;
   right: 0px;
-  top: 22px;
-  font-weight: bold;
+  top: 24px;
 }
 
 .header-links{
-  color: white;
+
 }
 
 h1#intro-text{
-  font-size: 30px;
+  font-size: 50px;
   text-align: center;
   margin-top: 60px;
+}
+
+#footer-outer{
+ width: 100%;
+ background-color: #0000AA;
+ border-top: solid 4px #BB0000;
+}
+
+#footer-inner{
+  width: 900px;
+  margin: auto;
+  height: 100px;
+  position: relative;
+}
+
+#footer-links{
+  width: 350px;
+  margin: auto;
+  font-size: 18px;
+/*  margin-top: 35px;*/
+  position: relative;
+  top: 50px;
+}
+
+.footer-link{
+
+}
+
+
+
+span.divider-star{
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+#landing-call-buttons-wrapper{
+  width: 900px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+a.landing-callaction-button{
+  background-color: blue;
+  color: white;
+  border-top: solid 1px #5555CC;
+  border-left: solid 1px #5555CC;
+  width: 210px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  font-size: 18px;
+  position: absolute;
+  top: 28px;
+  font-weight: bold;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  
+  text-shadow: 1px 1px 5px rgba(40, 40, 40, 0.8);
+  
+  -webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.75);
+  box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.75);
+  
+  background: #1000ff; /* Old browsers */
+  background: -moz-linear-gradient(top,  #1000ff 1%, #0f00b7 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#1000ff), color-stop(100%,#0f00b7)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #1000ff 1%,#0f00b7 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #1000ff 1%,#0f00b7 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #1000ff 1%,#0f00b7 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #1000ff 1%,#0f00b7 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1000ff', endColorstr='#0f00b7',GradientType=0 ); /* IE6-9 */
+  
+  &:hover{
+    background: #1000ff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #1000ff 50%, #0f00b7 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#1000ff), color-stop(100%,#0f00b7)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #1000ff 50%,#0f00b7 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #1000ff 50%,#0f00b7 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #1000ff 50%,#0f00b7 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #1000ff 50%,#0f00b7 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1000ff', endColorstr='#0f00b7',GradientType=0 ); /* IE6-9 */
+  }
+}
+
+a#landing-browse-button{
+  left: 170px;
+}
+
+a#landing-signup-button{
+  right: 170px;
+}
+
+img#landing-seal{
+  position: absolute;
+  top: 8px;
+  left: 408px;
+}
+
+#landing-how-works-outer{
+  position: absolute;
+  top: 600px;
+  width: 100%;
+  min-width: 900px;
+}
+
+#landing-how-works-inner{
+  height: 100%;
+  width: 900px;
+  margin: auto;
+  padding-left: 20px;
+}
+
+div.landing-how-step{
+  width: 250px;
+  display: inline-block;
+  float: left;
+  margin-right: 50px;
+}
+
+h4.landing-how-step{
+  text-align: center;
+  margin-top: 0px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #880000;
+  border-bottom: solid 1px #880000;
+  padding-bottom: 7px;
+}
+
+p.landing-how-step{
+  line-height: 1.5em;
+  text-align: center;
 }
