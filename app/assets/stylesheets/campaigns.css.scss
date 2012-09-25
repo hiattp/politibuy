@@ -1,0 +1,26 @@
+// Place all the styles related to the Campaigns controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+  CAMPAIGN SHOW
+*/
+
+h1.campaign-show-title{
+  margin-top: 25px;
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+p.campaign-show-description{
+  font-size: 20px;
+  font-weight: bold;
+  color: gray;
+  line-height: 1.2em;
+}
+
+img#ad-demo{
+  position: relative;
+  margin-top: 25px;
+  left: 18px;
+}

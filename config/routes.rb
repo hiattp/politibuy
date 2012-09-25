@@ -1,4 +1,6 @@
 Politibuy::Application.routes.draw do
+  resources :campaigns
+
   devise_for :users
 
   # The priority is based upon order of creation:
