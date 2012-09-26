@@ -17,6 +17,22 @@ p.campaign-show-description{
   font-weight: bold;
   color: gray;
   line-height: 1.2em;
+  border-bottom: dashed 1px #0000AA;
+  padding-bottom: 10px;
+}
+
+h2.campaign-show-objective{
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+p.campaign-show-objective{
+  font-size: 18px;
+  color: #444444;
+  border-bottom: dashed 1px #0000AA;
+  padding-bottom: 7px;
+  line-height: 1.4em;
 }
 
 .campaign-show-pledge-banner-outer{
@@ -76,6 +92,7 @@ a#submit-pledge-link{
   position: relative;
 /*  border: solid 1px purple;*/
   height: 200px;
+  margin-bottom: 20px;
 }
 
 .campaign-main-image-wrapper{
@@ -123,7 +140,7 @@ h1.campaign-deadline{
   height: 200px;
   width: 270px;
   float: right;
-  
+  position: relative;
 }
 
 h3.campaign-subsection{
@@ -158,13 +175,171 @@ img.campaign-recipient-image-small{
 
 a.campaign-show-see-more-recipients{
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom: -2px;
+  left: 0px;
   font-size: 14px;
   text-decoration: underline;
   color: #0000AA;
 }
 
+.campaign-participants-section{
+/*  border: solid 1px green;*/
+  margin-bottom: 10px;
+}
+
+h2.campaign-section{
+  font-size: 20px;
+}
+
+ul.campaign-participants-wrapper{
+/*  border: solid 1px green;*/
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+$participant-width: 40px;
+$participant-spacing: 8px;
+
+li.participant-wrapper{
+  width: $participant-width;
+  float: left;
+  margin-right: $participant-spacing;
+  margin-bottom: $participant-spacing;
+  position: relative;
+}
+
+li.edge-participant{
+  margin-right: 0px;
+}
+
+.participant-image-wrapper{
+  width: $participant-width;
+  height: $participant-width;
+  overflow: hidden;
+}
+
+img.participant-pic{
+  width: $participant-width;
+}
+
+.participant-amount-wrapper{
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.7;
+  top: 0px;
+  left: 0px;
+}
+
+h4.participant-amount{
+  display: none;
+  height: $participant-width;
+  line-height: $participant-width;
+  width: 100%;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(40, 40, 40, 0.8);  
+  text-align: center;
+  word-wrap: break-word;
+  position: absolute;
+  top: 0px;
+  font-size: 15px;
+  &:hover{
+    cursor: default;
+  }
+}
+
+.campaign-updates-section{
+  margin-bottom: 50px;
+}
+
+ul.campaign-updates{
+
+}
+
+li.campaign-update{
+  padding-left: 48px;
+  position: relative;
+  margin-top: 12px;
+  margin-bottom: 25px;
+}
+
+a.campaign-update{
+  color: #000077;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+p.campaign-update-preview{
+  margin-top: 5px;
+  font-size: 16px;
+  color: #333333;
+}
+
+a.campaign-update-read-more{
+  font-size: 14px;
+  text-decoration: underline;
+  color: #000077;
+}
+
+p.campaign-update-date{
+/*  border: solid 1px green;*/
+  position: absolute;
+  left: 0px;
+  min-width: 32px;
+  text-align: right;
+  font-size: 12px;
+  color: #555555;
+}
+
+p.campaign-update-date-month{
+  top: 0px;
+}
+
+p.campaign-update-date-day{
+  top: 12px;
+  font-size: 32px;
+}
+
+p.campaign-update-date-year{
+  top: 42px;
+}
+
+.campaign-bottom-action-links{
+  width: 100%;
+  height: 40px;
+  background-color: #BB0000;
+  position: relative;
+}
+
+
+a.campaign-bottom-links{
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  top: 14px;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+a#return-to-campaigns{
+  left: 20px;
+}
+
+a#like-bottom{
+  right: 117px;
+}
+
+a#tweet-bottom{
+  right: 70px;
+}
+
+a#pledge-bottom{
+  right: 15px;
+}
 
 
 /*
@@ -173,6 +348,25 @@ a.campaign-show-see-more-recipients{
 
 img#ad-demo{
   position: relative;
-  margin-top: 25px;
+  margin-top: 32px;
 /*  left: 18px;*/
+}
+
+h4.campaign-show-other-campaigns{
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+ul.campaign-show-other-campaigns{
+  
+}
+
+li.campaign-show-other-campaign{
+  margin-bottom: 12px;
+  line-height: 1.3em;
+}
+
+a.other-campaigns-link{
+  color: #0000AA;
+  text-decoration: underline;
 }

@@ -8,6 +8,8 @@
     you unable to type for lack of sufficient digits, you
     should participate in limiting these emissions.
   </p>
+  <h2 class="campaign-show-objective">Campaign Objective:</h2>
+  <p class="campaign-show-objective">Pass NC Amendment 15 in the House of Representatives at the vote on October 20, 2012.</p>
   
   <div class="campaign-show-pledge-banner-outer">
     <div class="campaign-show-pledge-banner-inner">
@@ -24,7 +26,7 @@
       <%= image_tag "coal_plant.jpeg" %>
       <div class="campaign-deadline-backdrop"></div>
       <h4 class="campaign-deadling-header">Deadline:</h4>
-      <h1 class="campaign-deadline">6 weeks, 3 days, 2:00</h1>
+      <h1 class="campaign-deadline">6 weeks, 3 days, 1:39:23</h1>
       <!-- put deadline countdown here -->
     </div>
     <div class="campaign-recipients-wrapper">
@@ -42,11 +44,82 @@
       <%= link_to "See 23 more", "", :class => "campaign-show-see-more-recipients"%>
     </div>
   </div>
+  
+  <div class="campaign-participants-section">
+    <% total_participants = 40 %>
+    <h2 class="campaign-section"><%= pluralize(total_participants, 'person') %> <%= total_participants == 1 ? "has" : "have" %> pledged to this campaign:</h2>
+    <ul class="campaign-participants-wrapper">
+      <% total_participants.times do |i| %>
+      <li class="participant-wrapper <%= i%13 == 12 ? "edge-participant" : "" %>">
+        <div class="participant-image-wrapper">
+          <%= image_tag "profile_pic.jpeg", :class => "participant-pic" %>
+        </div>
+        <div class="participant-amount-wrapper"></div>
+        <h4 class="participant-amount">$12</h4>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  
+  <div class="campaign-updates-section">
+    <h2 class="campaign-section">Campaign News and Updates:</h2>
+    <ul class="campaign-updates">
+      <li class="campaign-update">
+        <%= link_to "New coal plant opens in Cary", "", :class => "campaign-update" %>
+        <p class="campaign-update-preview">
+          <span>
+          The new coal plant is supposed to be the largest and most 'efficient' Duke Energy has
+          ever constructed, says spokesperson Rodney Simson. "We look forward to saving our customers
+          money on their energy bill, while also mitigating our environmental footprint."
+          </span> 
+          <span class="campaign-update-read-more"><%= link_to "read more", "", :class => "campaign-update-read-more" %></span>
+        </p>
+        <p class="campaign-update-date campaign-update-date-month">Jan</p>
+        <p class="campaign-update-date campaign-update-date-day">27</p>
+        <p class="campaign-update-date campaign-update-date-year">2012</p>
+      </li>
+      <li class="campaign-update">
+        <%= link_to "Mass grave discovered 3 miles from High Rock plant", "", :class => "campaign-update" %>
+        <p class="campaign-update-preview">
+          <span>
+          "Frankly, we don't know how it got there," says Highland Energy President Jamal Kasim. The EPA is 
+          currently investigating blood samples from the victims--or what was left of them--to determine whether 
+          water or air contaminants were involved in the mortalities, but preliminary findings are inconclusive.
+          </span> 
+          <span class="campaign-update-read-more"><%= link_to "read more", "", :class => "campaign-update-read-more" %></span>
+        </p>
+        <p class="campaign-update-date campaign-update-date-month">Dec</p>
+        <p class="campaign-update-date campaign-update-date-day">01</p>
+        <p class="campaign-update-date campaign-update-date-year">2011</p>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="campaign-bottom-action-links">
+    <%= link_to "<< back to all campaigns", campaigns_path, :class => "campaign-bottom-links", :id => "return-to-campaigns" %>
+    <%= link_to "like", "", :class => "campaign-bottom-links", :id => "like-bottom" %>
+    <%= link_to "tweet", "", :class => "campaign-bottom-links", :id => "tweet-bottom" %>
+    <%= link_to "pledge", "", :class => "campaign-bottom-links", :id => "pledge-bottom" %>
+  </div>
+  
 </div>
 
 
 <div id="minority-right-wrapper">
   <%= image_tag "ad_demo.png", :id => "ad-demo" %>
+  
+  <h4 class="campaign-show-other-campaigns">More Campaigns:</h4>
+  <ul class="campaign-show-other-campaigns">
+    <li class="campaign-show-other-campaign">
+      <%= link_to "Repeal Amendment 15 in South Dakota", "", :class => "other-campaigns-link"%>
+    </li>
+    <li class="campaign-show-other-campaign">
+      <%= link_to "Veto new gun ownership law in Arkansas ", "", :class => "other-campaigns-link"%>
+    </li>
+    <li class="campaign-show-other-campaign">
+      <%= link_to "Implement fines for beach loitering in Hawaii", "", :class => "other-campaigns-link"%>
+    </li>
+  </ul>
 </div>
 
 

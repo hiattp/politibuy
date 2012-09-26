@@ -12,6 +12,8 @@
       <div id="header">
         <%= link_to((image_tag "politibuy.png", :id => "main-logo"), root_path) %>
         <div id="login-links">
+          <%= link_to "Browse Campaigns", campaigns_path, :class => "header-links" %>
+          <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Sign In", new_user_session_path, :class => "header-links" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Register", new_user_registration_path, :class => "header-links" %>
@@ -25,6 +27,7 @@
     <div id="footer-outer">
       <div id="footer-inner">
         <div id="footer-links">
+          <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "About", "", :class => "footer-link", :id => "footer-about-link" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Blog", "", :class => "footer-link", :id => "footer-blog-link" %>
@@ -34,6 +37,7 @@
           <%= link_to "Terms", "", :class => "footer-link", :id => "footer-terms-link" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Share", "", :class => "footer-link", :id => "footer-share-link" %>
+          <span class="divider-star"><%= image_tag "small_star.png"%></span>
         </div>
       </div>
     </div>
