@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*
-  CAMPAIGN SHOW
+  CAMPAIGN SHOW LEFT SIDE
 */
 
 h1.campaign-show-title{
@@ -19,8 +19,160 @@ p.campaign-show-description{
   line-height: 1.2em;
 }
 
+.campaign-show-pledge-banner-outer{
+  height: 100px;
+  width: 100%;
+  border-top: solid 1px #AA0000;
+  border-bottom: solid 1px #880000;
+  margin-top: 20px;
+  
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  
+  background: #dd0000; /* Old browsers */
+  background: -moz-linear-gradient(top,  #dd0000 0%, #aa0000 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dd0000), color-stop(100%,#aa0000)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #dd0000 0%,#aa0000 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #dd0000 0%,#aa0000 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #dd0000 0%,#aa0000 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #dd0000 0%,#aa0000 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd0000', endColorstr='#aa0000',GradientType=0 ); /* IE6-9 */
+  
+  margin-bottom: 30px;
+}
+
+.campaign-show-pledge-banner-inner{
+  width: 100%;
+  height: 100%;
+  background-image: url("texture_1.png");
+  position: relative;
+}
+
+.campaign-show-amount-wrapper{
+  display: inline-block;
+  padding-left: 50px;
+  margin-top: 22px;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(40, 40, 40, 0.8);
+}
+
+h2.campaign-show-amount{
+  font-size: 34px;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+h4.campaign-show-subtext{
+  font-size: 15px;
+  text-align: center;
+}
+
+a#submit-pledge-link{
+  right: 40px;
+}
+
+.campaign-image-recipient-wrapper{
+  position: relative;
+/*  border: solid 1px purple;*/
+  height: 200px;
+}
+
+.campaign-main-image-wrapper{
+/*  border: solid 1px green;*/
+  width: 325px;
+  height: 200px;
+  overflow: hidden;
+  float: left;
+  position: relative;
+}
+
+
+.campaign-deadline-backdrop{
+  position: absolute;
+  bottom: 0px;
+  height: 70px;
+  width: 100%;
+  background-color: black;
+  opacity: 0.7;
+}
+
+h4.campaign-deadling-header{
+  position: absolute;
+  color: white;
+  bottom: 40px;
+  text-align: center;
+  font-size: 18px;
+  width: 100%;
+  text-shadow: 1px 1px 5px rgba(40, 40, 40, 0.8);    
+}
+
+h1.campaign-deadline{
+  position: absolute;
+  color: white;
+  bottom: 15px;
+  text-align: center;
+  font-size: 21px;
+  width: 100%;
+  text-shadow: 1px 1px 5px rgba(40, 40, 40, 0.8);  
+}
+
+
+.campaign-recipients-wrapper{
+/*  border: solid 1px green;*/
+  height: 200px;
+  width: 270px;
+  float: right;
+  
+}
+
+h3.campaign-subsection{
+  position: relative;
+  top: -4px;
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.campaign-recipient-wrapper{
+  position: relative;
+/*  border: solid 1px green;*/
+  padding-left: 70px;
+  margin-bottom: 12px;
+}
+
+h4.campaign-recipient-name{
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+p.campaign-recipient-bio{
+  font-size: 13px;
+}
+
+img.campaign-recipient-image-small{
+  position: absolute;
+  height: 60px;
+  top: 1px;
+  left: 0px;
+}
+
+a.campaign-show-see-more-recipients{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  font-size: 14px;
+  text-decoration: underline;
+  color: #0000AA;
+}
+
+
+
+/*
+  CAMPAIGN SHOW RIGHT SIDE
+*/
+
 img#ad-demo{
   position: relative;
   margin-top: 25px;
-  left: 18px;
+/*  left: 18px;*/
 }

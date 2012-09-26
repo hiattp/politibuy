@@ -6,9 +6,45 @@
     within a 200 mile radius of the emission source.
     Unless you were near a power plant at birth, rendering
     you unable to type for lack of sufficient digits, you
-    should join in limiting these emissions.
+    should participate in limiting these emissions.
   </p>
+  
+  <div class="campaign-show-pledge-banner-outer">
+    <div class="campaign-show-pledge-banner-inner">
+      <div class="campaign-show-amount-wrapper">
+        <h2 class="campaign-show-amount">$10,000.00</h2>
+        <h4 class="campaign-show-subtext">pledged so far</h4>
+      </div>
+      <%= link_to "Submit Your Pledge", "", :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+    </div>
+  </div>
+  
+  <div class="campaign-image-recipient-wrapper">
+    <div class="campaign-main-image-wrapper">
+      <%= image_tag "coal_plant.jpeg" %>
+      <div class="campaign-deadline-backdrop"></div>
+      <h4 class="campaign-deadling-header">Deadline:</h4>
+      <h1 class="campaign-deadline">6 weeks, 3 days, 2:00</h1>
+      <!-- put deadline countdown here -->
+    </div>
+    <div class="campaign-recipients-wrapper">
+      <h3 class="campaign-subsection">Recipients</h3>
+      <div class="campaign-recipient-wrapper">
+        <h4 class="campaign-recipient-name">George Watson</h4>
+        <p class="campaign-recipient-bio">Watson is on the energy committee, and his vote is needed to pass this bill.</p>
+        <%= image_tag "senator_image_1.jpeg", :class => "campaign-recipient-image-small"%>
+      </div>
+      <div class="campaign-recipient-wrapper">
+        <h4 class="campaign-recipient-name">Stephanie Jensen</h4>
+        <p class="campaign-recipient-bio">Jensen isn't involved at all, we just want to send her money. That being said, she is really nice.</p>
+        <%= image_tag "senator_image_2.jpeg", :class => "campaign-recipient-image-small"%>
+      </div>
+      <%= link_to "See 23 more", "", :class => "campaign-show-see-more-recipients"%>
+    </div>
+  </div>
 </div>
+
+
 <div id="minority-right-wrapper">
   <%= image_tag "ad_demo.png", :id => "ad-demo" %>
 </div>

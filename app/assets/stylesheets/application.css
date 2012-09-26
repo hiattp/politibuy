@@ -42,8 +42,7 @@ h1, h2, h3, h4, p{
 }
 
 #minority-right-wrapper{
-/*  border: solid 1px purple;*/
-  width: 250px;
+  width: 232px;
   float: right;
   position: relative;
 }
