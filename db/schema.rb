@@ -15,8 +15,12 @@ ActiveRecord::Schema.define(:version => 20120925172635) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "description"
+    t.string   "objective"
+    t.datetime "deadline"
+    t.boolean  "live",        :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "users", :force => true do |t|

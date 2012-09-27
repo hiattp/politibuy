@@ -38,6 +38,61 @@ ul, li{
   padding: 0px;
 }
 
+input{
+  margin-left: 0px;
+  margin-top: 5px;
+  border: solid 1px #CCCCCC;
+  font-size: 16px;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+input[type="submit"]{
+  margin-bottom: 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border: solid 1px #888888;
+  
+  background: #eeeeee; /* Old browsers */
+  background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #eeeeee 0%,#cccccc 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+  
+  &:hover {
+    cursor: pointer;
+    background: #eeeeee; /* Old browsers */
+  }
+  
+}
+
+textarea{
+  margin-left: 0px;
+  margin-top: 5px;
+  border: solid 1px #CCCCCC;
+  font-size: 16px;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+select{
+  margin-top: 12px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+input[type="checkbox"]{
+  margin-top: 10px;
+}
+
 #all-content-outer{
   position: relative;
   width: 100%;

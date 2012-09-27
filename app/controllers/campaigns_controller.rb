@@ -24,6 +24,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns/new.json
   def new
     @campaign = Campaign.new
+    @updating = false
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,6 +35,8 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1/edit
   def edit
     @campaign = Campaign.find(params[:id])
+    @updating = true
+  
   end
 
   # POST /campaigns
@@ -56,7 +59,7 @@ class CampaignsController < ApplicationController
   # PUT /campaigns/1.json
   def update
     @campaign = Campaign.find(params[:id])
-
+    
     respond_to do |format|
       if @campaign.update_attributes(params[:campaign])
         format.html { redirect_to @campaign, notice: 'Campaign was successfully updated.' }
