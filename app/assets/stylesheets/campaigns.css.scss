@@ -451,10 +451,11 @@ a#edit-campaign-top-view-link{
 .edit-form-wrapper{
   position: relative;
   margin-top: 35px;
+  margin-bottom: 70px;
 }
 
 form#campaign-form input, textarea{
-  width: 100%;
+  width: 605px;
 }
 
 form#campaign-form textarea{
@@ -508,4 +509,45 @@ a.delete-button{
     cursor: pointer;
     background: #dd0408; /* Old browsers */
   }
+}
+
+h2.campaign-edit{
+  font-size: 20px;
+  border-bottom: solid 1px black;
+  padding-bottom: 10px;
+}
+
+
+.update-form-wrapper{
+  position: relative;
+  margin-top: 20px;
+  border-bottom: dashed 1px #0000AA;
+}
+
+form.update-form{
+  position: relative;
+/*  border: solid 1px green;*/
+  margin-bottom: 10px;
+}
+
+form.update-form input {
+  width: 605px;
+}
+
+form.update-form textarea {
+  height: 80px;
+  width: 605px;
+}
+
+form.update-form input[type="submit"]{
+  text-align: right;
+  background: none;
+  border:none;
+  color: #0000AA;
+  text-decoration: underline;
+  padding-right: 0px;
+  margin-right: 0px;
+  position: absolute;
+  bottom: 15px;
+  margin-bottom: 0px;
 }

@@ -36,7 +36,7 @@ class CampaignsController < ApplicationController
   def edit
     @campaign = Campaign.find(params[:id])
     @updating = true
-  
+    @new_update = @campaign.updates.build
   end
 
   # POST /campaigns

@@ -1,7 +1,8 @@
 Politibuy::Application.routes.draw do
-  resources :xxxxxes
 
-  resources :campaigns
+  resources :campaigns do
+    resources :updates
+  end
 
   devise_for :users
 
