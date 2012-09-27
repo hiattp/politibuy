@@ -1,21 +1,24 @@
-<%= form_for(@campaign) do |f| %>
-  <% if @campaign.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
+<div class="edit-form-wrapper">
+  <%= form_for(@campaign) do |f| %>
+    <% if @campaign.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
 
-      <ul>
-      <% @campaign.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @campaign.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="form-edit-actions">
+      <%= f.submit "Update Campaign", :class => "edit-form-button" %>
+      <%= link_to 'Destroy Campaign', @campaign, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete-button" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

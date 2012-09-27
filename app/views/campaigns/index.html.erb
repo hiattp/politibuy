@@ -1,3 +1,56 @@
+<h1 id="campaigns-index">Active Campaigns</h1>
+<ul id="campaign-list">
+  <% @campaigns.each do |campaign| %>
+  <li class="campaign">
+    <%= link_to "Ban carbon emissions for all coal-fired power plants in North Carolina", campaign_path(campaign), :class => "campaign-title"%>
+    <p class="campaign-description">
+      Emissions from coal fired power plants cause, among
+      other travesties, birth deformities among children
+      within a 200 mile radius of the emission source.
+      Unless you were near a power plant at birth, rendering
+      you unable to type for lack of sufficient digits, you
+      should participate in limiting these emissions.
+    </p>
+    <div class="campaign-image-wrapper-outer">
+      <div class="campaign-image-wrapper-inner">
+        <%= image_tag "coal_plant.jpeg", :class => "campaign-index-image" %>
+        <%= image_tag "campaign_ribbon.png", :class => "campaign-ribbon" %>
+        <h3 class="campaign-pledge-ribbon-amount">$8,230 pledged so far</h3>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%
+=begin%>
+
 <h1>Listing campaigns</h1>
 
 <table>
@@ -21,3 +74,7 @@
 <br />
 
 <%= link_to 'New Campaign', new_campaign_path %>
+
+<%
+=end
+%>

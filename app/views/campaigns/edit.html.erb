@@ -1,6 +1,5 @@
-<h1>Editing campaign</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @campaign %> |
-<%= link_to 'Back', campaigns_path %>
+<div id="majority-left-wrapper">
+  <h1 id="campaigns-index">Edit campaign</h1>
+  <%= link_to "Show Campaign", @campaign, :id => "edit-campaign-top-view-link"%>
+  <%= render 'form' %>
+</div>

@@ -3,6 +3,71 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*
+  CAMPAIGN INDEX
+*/
+
+h1#campaigns-index{
+  margin-top: 25px;
+  font-size: 26px;
+  margin-bottom: 12px;
+  border-bottom: solid 1px black;
+  padding-bottom: 10px;
+}
+
+ul#campaign-list{
+  margin-top: 35px;
+  margin-bottom: 100px;
+}
+
+li.campaign{
+  position: relative;
+  padding-left: 380px;
+  margin-bottom: 50px;
+}
+
+a.campaign-title{
+  color: #AA0000;
+  font-size: 22px;
+}
+
+p.campaign-description{
+  margin-top: 10px;
+  font-size: 20px;
+  color: #333333;
+}
+
+.campaign-image-wrapper-outer{
+  position: absolute;
+  top: 0px;
+  left: 15px;
+}
+
+.campaign-image-wrapper-inner{
+  position: relative;
+  width: 325px;
+}
+
+img.campaign-index-image{
+  width: 325px;
+}
+
+img.campaign-ribbon{
+  position: absolute;
+  left: -15px;
+  top: 117px;
+}
+
+h3.campaign-pledge-ribbon-amount{
+  position: absolute;
+  top: 155px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(40, 40, 40, 0.8);
+  font-size: 20px;
+}
+
+/*
   CAMPAIGN SHOW LEFT SIDE
 */
 
@@ -103,7 +168,6 @@ a#submit-pledge-link{
   float: left;
   position: relative;
 }
-
 
 .campaign-deadline-backdrop{
   position: absolute;
@@ -369,4 +433,63 @@ li.campaign-show-other-campaign{
 a.other-campaigns-link{
   color: #0000AA;
   text-decoration: underline;
+}
+
+/*
+  CAMPAIGN EDIT PAGE
+*/
+
+a#edit-campaign-top-view-link{
+  position: absolute;
+  text-align: right;
+  width: 100%;
+  top: 30px;
+  font-size: 20px;
+  color: #0000AA;
+}
+
+.edit-form-wrapper{
+  position: relative;
+  margin-top: 35px;
+}
+
+.form-edit-actions{
+  position: relative;
+  height: 40px;
+  margin-top: 25px;
+/*  border: solid 1px green;*/
+}
+
+.edit-form-button{
+  position: absolute;
+  right: 0px;
+}
+
+a.delete-button{
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border: solid 1px #6d0001;
+  color: white;
+  position: absolute;
+  top: 5px;
+  font-size: 15px;
+  
+  background: #dd0408; /* Old browsers */
+  background: -moz-linear-gradient(top,  #dd0408 0%, #6d0001 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dd0408), color-stop(100%,#6d0001)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #dd0408 0%,#6d0001 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #dd0408 0%,#6d0001 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #dd0408 0%,#6d0001 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #dd0408 0%,#6d0001 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd0408', endColorstr='#6d0001',GradientType=0 ); /* IE6-9 */
+  
+  &:hover {
+    cursor: pointer;
+    background: #dd0408; /* Old browsers */
+  }
 }
