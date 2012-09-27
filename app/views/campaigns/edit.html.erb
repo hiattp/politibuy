@@ -3,7 +3,7 @@
   <%= link_to "Show Campaign", @campaign, :id => "edit-campaign-top-view-link"%>
   <%= render 'form' %>
   <h2 class="campaign-edit">Add/Edit News and Updates</h2>
-  <% @campaign.updates.each do |u| %>
-    <%= render 'updates_form', :update => u %>
+  <% @campaign.updates.each_with_index do |u,i| %>
+    <%= render 'updates_form', :update => u, :index => i %>
   <% end %>
 </div>
