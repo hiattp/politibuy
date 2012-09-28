@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120927040943) do
+ActiveRecord::Schema.define(:version => 20120928030506) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "title"
@@ -25,6 +25,29 @@ ActiveRecord::Schema.define(:version => 20120927040943) do
     t.datetime "main_image_updated_at"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "policy_makers", :force => true do |t|
+    t.string   "salutation"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "bio"
+    t.string   "party"
+    t.string   "home_state"
+    t.string   "profile_image_file_name"
+    t.string   "profile_image_content_type"
+    t.integer  "profile_image_file_size"
+    t.datetime "profile_image_updated_at"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "recipients", :force => true do |t|
+    t.integer  "campaign_id"
+    t.integer  "policy_maker_id"
+    t.string   "reason"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "updates", :force => true do |t|

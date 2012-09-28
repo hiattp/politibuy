@@ -1,10 +1,13 @@
 Politibuy::Application.routes.draw do
 
+  devise_for :users
+  
   resources :campaigns do
     resources :updates
   end
 
-  devise_for :users
+  resources :policy_makers
+  resources :recipients
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

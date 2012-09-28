@@ -1,0 +1,40 @@
+// Place all the styles related to the PolicyMakers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+form.policy-maker{
+  overflow: hidden;
+  position: relative;
+  left: 20px;
+  margin-bottom: 30px;
+}
+
+form.policy-maker textarea{
+  width: 260px;
+  height: 200px;
+  margin-bottom: 25px;
+}
+
+form.policy-maker input{
+  width: 260px;
+}
+
+.policy-maker-form-col{
+  width: 300px;
+  float: left;
+  margin-right: 4px;
+}
+
+.policy-maker-image-upload{
+  margin-bottom: 10px;
+}
+
+input.create-policy-maker-button{
+  float: right;
+  margin-right: 42px;
+}
+
+p.add-policy-maker-prompt{
+  margin-bottom: 30px;
+  font-size: 15px;
+}

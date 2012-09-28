@@ -1,0 +1,27 @@
+// Place all the styles related to the Recipients controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new-recipient-form-wrapper{
+  margin-top: 20px;
+}
+
+form.new-recipient-form{
+  overflow: hidden;
+}
+
+.new-recipient-select-label{
+  margin-right: 40px;
+}
+
+.new-recipient-reason{
+  margin-top: 0px;
+}
+
+.new-recipient-reason input{
+  width: 608px;
+}
+
+.create-recipient-submit{
+  float: right;
+}

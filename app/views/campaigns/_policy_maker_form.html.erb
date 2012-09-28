@@ -1,0 +1,42 @@
+<div class="policy-maker-form-wrapper">
+
+  <%= form_for(@new_policy_maker, :html => {:class => "policy-maker"}) do |f| %>
+  <div class="policy-maker-form-col">
+    <div class="field">
+      <%= f.label :salutation %><br />
+      <%= f.text_field :salutation %>
+    </div>
+    <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="field">
+      <%= f.label :party_affiliation %><br />
+      <%= f.select :party, party_affiliations %>
+    </div>
+    <div class="field">
+      <%= f.label :home_state %><br />
+      <%= f.select :home_state, us_states %>
+    </div>
+  </div>
+  <div class="policy-maker-form-col">
+    <div class="field">
+      <%= f.label :bio %><br />
+      <%= f.text_area :bio %>
+    </div>
+    <div class="field policy-maker-image-upload">
+      <%= f.label :profile_picture %><br />
+      <%= f.file_field :profile_image %>
+    </div>
+  </div>
+    <div class="actions">
+      <%= f.submit "Create Policy Maker", :class => "create-policy-maker-button" %>
+    </div>
+  
+  <% end %>
+  
+</div>

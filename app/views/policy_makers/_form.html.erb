@@ -1,0 +1,41 @@
+<%= form_for(@policy_maker) do |f| %>
+  <% if @policy_maker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@policy_maker.errors.count, "error") %> prohibited this policy_maker from being saved:</h2>
+
+      <ul>
+      <% @policy_maker.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :salutation %><br />
+    <%= f.text_field :salutation %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %><br />
+    <%= f.text_field :bio %>
+  </div>
+  <div class="field">
+    <%= f.label :party %><br />
+    <%= f.text_field :party %>
+  </div>
+  <div class="field">
+    <%= f.label :home_state %><br />
+    <%= f.text_field :home_state %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

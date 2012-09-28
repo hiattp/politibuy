@@ -1,0 +1,33 @@
+<h1>Listing policy_makers</h1>
+
+<table>
+  <tr>
+    <th>Salutation</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Bio</th>
+    <th>Party</th>
+    <th>Home state</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @policy_makers.each do |policy_maker| %>
+  <tr>
+    <td><%= policy_maker.salutation %></td>
+    <td><%= policy_maker.first_name %></td>
+    <td><%= policy_maker.last_name %></td>
+    <td><%= policy_maker.bio %></td>
+    <td><%= policy_maker.party %></td>
+    <td><%= policy_maker.home_state %></td>
+    <td><%= link_to 'Show', policy_maker %></td>
+    <td><%= link_to 'Edit', edit_policy_maker_path(policy_maker) %></td>
+    <td><%= link_to 'Destroy', policy_maker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Policy maker', new_policy_maker_path %>

@@ -526,6 +526,24 @@ img.current-campaign-image{
   height: 130px;
 }
 
+/*policy form stuff*/
+
+.policy-maker-form-wrapper{
+  display: none;
+  position: relative;
+  margin-top: 20px;
+}
+
+span#policy-maker-form-show{
+  color: #0000AA;
+  text-decoration: underline;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+/*update form stuff*/
+
 .update-form-wrapper{
   position: relative;
   margin-top: 20px;
@@ -538,8 +556,7 @@ img.current-campaign-image{
 
 form.update-form{
   position: relative;
-/*  border: solid 1px green;*/
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 form.update-form input {

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Salutation:</b>
+  <%= @policy_maker.salutation %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @policy_maker.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @policy_maker.last_name %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @policy_maker.bio %>
+</p>
+
+<p>
+  <b>Party:</b>
+  <%= @policy_maker.party %>
+</p>
+
+<p>
+  <b>Home state:</b>
+  <%= @policy_maker.home_state %>
+</p>
+
+
+<%= link_to 'Edit', edit_policy_maker_path(@policy_maker) %> |
+<%= link_to 'Back', policy_makers_path %>

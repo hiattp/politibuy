@@ -12,4 +12,10 @@ $(document).ready(function(){
       $("h4.participant-amount", this).hide();      
     }
   );
+  
+  $("#policy-maker-form-show").click(function(e){
+    e.preventDefault();
+    $(".policy-maker-form-wrapper").toggle();
+  });
+  
 });

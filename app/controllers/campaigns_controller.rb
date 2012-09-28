@@ -35,8 +35,19 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1/edit
   def edit
     @campaign = Campaign.find(params[:id])
+    
     @updating = true
     @new_update = @campaign.updates.build
+    
+    policy_makers = PolicyMaker.all
+    @policy_makers_selections = []
+    policy_makers.map do |pm|
+      name = pm.last_name + ", " + pm.first_name
+      @policy_makers_selections << [name, pm.id]
+    end
+    
+    @new_policy_maker = PolicyMaker.new
+    @new_recipient = Recipient.new
   end
 
   # POST /campaigns

@@ -26,7 +26,7 @@
     </div>
     
     <% if @campaign.main_image? %>
-    <p class="current-image-label">Current Campaign Image</p>
+    <p class="current-image-label">Current campaign image</p>
     <%= image_tag @campaign.main_image.url, :class => "current-campaign-image" %>
     <div class="field">
       <%= f.label :change_campaign_image %><br />
