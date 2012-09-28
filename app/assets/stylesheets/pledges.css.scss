@@ -1,3 +1,216 @@
 // Place all the styles related to the Pledges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table#new-pledge{
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 60px;
+  padding: 0px;
+  width: 500px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  
+  -webkit-border-radius: 5px;
+  -moz-border-radius:    5px;
+  border-radius:         5px;
+  
+  -webkit-box-shadow: 0px 2px 8px rgba(50, 50, 50, 0.8);
+  -moz-box-shadow:    0px 2px 8px rgba(50, 50, 50, 0.8);
+  box-shadow:         0px 2px 8px rgba(50, 50, 50, 0.8);
+  
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+}
+
+th:first-child {
+    -moz-border-radius:     4px 0 0 0;
+    -webkit-border-radius:  4px 0 0 0;
+    border-radius:          4px 0 0 0;
+}
+
+th:last-child {
+    -moz-border-radius:     0 4px 0 0;
+    -webkit-border-radius:  0 4px 0 0;
+    border-radius:          0 4px 0 0;
+}
+
+th:only-child{
+    -moz-border-radius:     4px 4px 0 0;
+    -webkit-border-radius:  4px 4px 0 0;
+    border-radius:          4px 4px 0 0;
+}
+
+tr.new-pledge-header{
+  padding-left: 0px;
+  background-color: green;
+  margin: 0px;
+  height: 60px;
+  color: white;
+  font-size: 22px;
+  text-shadow: 0px -1px 0px rgba(40, 40, 40, 0.8);
+  
+  
+  background: #7db9e8; /* Old browsers */
+  background: -moz-linear-gradient(top,  #7db9e8 0%, #2989d8 50%, #1e5799 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7db9e8), color-stop(50%,#2989d8), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #7db9e8 0%,#2989d8 50%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #7db9e8 0%,#2989d8 50%,#1e5799 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #7db9e8 0%,#2989d8 50%,#1e5799 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #7db9e8 0%,#2989d8 50%,#1e5799 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
+  
+}
+
+td.new-pledge-note{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: dashed 1px #BBBBCC;
+  color: #444444;
+}
+
+td.new-pledge-label{
+  padding-left: 60px;
+}
+
+td.new-pledge-input{
+  padding-right: 60px;
+}
+
+td.new-pledge-vertical-spacer{
+  height: 20px;
+}
+
+input.new-pledge-input{
+  margin-left: 10px;
+  height: 24px;
+  -webkit-border-radius:  3px;
+  -moz-border-radius:     3px;
+  border-radius:          3px;
+}
+
+#new-pledge-amount{
+  text-align: right;
+  width: 80px;
+  font-size: 18px;
+}
+
+td.new-pledge-payment-intro{
+  padding-top: 30px;
+  padding-left: 60px;
+  padding-bottom: 4px;
+  border-bottom: dashed 1px #BBBBCC;
+  font-weight: bold;
+}
+
+input#card_number{
+  width: 230px;
+  margin-left: 0px;
+}
+
+input#card_month{
+  margin-left: 0px;
+  width: 30px;
+  text-align: center;
+}
+
+input#card_year{
+  margin-left: 0px;
+  width: 54px;
+  text-align: center;
+}
+
+span#cvc-label{
+  margin-left: 5px;
+}
+
+input#card_code{
+  margin-left: 3px;
+  width: 54px;
+  text-align: center;  
+}
+
+td.new-pledge-disclaimer{
+  padding-bottom: 10px;
+  padding-left: 60px;
+  padding-right: 20px;
+  font-size: 12px;
+}
+
+span.disclaimer-highlight{
+  font-weight: bold;
+  color: #006600;
+}
+
+td.new-pledge-actions{
+  padding-top: 20px;
+}
+
+td#new-pledge-cancel{
+  
+}
+
+a.form-cancel-button{
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 11px;
+  padding-left:  20px;
+  padding-right: 20px;
+  border: solid 1px #888888;
+  color: black;
+  position: relative;
+  top: 21px;
+  left: 15px;
+  
+  background: #eeeeee; /* Old browsers */
+  background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #eeeeee 0%,#cccccc 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+
+}
+
+td#new-pledge-submit{
+  
+}
+
+input#pledge-submit-button{
+  height: 40px;
+  width: 170px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: solid 1px #1e5799;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(40, 40, 40, 0.5);
+  font-weight: bold;
+  position: relative;
+  top: 5px;
+  float: right;
+  right: 20px;
+  line-height: 20px;
+  
+  background: #7db9e8; /* Old browsers */
+  background: -moz-linear-gradient(top,  #7db9e8 0%, #2989d8 50%, #1e5799 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7db9e8), color-stop(50%,#2989d8), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #7db9e8 0%,#2989d8 50%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #7db9e8 0%,#2989d8 50%,#1e5799 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #7db9e8 0%,#2989d8 50%,#1e5799 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #7db9e8 0%,#2989d8 50%,#1e5799 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
+  
+  &:hover{
+    cursor: pointer;
+  }
+}

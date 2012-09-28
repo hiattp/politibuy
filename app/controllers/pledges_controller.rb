@@ -41,16 +41,13 @@ class PledgesController < ApplicationController
   # POST /pledges.json
   def create
     @pledge = Pledge.new(params[:pledge])
-
-    respond_to do |format|
-      if @pledge.save
-        format.html { redirect_to @pledge, notice: 'Pledge was successfully created.' }
-        format.json { render json: @pledge, status: :created, location: @pledge }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @pledge.errors, status: :unprocessable_entity }
-      end
+    
+    if @pledge.save_with_payment
+      redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
+    else
+      render :new
     end
+    
   end
 
   # PUT /pledges/1

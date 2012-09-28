@@ -1,5 +1,76 @@
-<h1>New pledge</h1>
+<div id="majority-left-wrapper">
+  <% if @pledge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pledge.errors.count, "error") %> prohibited this pledge from being saved:</h2>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', campaign_path(@campaign) %>
+      <ul>
+      <% @pledge.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table id="new-pledge">
+    <tr class="new-pledge-header">
+      <th colspan="2" class="new-pledge">Cast your dollar vote</th>
+    </tr>
+    <tr class="new-pledge-note">
+      <td colspan="2" class="new-pledge-note">Note: You will <b>NOT</b> be charged unless the campaign is successful.</td>
+    </tr>
+    <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
+    <%= form_for([@campaign, @pledge], :html => {:id =>"new-pledge-form"}) do |f| %>
+    <%= f.hidden_field :campaign_id, :value => @campaign.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :stripe_card_token %>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Amount</td>
+      <td class="new-pledge-input">$<%= f.text_field :amount, :id => "new-pledge-amount", :class => "new-pledge-input", :placeholder => "0.00" %></td>
+    </tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Match Pledges</td>
+      <td class="new-pledge-input"><%= f.check_box :matching %></td>
+    </tr>    
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Anonymous</td>
+      <td class="new-pledge-input"><%= f.check_box :anonymous %></td>
+    </tr>
+    <tr class="new-pledge-payment-intro">
+      <td colspan="2" class="new-pledge-payment-intro">Payment</td>
+    </tr>
+    <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Credit Card</td>
+      <td class="new-pledge-payment-input"><%= text_field_tag :card_number, nil, name: nil, :class => "new-pledge-input" %></td>
+    </tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Expiration</td>
+      <td class="new-pledge-payment-input">
+      <%= text_field_tag :card_month, nil, name: nil, :class => "new-pledge-input", :placeholder => "01", :maxlength => 2 %> / 
+      <%= text_field_tag :card_year, nil, name: nil, :class => "new-pledge-input", :placeholder => "2014", :maxlength => 4 %>
+      <span id="cvc-label">CVC</span>
+      <%= text_field_tag :card_code, nil, name: nil, :class => "new-pledge-input", :placeholder => "1234", :maxlength => 4 %>
+      </td>
+    </tr>
+    <tr class="new-pledge-payment-intro">
+      <td colspan="2" class="new-pledge-payment-intro">Disclaimer</td>
+    </tr>
+    <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">You <span class="disclaimer-highlight">will not</span> be billed unless the campaign objective is met.</td>
+    </tr>
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">You <span class="disclaimer-highlight">will</span> be able to change or cancel this pledge at any time.</td>
+    </tr>
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">
+        By submitting this form, you give Politibuy.org the right to charge you the amount 
+        specified above upon successful completion of this campaign.
+      </td>
+    </tr>
+    <tr class="new-pledge-submit">
+      <td id="new-pledge-cancel" class="new-pledge-actions"></td>
+      <td id="new-pledge-submit" class="new-pledge-actions"><%= link_to "Cancel", campaign_path(@campaign), :class => "form-cancel-button"%><%= f.submit "Submit Pledge", :id => "pledge-submit-button"%></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
