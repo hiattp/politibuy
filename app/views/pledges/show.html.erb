@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Amount:</b>
+  <%= @pledge.amount %>
+</p>
+
+<p>
+  <b>Matching:</b>
+  <%= @pledge.matching %>
+</p>
+
+<p>
+  <b>Anonymous:</b>
+  <%= @pledge.anonymous %>
+</p>
+
+
+<%= link_to 'Edit', edit_pledge_path(@pledge) %> |
+<%= link_to 'Back', pledges_path %>

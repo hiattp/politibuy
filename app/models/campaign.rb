@@ -2,6 +2,8 @@ class Campaign < ActiveRecord::Base
   has_many :updates
   has_many :recipients
   has_many :policy_makers, :through => :recipients
+  has_many :pledges
+  has_many :users, :through => :pledges
   
   attr_accessible :title, :description, :objective, :deadline, :live, :main_image
     

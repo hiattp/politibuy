@@ -3,6 +3,10 @@
 <head>
   <title>Politibuy</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <% if true %>
+  <%= javascript_include_tag "https://js.stripe.com/v1/" %>
+  <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+  <% end %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -14,9 +18,13 @@
         <div id="login-links">
           <%= link_to "Browse Campaigns", campaigns_path, :class => "header-links" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
+          <% if user_signed_in? %>
+          <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => "header-links "%>
+          <% else %>
           <%= link_to "Sign In", new_user_session_path, :class => "header-links" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Register", new_user_registration_path, :class => "header-links" %>
+          <% end %>
         </div>
       </div>
       <p class="notice"><%= notice %></p>

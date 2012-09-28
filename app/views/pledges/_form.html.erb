@@ -1,0 +1,32 @@
+<%= form_for([@campaign, @pledge]) do |f| %>
+  <% if @pledge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pledge.errors.count, "error") %> prohibited this pledge from being saved:</h2>
+
+      <ul>
+      <% @pledge.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.hidden_field :campaign_id, :value => @campaign.id %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :matching %><br />
+    <%= f.check_box :matching %>
+  </div>
+  <div class="field">
+    <%= f.label :anonymous %><br />
+    <%= f.check_box :anonymous %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

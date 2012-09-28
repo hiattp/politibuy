@@ -4,6 +4,7 @@ Politibuy::Application.routes.draw do
   
   resources :campaigns do
     resources :updates
+    resources :pledges
   end
 
   resources :policy_makers
