@@ -6,6 +6,7 @@ class CreateCampaigns < ActiveRecord::Migration
       t.string :objective
       t.datetime :deadline
       t.boolean :live, :default => false
+      t.attachment :main_image
       t.timestamps
     end
   end

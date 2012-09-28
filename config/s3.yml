@@ -1,0 +1,12 @@
+development:
+  bucket: politibuy-dev
+  access_key_id: AKIAJPPZLXRSB5NUJKQA
+  secret_access_key: 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
+test:
+  bucket: politibuy-staging
+  access_key_id: AKIAJPPZLXRSB5NUJKQA
+  secret_access_key: 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
+production:
+  bucket: politibuy-production
+  access_key_id: AKIAJPPZLXRSB5NUJKQA
+  secret_access_key: 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

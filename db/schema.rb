@@ -18,9 +18,13 @@ ActiveRecord::Schema.define(:version => 20120927040943) do
     t.text     "description"
     t.string   "objective"
     t.datetime "deadline"
-    t.boolean  "live",        :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.boolean  "live",                    :default => false
+    t.string   "main_image_file_name"
+    t.string   "main_image_content_type"
+    t.integer  "main_image_file_size"
+    t.datetime "main_image_updated_at"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   create_table "updates", :force => true do |t|
