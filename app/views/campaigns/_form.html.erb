@@ -25,10 +25,19 @@
       <%= f.text_field :objective %>
     </div>
     
+    <% if @campaign.main_image? %>
+    <p class="current-image-label">Current Campaign Image</p>
+    <%= image_tag @campaign.main_image.url, :class => "current-campaign-image" %>
+    <div class="field">
+      <%= f.label :change_campaign_image %><br />
+      <%= f.file_field :main_image %>
+    </div>
+    <% else %>
     <div class="field">
       <%= f.label :campaign_image %><br />
       <%= f.file_field :main_image %>
     </div>
+    <% end %>
     
     <div class="field">
       <%= f.label :deadline %><br />
