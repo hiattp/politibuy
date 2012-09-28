@@ -7,7 +7,11 @@ class Campaign < ActiveRecord::Base
     
   has_attached_file :main_image,
     :storage => :s3,
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
+    :bucket => ENV['S3_BUCKET'],
+    :s3_credentials => {
+      :access_key_id => ENV['S3_KEY'],
+      :secret_access_key => ENV['S3_SECRET']
+    },
     :path => "campaigns/:attachment/:id/:style.:extension"
   
 end
