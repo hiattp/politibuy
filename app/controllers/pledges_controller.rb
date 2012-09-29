@@ -1,4 +1,5 @@
 class PledgesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /pledges
   # GET /pledges.json
   def index
@@ -24,7 +25,13 @@ class PledgesController < ApplicationController
   # GET /pledges/new
   # GET /pledges/new.json
   def new
+    @new_pledge = true
     @pledge = Pledge.new
+    if current_user.stripe_customer_id?
+      @customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
+    else
+      @customer = false
+    end
     @campaign = Campaign.find(params[:campaign_id])
     respond_to do |format|
       format.html # new.html.erb
@@ -41,13 +48,14 @@ class PledgesController < ApplicationController
   # POST /pledges.json
   def create
     @pledge = Pledge.new(params[:pledge])
-    
-    if @pledge.save_with_payment
+    if current_user.stripe_customer_id?
+      @pledge.save!
+      redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
+    elsif @pledge.save_with_payment
       redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
     else
       render :new
     end
-    
   end
 
   # PUT /pledges/1

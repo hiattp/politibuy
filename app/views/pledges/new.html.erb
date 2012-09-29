@@ -38,6 +38,14 @@
       <td colspan="2" class="new-pledge-payment-intro">Payment</td>
     </tr>
     <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
+    <% if @customer %>
+    <tr class="pledge-existing-customer">
+      <td colspan="2" class="pledge-existing-customer">
+        Using card that ends with <%= @customer.active_card.last4 %>. To update payment information, 
+        please visit your <%= link_to "account page", edit_user_registration_path, :class => "edit-account-link" %>.
+      </td>
+    </tr>
+    <% else %>
     <tr class="new-pledge">
       <td class="new-pledge-label">Credit Card</td>
       <td class="new-pledge-payment-input"><%= text_field_tag :card_number, nil, name: nil, :class => "new-pledge-input" %></td>
@@ -51,6 +59,7 @@
       <%= text_field_tag :card_code, nil, name: nil, :class => "new-pledge-input", :placeholder => "1234", :maxlength => 4 %>
       </td>
     </tr>
+    <% end %>
     <tr class="new-pledge-payment-intro">
       <td colspan="2" class="new-pledge-payment-intro">Disclaimer</td>
     </tr>

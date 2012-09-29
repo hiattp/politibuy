@@ -2,8 +2,7 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function(){
-  Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
-  
+    
   var processPayment = {
     setupForm : function(){
       $("form#new-pledge-form").submit(function(){
@@ -11,6 +10,9 @@ $(document).ready(function(){
         if($('#card_number').length){
           processPayment.processCard();
           return false;
+        } else if($(".pledge-existing-customer").length){
+          console.log('here');
+          $('form#new-pledge-form')[0].submit();
         } else {
           return true;
         }
@@ -35,6 +37,8 @@ $(document).ready(function(){
       }
     }
   }
-  
-  processPayment.setupForm();
+  if(politibuyPaymentNeeded){
+    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content')); 
+    processPayment.setupForm();
+  }
 });
