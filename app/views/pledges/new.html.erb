@@ -11,7 +11,7 @@
     </div>
   <% end %>
   <table id="new-pledge">
-    <tr class="new-pledge-header">
+    <tr class="new-pledge-header green-gradient">
       <th colspan="2" class="new-pledge">Cast your dollar vote</th>
     </tr>
     <tr class="new-pledge-note">
@@ -78,7 +78,7 @@
     </tr>
     <tr class="new-pledge-submit">
       <td id="new-pledge-cancel" class="new-pledge-actions"></td>
-      <td id="new-pledge-submit" class="new-pledge-actions"><%= link_to "Cancel", campaign_path(@campaign), :class => "form-cancel-button"%><%= f.submit "Submit Pledge", :id => "pledge-submit-button"%></td>
+      <td id="new-pledge-submit" class="new-pledge-actions"><%= link_to "Cancel", campaign_path(@campaign), :class => "form-cancel-button"%><%= f.submit "Submit Pledge", :id => "pledge-submit-button", :class => "green-gradient"%></td>
     </tr>
     <% end %>
   </table>

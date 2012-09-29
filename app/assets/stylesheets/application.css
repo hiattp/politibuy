@@ -19,7 +19,7 @@ html, body {
  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
  width: 100%;
  height: 100%;
- background-color: #0000AA;
+ background-color: #000088;
 }
 
 a{
@@ -157,7 +157,7 @@ h1#intro-text{
 
 #footer-outer{
  width: 100%;
- background-color: #0000AA;
+ background-color: #000088;
  border-top: solid 4px #BB0000;
 }
 
