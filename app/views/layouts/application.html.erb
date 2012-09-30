@@ -60,7 +60,7 @@
   <div id="header-blue" class="header-bar"></div>
   <div id="header-red-top" class="header-bar"></div>
   <div id="header-red-bottom" class="header-bar"></div>
-  <% if @is_landing and not user_signed_in? %>
+  <% if @is_landing %>
   <div id="landing-image-outer">
     <%= image_tag "landing_image.jpg", :id => "landing-image" %>
     <div id="landing-image-text">
@@ -69,11 +69,24 @@
   </div>
   <div id="landing-call-to-action-outer">
     <div id="landing-call-to-action-inner">
+      
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "request-invite-form"}) do |f| %>
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :opt_in, :value => true %>
+        <%= f.email_field :email, :placeholder => "user@example.com" %>
+        <div><%= f.submit "Request Invitation", :id => "request-invite-button" %>
+      <% end %>
+      
+<%
+=begin%>
       <div id="landing-call-buttons-wrapper">
         <%= link_to "Browse Campaigns", campaigns_path, :class => "landing-callaction-button", :id => "landing-browse-button" %>
         <%= image_tag "seal.png", :id => "landing-seal" %>
         <%= link_to "Join the Movement", new_user_registration_path, :class => "landing-callaction-button", :id => "landing-signup-button" %>        
       </div>
+<%
+=end
+%>
     </div>
   </div>
   <div id="landing-how-works-outer">
