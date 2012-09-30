@@ -9,6 +9,7 @@ Politibuy::Application.routes.draw do
   end
 
   devise_for :users, :controllers => { :registrations => "registrations" }
+  # add limiter here
   
   resources :campaigns do
     resources :updates
@@ -17,7 +18,7 @@ Politibuy::Application.routes.draw do
 
   resources :policy_makers
   resources :recipients
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
