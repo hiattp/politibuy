@@ -8,6 +8,7 @@ class CreatePolicyMakers < ActiveRecord::Migration
       t.string :party
       t.string :home_state
       t.attachment :profile_image
+      t.string :vehicle
       t.timestamps
     end
   end

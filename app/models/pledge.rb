@@ -3,7 +3,7 @@ class Pledge < ActiveRecord::Base
   belongs_to :campaign
 
   attr_accessor :stripe_card_token
-  attr_accessible :amount, :anonymous, :matching, :campaign_id, :user_id, :stripe_card_token
+  attr_accessible :amount, :campaign_id, :user_id, :stripe_card_token
   
   def save_with_payment
     if valid?

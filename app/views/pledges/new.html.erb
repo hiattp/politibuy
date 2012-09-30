@@ -26,14 +26,6 @@
       <td class="new-pledge-label">Amount</td>
       <td class="new-pledge-input">$<%= f.text_field :amount, :id => "new-pledge-amount", :class => "new-pledge-input", :placeholder => "0.00" %></td>
     </tr>
-    <tr class="new-pledge">
-      <td class="new-pledge-label">Match Pledges</td>
-      <td class="new-pledge-input"><%= f.check_box :matching %></td>
-    </tr>    
-    <tr class="new-pledge">
-      <td class="new-pledge-label">Anonymous</td>
-      <td class="new-pledge-input"><%= f.check_box :anonymous %></td>
-    </tr>
     <tr class="new-pledge-payment-intro">
       <td colspan="2" class="new-pledge-payment-intro">Payment</td>
     </tr>

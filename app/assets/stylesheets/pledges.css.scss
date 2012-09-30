@@ -87,7 +87,7 @@ td.new-pledge-input{
 }
 
 td.new-pledge-vertical-spacer{
-  height: 20px;
+  height: 25px;
 }
 
 input.new-pledge-input{
@@ -105,11 +105,12 @@ input.new-pledge-input{
 }
 
 td.new-pledge-payment-intro{
-  padding-top: 30px;
+  padding-top: 20px;
   padding-left: 60px;
   padding-bottom: 4px;
   border-bottom: dashed 1px #BBBBCC;
   font-weight: bold;
+  color: #BBBBCC;
 }
 
 input#card_number{
@@ -119,24 +120,24 @@ input#card_number{
 
 input#card_month{
   margin-left: 0px;
-  width: 30px;
-  text-align: center;
+  width: 25px;
+  padding-left: 10px;
 }
 
 input#card_year{
   margin-left: 0px;
-  width: 54px;
-  text-align: center;
+  width: 46px;
+  padding-left: 10px;
 }
 
 span#cvc-label{
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 input#card_code{
   margin-left: 3px;
-  width: 54px;
-  text-align: center;  
+  width: 47px;
+  padding-left: 10px;
 }
 
 td.new-pledge-disclaimer{
@@ -171,7 +172,7 @@ a.form-cancel-button{
   color: black;
   position: relative;
   top: 21px;
-  left: 15px;
+  left: 28px;
   
   background: #eeeeee; /* Old browsers */
   background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%); /* FF3.6+ */

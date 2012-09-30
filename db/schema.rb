@@ -31,10 +31,8 @@ ActiveRecord::Schema.define(:version => 20120928181334) do
     t.integer  "user_id"
     t.integer  "campaign_id"
     t.float    "amount"
-    t.boolean  "matching",    :default => false
-    t.boolean  "anonymous",   :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "policy_makers", :force => true do |t|
@@ -48,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20120928181334) do
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"
     t.datetime "profile_image_updated_at"
+    t.string   "vehicle"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
