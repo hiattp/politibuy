@@ -1,3 +1,14 @@
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "request-invite-form"}) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :opt_in, :value => true %>
+  <%= f.email_field :email, :placeholder => "user@example.com", :id => "invite-email-field"%>
+  <%= f.submit "Request Invitation", :id => "request-invite-button" %>
+<% end %>
+
+<%
+=begin%>
+
 <div class="register-box-outer">
 
   <h2 class="register-header">Sign up <%= link_to "(sign in)", new_session_path(resource_name), :class => "register-alt-link" %></h2>
@@ -19,3 +30,7 @@
     <% end %>
   </div>
 </div>
+
+<%
+=end
+%>
