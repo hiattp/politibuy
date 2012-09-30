@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
     },
     :path => "users/:attachment/:id/:style.:extension"
     
+  after_create :send_welcome_email
+  
   # override Devise method
   # no password is required when the account is created; validate password when the user sets one
   validates_confirmation_of :password
@@ -41,6 +43,13 @@ class User < ActiveRecord::Base
     confirmed? || confirmation_period_valid?
   end
   
+  private
+
+  def send_welcome_email
+    unless self.email.include?('@example.com') && Rails.env != 'test'
+      UserMailer.welcome_email(self).deliver
+    end
+  end
   
   
 end
