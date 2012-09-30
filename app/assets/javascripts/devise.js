@@ -30,6 +30,9 @@ $(document).ready(function(){
           $("div#invitation-thank-you").show();
           $("form#request-invite-form").hide();
         }
+      },
+      error: function(data){
+        alert("Sorry, an error has prevented us from saving your email. Please refresh the page and try again.");
       }
     });
     return false;
