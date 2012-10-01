@@ -200,3 +200,21 @@ p#copyright{
 p#affiliation{
   text-align: center;
 }
+
+#footer-social-media-buttons{
+  position: absolute;
+  top: -20px;
+}
+
+#footer-tweet{
+  margin-bottom: 4px;
+}
+
+#fb-like-footer{
+  margin-bottom: 7px;
+  z-index: 1000;
+}
+  
+#gplus-footer{
+    
+}

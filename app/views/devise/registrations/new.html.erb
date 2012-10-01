@@ -1,5 +1,14 @@
 <div id="invitation-thank-you">
-  <p id="invitation-thank-you">Thank you! We'll be in touch soon.</p>
+  <p id="invitation-thank-you">Thank you, we'll be in touch soon. Meanwhile, spread the word!</p>
+  <div id="invitation-social-media-buttons">
+    <div id="tweet" style="display:inline-block;">
+      <a class="twitter-share-button" data-count="horizontal" data-text="I joined the revolution!" data-url="http://www.politibuy.org/" data-via="politibuy" data-related="lessig" href="https://twitter.com/share"></a>
+    </div>
+    <span class="fb-like-span" style="display:inline-block;">
+      <div class="fb-like" data-href="http://www.politibuy.org/" data-layout="button_count" data-send="false" data-show-faces="false" data-width="90"></div>
+    </span>
+    <div class="g-plusone" data-annotation="inline" data-href="http://www.politibuy.org/" data-size="medium" data-width="120"></div>
+  </div>
 </div>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "request-invite-form"}) do |f| %>

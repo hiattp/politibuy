@@ -2,6 +2,11 @@
 <html>
 <head>
   <title>Politibuy - Buy political outcomes</title>
+  <meta property="og:title" content="Politibuy - Buy political outcomes" />
+  <meta property="og:url" content="http://www.politibuy.org" />
+  <meta property="og:image" content="www.politibuy.org/assets/politibuy_small.jpg"/>
+  <meta property="og:description" content="Money gets your voice heard in Washington. What would you pay to see government get something done?" />
+  
   <%= stylesheet_link_tag    "application", :media => "all" %>
   
   <% if @new_pledge %>
@@ -62,6 +67,13 @@
     </div>
     <div id="footer-outer">
       <div id="footer-inner">
+        <div id="footer-social-media-buttons">
+          <div id="footer-tweet">
+            <a class="twitter-share-button" data-count="horizontal" data-text="I joined the revolution!" data-url="http://www.politibuy.org/" data-via="politibuy" data-related="lessig" href="https://twitter.com/share"></a>
+          </div>
+          <div id="fb-like-footer" class="fb-like" data-href="http://www.politibuy.org/" data-layout="button_count" data-send="false" data-show-faces="false" data-width="90"></div><br/>
+          <div id="gplus-footer" class="g-plusone" data-annotation="inline" data-href="http://www.politibuy.org/" data-size="medium" data-width="120"></div>
+        </div>
         <div id="footer-legal-disclaimers">
           <p id="copyright">Copyright © 2012 Politibuy LLC</p>
           <p id="affiliation">Paid for by Politibuy. Not authorized by any candidate or candidate's committee.</p>

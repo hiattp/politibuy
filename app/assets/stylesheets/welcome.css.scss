@@ -198,6 +198,7 @@ p.landing-how-step{
 
 form#request-invite-form{
 /*  border: solid 1px green;*/
+/*  display: none;*/
   width: 550px;
   margin: auto;
   position: relative;
@@ -269,9 +270,11 @@ input#request-invite-button{
   }
 }
 
+
+
 div#invitation-thank-you{
   display: none;
-  margin-top: 400px;
+  margin-top: 380px;
 }
 
 p#invitation-thank-you{
@@ -282,4 +285,17 @@ p#invitation-thank-you{
   color: white;
   font-size: 25px;
   text-shadow: 0px -1px 0px rgba(40, 40, 40, 0.8);
+}
+
+.fb-like-span{
+  position: relative;
+  top: -4px;
+}
+
+#invitation-social-media-buttons{
+  width: 500px;
+  margin: auto;
+  padding-left: 220px;
+  position: relative;
+  top: -18px;
 }

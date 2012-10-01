@@ -1,5 +1,6 @@
 $(document).ready(function(){
   var needsFocus = "#user_password";
+  loadSocial();
   
   $("#user_email").focus(function(){
     needsFocus = "#user_password";
@@ -29,8 +30,8 @@ $(document).ready(function(){
           $('input[type=submit]').attr('disabled', false);
           return false;
         } else {
-          $("div#invitation-thank-you").show();
           $("form#request-invite-form").hide();
+          $("div#invitation-thank-you").show();
           return false;
         }
       },
