@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(:version => 20120928181334) do
     t.integer  "profile_image_file_size"
     t.datetime "profile_image_updated_at"
     t.string   "stripe_customer_id"
-    t.boolean  "opt_in"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
   end

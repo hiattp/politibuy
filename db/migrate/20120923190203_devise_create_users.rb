@@ -39,7 +39,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :tagline
       t.attachment :profile_image
       t.string :stripe_customer_id
-      t.boolean :opt_in
 
       t.timestamps
     end

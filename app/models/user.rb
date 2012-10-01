@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :tagline, :profile_image, :stripe_customer_id, :opt_in
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :tagline, :profile_image, :stripe_customer_id
   
   has_many :pledges
   has_many :campaigns, :through => :pledges
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   private
 
   def add_user_to_mailchimp
-    unless self.email.include?('@example.com') or !self.opt_in?
+    unless self.email.include?('@example.com')
       mailchimp = Hominid::API.new(ENV["MAILCHIMP_API_KEY"])
       list_id = mailchimp.find_list_id_by_name "Politibuy Updates"
       info = { }
