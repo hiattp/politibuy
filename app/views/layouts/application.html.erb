@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Politibuy</title>
+  <title>Politibuy - Buy political outcomes</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <% if @new_pledge %>
   <%= javascript_include_tag "https://js.stripe.com/v1/" %>
@@ -22,6 +22,9 @@
     <div id="all-content-inner">
       <div id="header">
         <%= link_to((image_tag "politibuy.png", :id => "main-logo"), root_path) %>
+
+<%
+=begin%>
         <div id="login-links">
           <%= link_to "Browse Campaigns", campaigns_path, :class => "header-links" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
@@ -33,6 +36,9 @@
           <%= link_to "Register", new_user_registration_path, :class => "header-links" %>
           <% end %>
         </div>
+<%
+=end
+%>
       </div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
@@ -41,6 +47,12 @@
     </div>
     <div id="footer-outer">
       <div id="footer-inner">
+        <div id="footer-legal-disclaimers">
+          <p id="copyright">Copyright © 2012 Politibuy LLC</p>
+          <p id="affiliation">Paid for by Politibuy. Not authorized by any candidate or candidate's committee.</p>
+        </div>
+<%
+=begin%>        
         <div id="footer-links">
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "About", "", :class => "footer-link", :id => "footer-about-link" %>
@@ -54,6 +66,9 @@
           <%= link_to "Share", "", :class => "footer-link", :id => "footer-share-link" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
         </div>
+<%
+=end
+%>        
       </div>
     </div>
   </div>
