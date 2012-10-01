@@ -14,7 +14,8 @@ $(document).ready(function(){
   });
   
   // use AJAX to submit the "request invitation" form
-  $('#request-invite-button').live('click', function() {
+  $('form#request-invite-form').submit(function() {
+    $('input[type=submit]').attr('disabled', true);
     var email = $('#invite-email-field').val();
     var dataString = 'user[email]='+ email;
     $.ajax({
@@ -25,9 +26,12 @@ $(document).ready(function(){
         if($(data).find("#error_explanation").length > 0){
           $('#invite-email-field').val("");
           alert("Error Message: "+ $(data).find("#error_explanation").find("li").text());
+          $('input[type=submit]').attr('disabled', false);
+          return false;
         } else {
           $("div#invitation-thank-you").show();
           $("form#request-invite-form").hide();
+          return false;
         }
       },
       error: function(data){
