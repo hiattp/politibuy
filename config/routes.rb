@@ -3,7 +3,7 @@ Politibuy::Application.routes.draw do
   authenticated :user do
     root :to => 'campaigns#index'
   end
-  
+
   devise_scope :user do
     root :to => "devise/registrations#new"
   end
@@ -18,6 +18,11 @@ Politibuy::Application.routes.draw do
 
   # resources :policy_makers
   # resources :recipients
+  
+  match "about" => "welcome#about"
+  match "terms" => "welcome#terms"
+  match "privacy" => "welcome#privacy"
+  match "ethics" => "welcome#ethics"
 
   
   # The priority is based upon order of creation:

@@ -169,11 +169,13 @@ h1#intro-text{
 }
 
 #footer-links{
-  width: 390px;
+/*  border: solid 1px green;*/
+  width: 415px;
+  left: 2px;
   margin: auto;
   font-size: 18px;
   position: relative;
-  top: 50px;
+  margin-top: 50px;
 }
 
 .footer-link{
@@ -187,14 +189,14 @@ span.divider-star{
 
 div#footer-legal-disclaimers{
   position: relative;
-  margin-top: 40px;
+  margin-top: 30px;
   color: white;
   font-size: 12px;
 }
 
 p#copyright{
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 p#affiliation{
