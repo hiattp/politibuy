@@ -19,7 +19,7 @@ Politibuy::Application.routes.draw do
   # resources :policy_makers
   # resources :recipients
   
-  match "about" => "welcome#about"
+  # match "about" => "welcome#about"
   match "terms" => "welcome#terms"
   match "privacy" => "welcome#privacy"
   match "ethics" => "welcome#ethics"
