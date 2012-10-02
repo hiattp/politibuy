@@ -16,3 +16,6 @@
 
 # Ignore heroku_env file with local env vars
 /config/heroku_env.rb
+
+# Ignore ssl keys
+/ssl
