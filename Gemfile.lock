@@ -45,6 +45,7 @@ GEM
       uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
     builder (3.0.3)
+    cancan (1.6.8)
     cocaine (0.3.1)
     daemons (1.1.9)
     devise (2.1.2)
@@ -123,6 +124,7 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rolify (3.2.0)
     rubyzip (0.9.9)
     sass (3.2.1)
     sass-rails (3.2.5)
@@ -156,6 +158,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk
+  cancan
   devise
   heroku
   hominid
@@ -163,6 +166,7 @@ DEPENDENCIES
   paperclip (~> 3.0)
   pg
   rails (= 3.2.8)
+  rolify
   sass-rails (~> 3.2.3)
   sqlite3
   stripe!

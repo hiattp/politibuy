@@ -17,6 +17,10 @@ gem 'aws-sdk'
 # gem for mailchimp
 gem "hominid"
 
+# permissions
+gem "rolify"
+gem "cancan"
+
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Gems used only for assets and not required

@@ -1,7 +1,7 @@
 Politibuy::Application.routes.draw do
   
   authenticated :user do
-    root :to => 'campaigns#index'
+    root :to => "campaigns#index"
   end
 
   devise_scope :user do
@@ -9,15 +9,16 @@ Politibuy::Application.routes.draw do
   end
 
   devise_for :users, :controllers => { :registrations => "registrations" }
-  # add limiter here
   
-  # resources :campaigns do
-  #   resources :updates
-  #   resources :pledges
-  # end
+  resources :campaigns do
+    resources :updates
+    resources :pledges
+  end
 
-  # resources :policy_makers
-  # resources :recipients
+  resources :policy_makers
+  resources :recipients
+  
+  match "admin" => "users#index"
   
   match "about" => "welcome#about"
   match "terms" => "welcome#terms"
@@ -74,7 +75,7 @@ Politibuy::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'welcome#index'
+  root :to => "welcome#index"
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable,
   # :lockable, :timeoutable and :omniauthable
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
   # no password is required when the account is created; validate password when the user sets one
   validates_confirmation_of :password
   def password_required?
-    if !persisted? 
+    if !persisted?
       !(password != "")
     else
       !password.nil? || !password_confirmation.nil?
