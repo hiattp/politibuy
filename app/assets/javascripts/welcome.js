@@ -1,6 +1,24 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+$(document).ready(function(){
+  jQuery(function($){
+      $(".twitter-feed").tweet({
+          username: "politibuy",
+          join_text: "auto",
+          avatar_size: 32,
+          count: 5,
+          auto_join_text_default: ":", 
+          auto_join_text_ed: ":",
+          auto_join_text_ing: ":",
+          auto_join_text_reply: ":",
+          auto_join_text_url: ":",
+          loading_text: "loading tweets..."
+      });
+  });
+});
+
+
 
 function loadSocial() {
     

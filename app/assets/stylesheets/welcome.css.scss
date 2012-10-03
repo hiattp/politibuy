@@ -335,6 +335,11 @@ ul.info-page{
   font-size: 20px;
 }
 
+ul.about-list{
+  margin-bottom: 30px;
+  padding-left: 20px;
+}
+
 li.info-page{
   margin-top: 20px;
   font-size: 20px;
@@ -353,4 +358,40 @@ li.inner-list{
 
 #info-page-wrapper{
   margin-bottom: 40px;
+}
+
+p.last-about{
+  margin-bottom: 50px;
+  font-size: 20px;
+}
+
+.about-right-wrapper{
+  padding-top: 17px;
+}
+
+h3.about-right{
+  color: #A00;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #A00;
+  text-align: center;
+  width: 190px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+ul.about-blog-entry{
+  padding-left: 20px;
+}
+
+li.about-blog-entry{
+  margin-top: 22px;
+}
+
+p.about-blog-entry-date{
+  font-style: italic;
+  font-size: 14px;
+}
+
+a.about-blog-entry{
+  color: #00A;
 }
