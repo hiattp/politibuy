@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   after_create :add_user_to_mailchimp unless Rails.env.test?
   before_destroy :remove_user_from_mailchimp unless Rails.env.test?
   
-  # override Devise method
+  # override Devise methods
   # no password is required when the account is created; validate password when the user sets one
   validates_confirmation_of :password
   def password_required?
@@ -43,6 +43,24 @@ class User < ActiveRecord::Base
   # override Devise method
   def active_for_authentication?
     confirmed? || confirmation_period_valid?
+  end
+  
+  # new function to set the password
+  def attempt_set_password(params)
+    p = {}
+    p[:password] = params[:password]
+    p[:password_confirmation] = params[:password_confirmation]
+    update_attributes(p)
+  end
+
+  # new function to determine whether a password has been set
+  def has_no_password?
+    self.encrypted_password.blank?
+  end
+
+  # new function to provide access to protected method pending_any_confirmation
+  def only_if_unconfirmed
+    pending_any_confirmation {yield}
   end
   
 

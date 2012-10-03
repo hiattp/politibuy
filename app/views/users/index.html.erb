@@ -2,7 +2,7 @@
 <ul>
   <% @users.each do |user| %>
     <li>
-      <%= link_to user.email, user %> signed up <%= user.created_at.to_date %>
+      <%= link_to user.email, user %> signed up <%= user.created_at.to_date %> action: <%= (user.confirmation_token.nil? ? (link_to "send invitation", invite_user_path(user)) : (link_to "resend", invite_user_path(user))) unless user.confirmed_at %>
     </li>
   <% end %>
 </ul>
