@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
     },
     :path => "users/:attachment/:id/:style.:extension"
     
-  after_create :add_user_to_mailchimp unless Rails.env.test?
-  before_destroy :remove_user_from_mailchimp unless Rails.env.test?
+  after_create :add_user_to_mailchimp unless (Rails.env.test? or Rails.env.development?)
+  before_destroy :remove_user_from_mailchimp unless (Rails.env.test? or Rails.env.development?)
   
   # override Devise methods
   # no password is required when the account is created; validate password when the user sets one

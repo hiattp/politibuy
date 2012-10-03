@@ -110,6 +110,45 @@ input[type="checkbox"]{
   overflow: hidden;
 }
 
+div#flash-wrapper-outer{
+  position: absolute;
+  width: 900px;
+  top: 65px;
+  background-color: #C00;
+  height: 36px;
+}
+
+div.flash-wrapper-inner{
+  display: inline-block;
+}
+
+img.notice{
+  position: relative;
+  float: left;
+  margin-left: 12px;
+}
+
+p.notice{
+  color: white;
+  font-weight: bold;
+  display:inline-block;
+  margin-left: 5px;
+  line-height: 36px;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+}
+
+p.alert{
+  color: white;
+  font-weight: bold;
+  display:inline-block;
+  margin-left: 5px;
+  line-height: 36px;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+}
+
+
 #majority-left-wrapper{
 /*  border: solid 1px green;*/
   position: relative;

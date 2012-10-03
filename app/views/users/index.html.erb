@@ -1,8 +1,19 @@
-<h3>Users</h3>
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.email, user %> signed up <%= user.created_at.to_date %> action: <%= (user.confirmation_token.nil? ? (link_to "send invitation", invite_user_path(user)) : (link_to "resend", invite_user_path(user))) unless user.confirmed_at %>
-    </li>
+<h1 id="campaigns-index">Users (<%= @users.count %>)</h1>
+<table class="admin-table">
+  <tr class="admin-table">
+    <th class="admin-table">Email</th>
+    <th class="admin-actions">Actions</th>
+  </tr>
+  <% @users.each_with_index do |user, i| %>
+  <tr class="admin-table <%= i.odd? ? "odd-row": ""%>">
+    <td class="admin-table"><%= user.email %></td>
+    <td class="admin-actions">
+      <%= (user.confirmation_token.nil? ? (link_to "send invitation", invite_user_path(user)) : (link_to "resend", invite_user_path(user))) unless user.confirmed_at %>
+      <% if not user.confirmed_at %>
+        |
+      <% end %> 
+      <%= link_to "show", user %> 
+      </td>
+  </tr>
   <% end %>
-</ul>
+</table>
