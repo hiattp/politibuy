@@ -6,7 +6,7 @@ $(document).ready(function(){
   if($("#flash-wrapper-outer").length > 0){
     setTimeout(function(){
       removeFlashes();
-    }, 3000);
+    }, 5000);
   }
 });
 
