@@ -4,7 +4,7 @@
 $(document).ready(function(){
   jQuery(function($){
       $(".twitter-feed").tweet({
-          username: "hiattp",
+          username: "politibuy",
           join_text: "auto",
           avatar_size: 32,
           count: 3,
