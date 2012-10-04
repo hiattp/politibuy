@@ -2,7 +2,8 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function(){
-  jQuery(function($){
+  if($(".twitter-feed").length > 0){
+    jQuery(function($){
       $(".twitter-feed").tweet({
           username: "politibuy",
           join_text: "auto",
@@ -15,7 +16,8 @@ $(document).ready(function(){
           auto_join_text_url: ":",
           loading_text: "loading tweets..."
       });
-  });
+    });
+  }
 });
 
 
