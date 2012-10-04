@@ -94,3 +94,25 @@ input.devise-register{
     cursor: pointer;
   }
 }
+
+.devise-form-errors{
+  font-size: 12px;
+  padding-bottom: 15px;
+}
+
+.devise-form-errors h2{
+  font-size: 12px;
+  padding-bottom: 5px;
+}
+
+p.resend-confirmation{
+  margin-top: 40px;
+  font-size: 13px;
+  text-align: center;
+  color: #444;
+}
+
+a.resend-confirmation{
+  color: #444;
+  text-decoration: underline;
+}
