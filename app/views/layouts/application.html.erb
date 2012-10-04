@@ -45,9 +45,12 @@
       <div id="header">
         <%= link_to((image_tag "politibuy.png", :id => "main-logo"), root_path) %>
 
-<%
-=begin%>
         <div id="login-links">
+          <span class="divider-star"><%= image_tag "small_star.png"%></span>
+          <%= link_to "About", about_path, :class => "footer-link", :id => "footer-about-link" %>
+          <span class="divider-star"><%= image_tag "small_star.png"%></span>
+<%
+=begin%>          
           <%= link_to "Browse Campaigns", campaigns_path, :class => "header-links" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <% if user_signed_in? %>
@@ -57,10 +60,11 @@
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Register", new_user_registration_path, :class => "header-links" %>
           <% end %>
-        </div>
 <%
 =end
 %>
+        </div>
+
       </div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
