@@ -26,10 +26,10 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_inactive_sign_up_path_for(resource)
-    # the page prelaunch visitors will see after they request an invitation
-    '/thankyou.html'
+    flash[:notice] = "Thanks! Please check your email for activation instructions."
+    respond_to?(:root_path) ? root_path : "/"
   end
-  
+    
   def after_sign_up_path_for(resource)
     # the page new users will see after sign up (after launch, when no invitation is needed)
     redirect_to root_path

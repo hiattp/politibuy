@@ -30,7 +30,7 @@ $(document).ready(function(){
           $('input[type=submit]').attr('disabled', false);
           return false;
         } else {
-          $("form#request-invite-form").hide();
+          $("div#invitation-form-wrapper").hide();
           $("div#invitation-thank-you").show();
           return false;
         }

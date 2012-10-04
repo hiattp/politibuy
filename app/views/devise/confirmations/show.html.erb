@@ -1,19 +1,24 @@
-<div class="register-box-outer">
-  <h2 class="register-header">Activate Account</h2>
-  <div class="register-form-wrapper">
-    <%= form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:id => 'activation-form', :method => 'put'}, :id => 'activation-form' do |f| %>
-      <% if @requires_password %>
-      <div>
-        <%= f.label :password,'Choose a Password:' %><br/>
-        <%= f.password_field :password %>
-      </div>
-      <div>
-        <%= f.label :password_confirmation, 'Password Confirmation:' %><br/>
-        <%= f.password_field :password_confirmation %>
-      </div>
+<div id="majority-left-wrapper">
+  <div class="register-box-outer">
+    <h2 class="register-header">Activate Account</h2>
+    <div class="register-form-wrapper">
+      <%= form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:id => 'activation-form', :method => 'put'}, :id => 'activation-form' do |f| %>
+        <% if @requires_password %>
+        <div>
+          <%= f.label :password,'Choose a Password:' %><br/>
+          <%= f.password_field :password %>
+        </div>
+        <div>
+          <%= f.label :password_confirmation, 'Password Confirmation:' %><br/>
+          <%= f.password_field :password_confirmation %>
+        </div>
+        <% end %>
+        <%= hidden_field_tag :confirmation_token, @confirmation_token %>
+        <div><%= f.submit "Activate", :class => "devise-register" %></div>
       <% end %>
-      <%= hidden_field_tag :confirmation_token, @confirmation_token %>
-      <div><%= f.submit "Activate", :class => "devise-register" %></div>
-    <% end %>
+    </div>
   </div>
+</div>
+<div id="minority-right-wrapper">
+  <%= render :partial => 'layouts/right_sidebar' %>
 </div>

@@ -90,11 +90,15 @@ img#landing-intro-text{
   background-image: url("texture_1.png");
 }
 
-#landing-call-buttons-wrapper{
+#landing-call-buttons-wrapper-outer{
   width: 900px;
   margin: auto;
   position: relative;
-  z-index: 2;
+  margin-top: 363px;
+}
+
+#landing-call-buttons-wrapper-inner{
+  position: relative;
 }
 
 a.landing-callaction-button{
@@ -196,6 +200,23 @@ p.landing-how-step{
   STARTER LANDING PAGE
 */
 
+div#invitation-form-wrapper{
+  position: relative;
+/*  border: solid 1px green;*/
+  overflow: hidden;
+  height: 500px;
+}
+
+img#landing-back-arrow{
+  display: none;
+  position: absolute;
+  bottom: 74px;
+  left: 120px;
+  &:hover{
+    cursor: pointer
+  }
+}
+
 form#request-invite-form{
 /*  border: solid 1px green;*/
 /*  display: none;*/
@@ -203,6 +224,8 @@ form#request-invite-form{
   margin: auto;
   position: relative;
   margin-top: 385px;
+  left: 800px;
+  z-index: 5;
 }
 
 #request-invite-form input{  
@@ -237,7 +260,7 @@ input#request-invite-button{
   text-align: center;
   font-size: 18px; 
   float: right;
-/*  font-weight: bold;*/
+  font-weight: bold;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
