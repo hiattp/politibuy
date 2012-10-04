@@ -1,6 +1,24 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+$(document).ready(function(){
+  jQuery(function($){
+      $(".twitter-feed").tweet({
+          username: "politibuy",
+          join_text: "auto",
+          avatar_size: 32,
+          count: 4,
+          auto_join_text_default: ":", 
+          auto_join_text_ed: ":",
+          auto_join_text_ing: ":",
+          auto_join_text_reply: ":",
+          auto_join_text_url: ":",
+          loading_text: "loading tweets..."
+      });
+  });
+});
+
+
 
 function loadSocial() {
     
@@ -8,14 +26,14 @@ function loadSocial() {
     if (typeof (twttr) != 'undefined') {
       twttr.widgets.load();
     } else {
-      $.getScript('http://platform.twitter.com/widgets.js');
+      $.getScript('https://platform.twitter.com/widgets.js');
     }
 
     //Facebook
     if (typeof (FB) != 'undefined') {
       FB.init({ status: true, cookie: true, xfbml: true });
     } else {
-      $.getScript("http://connect.facebook.net/en_US/all.js#xfbml=1", function () {
+      $.getScript("https://connect.facebook.net/en_US/all.js#xfbml=1", function () {
         FB.init({ status: true, cookie: true, xfbml: true });
       });
     }

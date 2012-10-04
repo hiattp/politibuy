@@ -3,8 +3,8 @@
 <head>
   <title>Politibuy - Pay for political action</title>
   <meta property="og:title" content="Politibuy - Pay for political action" />
-  <meta property="og:url" content="https://www.politibuy.org" />
-  <meta property="og:image" content="https://www.politibuy.org/assets/politibuy_med.jpg"/>
+  <meta property="og:url" content="http://www.politibuy.org" />
+  <meta property="og:image" content="http://www.politibuy.org/assets/politibuy_med.jpg"/>
   <meta property="og:description" content="Money gets your voice heard in Washington. What would you pay to see government get something done?" />
   <meta property="fb:admins" content="222984" />
   <meta property="og:type" content="website" />
@@ -67,17 +67,22 @@
       <div id="footer-inner">
         <div id="footer-social-media-buttons">
           <div id="footer-tweet">
-            <a class="twitter-share-button" data-count="horizontal" data-text="I joined the revolution!" data-url="https://www.politibuy.org/" data-via="politibuy" data-related="lessig" href="https://twitter.com/share"></a>
+            <a class="twitter-share-button" data-count="horizontal" data-text="I joined the revolution!" data-url="http://www.politibuy.org/" data-via="politibuy" data-related="lessig" href="https://twitter.com/share"></a>
           </div>
-          <div id="fb-like-footer" class="fb-like" data-href="https://www.politibuy.org/" data-layout="button_count" data-send="false" data-show-faces="false" data-width="90"></div><br/>
-          <div id="gplus-footer" class="g-plusone" data-annotation="inline" data-href="https://www.politibuy.org/" data-size="medium" data-width="120"></div>
+          <div id="fb-like-footer" class="fb-like" data-href="http://www.politibuy.org/" data-layout="button_count" data-send="false" data-show-faces="false" data-width="90"></div><br/>
+          <div id="gplus-footer" class="g-plusone" data-annotation="inline" data-href="http://www.politibuy.org/" data-size="medium" data-width="120"></div>
         </div>
 
         <div id="footer-links">
-          <span class="divider-star"><%= image_tag "small_star.png"%></span>
-          <%= link_to "About", about_path, :class => "footer-link", :id => "footer-about-link" %>
+<%
+=begin%>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Blog", "http://blog.politibuy.org", :class => "footer-link", :id => "footer-blog-link" %>
+<%
+=end
+%>
+          <span class="divider-star"><%= image_tag "small_star.png"%></span>
+           <%= link_to "About", about_path, :class => "footer-link", :id => "footer-about-link" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Terms", terms_path, :class => "footer-link", :id => "footer-terms-link" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
