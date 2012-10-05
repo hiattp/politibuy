@@ -75,6 +75,13 @@ input.devise-register{
   }
 }
 
+input.register-form-field{
+  height: 24px;
+  -webkit-border-radius:  3px;
+  -moz-border-radius:     3px;
+  border-radius:          3px;
+}
+
 .register-alt-link{
   color: #FFF;
   font-size: 15px;
@@ -121,4 +128,54 @@ img.edit-profile-image{
   position: relative;
   left: 70px;
   height: 100px;
+  border: solid 2px #BBB;
+  margin-bottom: 10px;
+}
+
+/*
+  EDIT ACCOUNT PAGE
+*/
+
+.edit-account-outer{
+  overflow: hidden;
+}
+
+.edit-account-section{
+  margin-left: 5px;
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 15px;
+}
+
+input#user_profile_image{
+  width: 234px;
+  font-size: 14px;
+}
+
+p#cancel-account{
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  color: #555;
+  font-size: 14px;
+}
+
+a#cancel-account{
+  color: #A00;
+}
+
+input.address-line-two{
+  margin-top: 0px;
+}
+
+input.zip-code{
+  
+}
+
+input.edit-account-cardnumber{
+  margin-bottom: 0px;
+}
+
+span.cvc-account-edit{
+  padding-left: 5px;
 }

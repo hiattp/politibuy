@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002211438) do
+ActiveRecord::Schema.define(:version => 20121005212332) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "title"
@@ -105,6 +105,9 @@ ActiveRecord::Schema.define(:version => 20121002211438) do
     t.string   "stripe_customer_id"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+    t.string   "address_line_one"
+    t.string   "address_line_two"
+    t.string   "zip_code"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

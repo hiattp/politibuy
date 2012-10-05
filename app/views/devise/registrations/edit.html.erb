@@ -1,47 +1,91 @@
-<div class="register-box-outer">
-
-  <h2 class="register-header">Edit User</h2>
-
-  <div class="register-form-wrapper">
-      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-      <div class="devise-form-errors">
-        <%= devise_error_messages! %>
-      </div>
+<div class="edit-account-outer">
+  
+  <div class="register-box-outer edit-account-section">
+    <h2 class="register-header">Edit Profile</h2>
+    <div class="register-form-wrapper">
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+        <div class="devise-form-errors">
+          <%= devise_error_messages! %>
+        </div>
+        <% if current_user.profile_image? %>
+          <%= image_tag current_user.profile_image, :class => "edit-profile-image" %>
+        <% else %>
+          <%= image_tag "sam.jpeg", :class => "edit-profile-image" %>
+        <% end %>
+        <div><%= f.label :profile_image, "New Profile Image" %><br />
+        <%= f.file_field :profile_image, :class => "register-form-field" %></div>
       
-    <div class="edit-account-settings">
-      <p class="current-image-label">Current Profile Image</p>
-      <% if current_user.profile_image? %>
-        <%= image_tag current_user.profile_image, :class => "edit-profile-image" %>
-      <% else %>
-        <%= image_tag "sam.jpeg", :class => "edit-profile-image" %>
+        <div><%= f.label :email %><br />
+        <%= f.email_field :email, :class => "register-form-field" %></div>
+
+        <div><%= f.label :password, "New Password" %><br/>
+        <%= f.password_field :password, :class => "register-form-field", :autocomplete => "off" %></div>
+
+        <div><%= f.label :password_confirmation, "New Password Confirmation" %><br />
+        <%= f.password_field :password_confirmation, :class => "register-form-field" %></div>
+    
+        <div><%= f.label :current_password, "Current Password" %><br/> <i>(only if changing email or password)</i><br />
+        <%= f.password_field :current_password, :class => "register-form-field" %></div>
+
+        <div><%= f.submit "Update Profile", :class => "devise-register" %></div>
+    
       <% end %>
-      <div><%= f.label :profile_image %><br />
-      <%= f.file_field :profile_image %></div>
-      
-      <div><%= f.label :email %><br />
-      <%= f.email_field :email %></div>
-
-      <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, :autocomplete => "off" %></div>
-
-      <div><%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %></div>
-    
-      <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password %></div>
-
-      <div><%= f.submit "Update Account", :class => "devise-register" %></div>
     </div>
-    
-    <div class="edit-account-profile">
+  </div>
+  
+  <div class="register-box-outer edit-account-section">
+    <h2 class="register-header">Edit Payment Info</h2>
+    <div class="register-form-wrapper">
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+        <div class="devise-form-errors">
+          <%= devise_error_messages! %>
+        </div>
       
-    </div>
+        <div><%= f.label :first_name, "First Name" %><br />
+        <%= f.text_field :first_name %></div>
+
+        <div><%= f.label :last_name, "Last Name" %><br />
+        <%= f.text_field :last_name %></div>
+        
+        <div><%= f.label :address_line_one, "Address" %><br />
+        <%= f.text_field :address_line_one %>
+        <%= f.text_field :address_line_two, :class => "address-line-two" %></div>
+        
+        <div><%= f.label :zip_code, "U.S. Zip Code" %><br />
+        <%= f.text_field :zip_code, :class => "zip-code", :maxlength => 5 %></div>
+        
+        <% if @customer %>
+        <table>
+        <tr class="pledge-existing-customer">
+          <td colspan="2" class="pledge-existing-customer">
+            Using card that ends with <%= @customer.active_card.last4 %>. To update payment information, 
+            please visit your <%= link_to "account page", edit_user_registration_path, :class => "edit-account-link" %>.
+          </td>
+        </tr>
+        </table>
+        <% else %>
+        <div>Credit Card Number</div>
+        <table>
+        <tr>
+          <td class="new-pledge-payment-input"><%= text_field_tag :card_number, nil, name: nil, :class => "new-pledge-input edit-account-cardnumber" %></td>
+        </tr>
+        <tr class="new-pledge">
+          <td class="new-pledge-payment-input">
+          <%= text_field_tag :card_month, nil, name: nil, :class => "new-pledge-input", :placeholder => "01", :maxlength => 2 %> / 
+          <%= text_field_tag :card_year, nil, name: nil, :class => "new-pledge-input", :placeholder => "2014", :maxlength => 4 %>
+          <span id="cvc-label" class="cvc-account-edit">CVC</span>
+          <%= text_field_tag :card_code, nil, name: nil, :class => "new-pledge-input", :placeholder => "1234", :maxlength => 4 %>
+          </td>
+        </tr>
+        </table>
+        <% end %>
+
+        <div><%= f.submit "Update Payment Info", :class => "devise-register" %></div>
     
-    <% end %>
+      <% end %>
+    </div>
   </div>
   
 </div>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+<p id="cancel-account">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure? There is no going back." }, :method => :delete, :id => "cancel-account" %>.</p>
