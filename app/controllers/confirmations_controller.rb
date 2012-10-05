@@ -3,6 +3,11 @@ class ConfirmationsController < Devise::PasswordsController
   # don't want to enable logged users to access the confirmation page.
   skip_before_filter :require_no_authentication
   skip_before_filter :authenticate_user!
+  
+  def new
+    build_resource({})
+    render 'devise/confirmations/new'
+  end
 
   # POST /resource/confirmation
   def create

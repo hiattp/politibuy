@@ -5,6 +5,9 @@
   <div class="register-form-wrapper">
     
     <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+    <div class="devise-form-errors">
+      <%= devise_error_messages! %>
+    </div>
       <div><%= f.label :email %><br />
       <%= f.email_field :email %></div>
       <div><%= f.submit "Reset Password", :id => "sign-in-button" %></div>

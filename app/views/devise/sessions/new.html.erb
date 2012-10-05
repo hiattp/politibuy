@@ -23,6 +23,9 @@
     
   </div>
 </div>
+<p class="resend-confirmation">
+  Didn't receive confirmation instructions? <%= link_to "Click here.", new_confirmation_path(resource_name), :class => "resend-confirmation" %>
+</p>
 </div>
 <div id="minority-right-wrapper">
   <%= render :partial => 'layouts/right_sidebar' %>
