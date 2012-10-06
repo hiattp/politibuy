@@ -17,6 +17,20 @@ $(document).ready(function(){
           return true;
         }
       });
+      
+      // $("form#edit-account-payment").submit(function(){
+      //   $('input[type=submit]').attr('disabled', true);
+      //   if($('#card_number').length){
+      //     processPayment.processCard();
+      //     return false;
+      //   } else if($(".pledge-existing-customer").length){
+      //     console.log('here');
+      //     $('form#new-pledge-form')[0].submit();
+      //   } else {
+      //     return true;
+      //   }
+      // });
+      
     },
     processCard : function(){
       var card = {

@@ -36,34 +36,37 @@
   <div class="register-box-outer edit-account-section">
     <h2 class="register-header">Edit Payment Info</h2>
     <div class="register-form-wrapper">
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => "edit-account-payment" }) do |f| %>
+        <%= f.hidden_field :stripe_card_token %>
+        
         <div class="devise-form-errors">
           <%= devise_error_messages! %>
         </div>
       
         <div><%= f.label :first_name, "First Name" %><br />
-        <%= f.text_field :first_name %></div>
+        <%= f.text_field :first_name, :class => "register-form-field" %></div>
 
         <div><%= f.label :last_name, "Last Name" %><br />
-        <%= f.text_field :last_name %></div>
+        <%= f.text_field :last_name, :class => "register-form-field" %></div>
         
         <div><%= f.label :address_line_one, "Address" %><br />
-        <%= f.text_field :address_line_one %>
-        <%= f.text_field :address_line_two, :class => "address-line-two" %></div>
+        <%= f.text_field :address_line_one, :class => "register-form-field" %>
+        <%= f.text_field :address_line_two, :class => "address-line-two register-form-field" %></div>
         
         <div><%= f.label :zip_code, "U.S. Zip Code" %><br />
-        <%= f.text_field :zip_code, :class => "zip-code", :maxlength => 5 %></div>
+        <%= f.text_field :zip_code, :class => "zip-code register-form-field", :maxlength => 5 %></div>
         
         <% if @customer %>
-        <table>
+        <table class="account-existing-card">
         <tr class="pledge-existing-customer">
-          <td colspan="2" class="pledge-existing-customer">
-            Using card that ends with <%= @customer.active_card.last4 %>. To update payment information, 
-            please visit your <%= link_to "account page", edit_user_registration_path, :class => "edit-account-link" %>.
+          <td>
+            Using card that ends with <%=  @customer.active_card.last4 %>. To update card information, 
+            click <%= link_to "here", "", :class => "edit-card-info" %>.
           </td>
         </tr>
         </table>
         <% else %>
+        <!-- <div class="account-new-card"> -->
         <div>Credit Card Number</div>
         <table>
         <tr>
@@ -78,6 +81,7 @@
           </td>
         </tr>
         </table>
+        <!-- </div> -->
         <% end %>
 
         <div><%= f.submit "Update Payment Info", :class => "devise-register" %></div>
