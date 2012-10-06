@@ -1,6 +1,6 @@
 <div class="edit-account-outer">
   
-  <div class="register-box-outer edit-account-section">
+  <div id="edit-profile-section" class="register-box-outer edit-account-section">
     <h2 class="register-header">Edit Profile</h2>
     <div class="register-form-wrapper">
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -27,7 +27,7 @@
         <div><%= f.label :current_password, "Current Password" %><br/> <i>(only if changing email or password)</i><br />
         <%= f.password_field :current_password, :class => "register-form-field" %></div>
 
-        <div><%= f.submit "Update Profile", :class => "devise-register" %></div>
+        <div><%= f.submit "Update Profile", :class => "devise-register account-edit-submit" %></div>
     
       <% end %>
     </div>
@@ -59,7 +59,7 @@
         <div>Credit Card</div>
         <% if @customer %>
         <p class="pledge-existing-customer">
-            Using card that ends with <%=  4443 %>. To update card information, 
+            Using card that ends with <%= @customer.active_card.last4 %>. To update card information, 
             click <%= link_to "here", "", :class => "edit-card-info" %>.
         </p>
         <% end %>
@@ -78,10 +78,17 @@
           
         </table>
 
-        <div><%= f.submit "Update Payment Info", :class => "devise-register" %></div>
+        <div><%= f.submit "Update Payment Info", :class => "devise-register account-edit-submit" %></div>
     
       <% end %>
     </div>
+  </div>
+  
+  <div class="pledge-history-outer">
+    <h3 class="pledge-history-title">Active Pledges</h3>
+    <p class="no-active-message">No active pledges</p>
+    <h3 class="pledge-history-title">Pledge History</h3>
+    <p class="no-active-message">No historic pledges</p>
   </div>
   
 </div>
