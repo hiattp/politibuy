@@ -18,7 +18,7 @@
       <td colspan="2" class="new-pledge-note">Note: You will <b>NOT</b> be charged unless the campaign is successful.</td>
     </tr>
     <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
-    <%= form_for([@campaign, @pledge], :html => {:id =>"new-pledge-form"}) do |f| %>
+    <%= form_for([@campaign, @pledge], :html => {:id =>"new-pledge-form", :class => "payment-form"}) do |f| %>
     <%= f.hidden_field :campaign_id, :value => @campaign.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :stripe_card_token %>

@@ -5,32 +5,18 @@ $(document).ready(function(){
     
   var processPayment = {
     setupForm : function(){
-      $("form#new-pledge-form").submit(function(){
+      $("form.payment-form").submit(function(){
         $('input[type=submit]').attr('disabled', true);
         if($('#card_number').length){
           processPayment.processCard();
           return false;
         } else if($(".pledge-existing-customer").length){
           console.log('here');
-          $('form#new-pledge-form')[0].submit();
+          $(this)[0].submit();
         } else {
           return true;
         }
-      });
-      
-      // $("form#edit-account-payment").submit(function(){
-      //   $('input[type=submit]').attr('disabled', true);
-      //   if($('#card_number').length){
-      //     processPayment.processCard();
-      //     return false;
-      //   } else if($(".pledge-existing-customer").length){
-      //     console.log('here');
-      //     $('form#new-pledge-form')[0].submit();
-      //   } else {
-      //     return true;
-      //   }
-      // });
-      
+      });      
     },
     processCard : function(){
       var card = {
@@ -44,7 +30,7 @@ $(document).ready(function(){
     handleStripeResponse : function(status, response){
       if(status == 200){
         $('#pledge_stripe_card_token').val(response.id);
-        $('form#new-pledge-form')[0].submit();
+        $('form.payment-form')[0].submit();
       } else {
         // $('#stripe_error').text(response.error.message);
         $('input[type=submit]').attr('disabled', false);
