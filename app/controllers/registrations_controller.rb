@@ -28,6 +28,10 @@ class RegistrationsController < Devise::RegistrationsController
     else
       @customer = false
     end
+    
+    # remove this
+    @customer = true
+    
     render :edit
   end
   

@@ -21,7 +21,7 @@
     <%= form_for([@campaign, @pledge], :html => {:id =>"new-pledge-form", :class => "payment-form"}) do |f| %>
     <%= f.hidden_field :campaign_id, :value => @campaign.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :stripe_card_token %>
+    <%= f.hidden_field :stripe_card_token, :class => "hidden-token-field" %>
     <tr class="new-pledge">
       <td class="new-pledge-label">Amount</td>
       <td class="new-pledge-input">$<%= f.text_field :amount, :id => "new-pledge-amount", :class => "new-pledge-input", :placeholder => "0.00" %></td>

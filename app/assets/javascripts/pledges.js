@@ -12,7 +12,7 @@ $(document).ready(function(){
           return false;
         } else if($(".pledge-existing-customer").length){
           console.log('here');
-          $(this)[0].submit();
+          $("form.payment-form")[0].submit();
         } else {
           return true;
         }
@@ -29,10 +29,10 @@ $(document).ready(function(){
     },
     handleStripeResponse : function(status, response){
       if(status == 200){
-        $('#pledge_stripe_card_token').val(response.id);
+        $('.hidden-token-field').val(response.id);
         $('form.payment-form')[0].submit();
       } else {
-        // $('#stripe_error').text(response.error.message);
+        alert(response.error.message);
         $('input[type=submit]').attr('disabled', false);
       }
     }

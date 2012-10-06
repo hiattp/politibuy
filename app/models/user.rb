@@ -6,10 +6,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
+  attr_accessor :stripe_card_token
+  
+  # Setup accessible (or protected) attributes for your model  
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, 
                   :tagline, :profile_image, :stripe_customer_id, :address_line_one, :address_line_two,
-                  :zip_code
+                  :zip_code, :stripe_card_token
   
   has_many :pledges
   has_many :campaigns, :through => :pledges
