@@ -1,12 +1,12 @@
 <div class="edit-account-outer">
-  
+  <div class="account-devise-form-errors">
+    <%= devise_error_messages! %>
+  </div>
   <div id="edit-profile-section" class="register-box-outer edit-account-section">
     <h2 class="register-header">Edit Profile</h2>
     <div class="register-form-wrapper">
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-        <div class="devise-form-errors">
-          <%= devise_error_messages! %>
-        </div>
+        
         <% if current_user.profile_image? %>
           <%= image_tag current_user.profile_image, :class => "edit-profile-image" %>
         <% else %>
@@ -38,11 +38,8 @@
     <div class="register-form-wrapper">
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => "edit-account-payment", :class => "payment-form" }) do |f| %>
         <%= f.hidden_field :stripe_card_token, :class => "hidden-token-field" %>
+        <%= f.hidden_field :email, :value => current_user.email %>
         
-        <div class="devise-form-errors">
-          <%= devise_error_messages! %>
-        </div>
-      
         <div><%= f.label :first_name, "First Name" %><br />
         <%= f.text_field :first_name, :class => "register-form-field" %></div>
 
@@ -86,9 +83,47 @@
   
   <div class="pledge-history-outer">
     <h3 class="pledge-history-title">Active Pledges</h3>
+    <% if false %>
     <p class="no-active-message">No active pledges</p>
+    <% else %>
+    <ul class="account-pledges">
+      <li class="account-pledges">
+        <%= link_to "This is a short name", "", :class => "account-pledges" %>
+        <p class="account-pledges">Pledged: $50.00</p>
+        <div class="account-pledge-actions">
+          <%= link_to "view", "", :class => "account-pledge-action"%> | 
+          <%= link_to "edit", "", :class => "account-pledge-action"%> | 
+          <%= link_to "cancel", "", :class => "account-pledge-action"%>
+        </div>
+      </li>
+      <li class="account-pledges">
+        <%= link_to "This is a long campaign name to try and I can make it longer", "", :class => "account-pledges" %>
+        <p class="account-pledges">Pledged: $50.00</p>
+        <div class="account-pledge-actions">
+          <%= link_to "view", "", :class => "account-pledge-action"%> | 
+          <%= link_to "edit", "", :class => "account-pledge-action"%> | 
+          <%= link_to "cancel", "", :class => "account-pledge-action"%>
+        </div>
+      </li>
+    </ul>
+    <% end %>
     <h3 class="pledge-history-title">Pledge History</h3>
+    <% if false %>
     <p class="no-active-message">No historic pledges</p>
+    <% else %>
+    <ul class="account-pledges">
+      <li class="account-pledges">
+        <%= link_to "This is a short name", "", :class => "account-pledges" %>
+        <p class="account-pledges">Pledged: $50.00</p>
+        <p class="account-pledges">Campaign Successful</p>
+      </li>
+      <li class="account-pledges">
+        <%= link_to "This is a long campaign name to try and I can make it longer", "", :class => "account-pledges" %>
+        <p class="account-pledges">Pledged: $50.00</p>
+        <p class="account-pledges">Campaign Unsuccessful</p>
+      </li>
+    </ul>
+    <% end %>
   </div>
   
 </div>

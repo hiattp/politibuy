@@ -65,6 +65,7 @@ h3.campaign-pledge-ribbon-amount{
   color: white;
   text-shadow: 1px 1px 5px rgba(40, 40, 40, 0.8);
   font-size: 20px;
+  font-weight: 500;
 }
 
 /*
@@ -578,4 +579,26 @@ form.update-form input[type="submit"]{
   position: absolute;
   bottom: 15px;
   margin-bottom: 0px;
+}
+
+#new-pledge-sidebar{
+  margin-top: 50px;
+}
+
+h3.campaign-stats{
+  margin-top: 25px;
+  padding-bottom: 5px;
+  border-bottom: solid 1px black;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+p.campaign-stats{
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+span.stat-title{
+  font-weight: bold;
+  color: #666;
 }
