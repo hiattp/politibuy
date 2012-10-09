@@ -573,6 +573,10 @@ form.update-form input {
   width: 605px;
 }
 
+form.update-form input[type="submit"] {
+  width: 200px;
+}
+
 form.update-form textarea {
   height: 80px;
   width: 605px;
