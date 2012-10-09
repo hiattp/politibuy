@@ -12,7 +12,7 @@
   <% end %>
   <table id="new-pledge">
     <tr class="new-pledge-header green-gradient">
-      <th colspan="2" class="new-pledge">Cast your dollar vote</th>
+      <th colspan="2" class="new-pledge">Submit your pledge</th>
     </tr>
     <tr class="new-pledge-note">
       <td colspan="2" class="new-pledge-note">Note: You will <b>NOT</b> be charged unless the campaign is successful.</td>
@@ -24,12 +24,36 @@
     <%= f.hidden_field :stripe_card_token, :class => "hidden-token-field" %>
     <tr class="new-pledge">
       <td class="new-pledge-label">Amount</td>
-      <td class="new-pledge-input">$<%= f.text_field :amount, :id => "new-pledge-amount", :class => "new-pledge-input", :placeholder => "0.00" %></td>
+      <td class="new-pledge-input">$ <%= f.text_field :amount, :id => "new-pledge-amount", :class => "new-pledge-input", :placeholder => "0.00" %></td>
     </tr>
     <tr class="new-pledge-payment-intro">
       <td colspan="2" class="new-pledge-payment-intro">Payment</td>
     </tr>
     <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
+    
+    <%= fields_for current_user do |uf| %>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">First Name</td>
+      <td class="new-pledge-payment-input"><%= uf.text_field :first_name, :class => "new-pledge-input req-user-info" %></td>
+    </tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Last Name</td>
+      <td class="new-pledge-payment-input"><%= uf.text_field :last_name, :class => "new-pledge-input req-user-info" %></td>
+    </tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Address</td>
+      <td class="new-pledge-payment-input"><%= uf.text_field :address_line_one, :class => "new-pledge-input req-user-info" %></td>
+    </tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label"></td>
+      <td class="new-pledge-payment-input"><%= uf.text_field :address_line_two, :class => "new-pledge-input" %></td>
+    </tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Zip Code</td>
+      <td class="new-pledge-payment-input"><%= uf.text_field :zip_code, :class => "new-pledge-input req-user-info pledge-zip", :maxlength => 5 %></td>
+    </tr>
+    <% end %>
+    
     <% if @customer %>
     <tr class="pledge-existing-customer">
       <td colspan="2" class="pledge-existing-customer">
@@ -96,3 +120,7 @@
     </ul>
   </div>
 </div>
+
+<script>
+var requirePaymentFields = true;
+</script>

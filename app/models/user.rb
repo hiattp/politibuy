@@ -69,7 +69,21 @@ class User < ActiveRecord::Base
     pending_any_confirmation {yield}
   end
   
-
+  # save payment info
+  def update_payment(card_token)
+    if self.stripe_customer_id? and valid?
+      customer = Stripe::Customer.retrieve(self.stripe_customer_id)
+      customer.card = card_token
+      customer.save
+    elsif valid?
+      customer = Stripe::Customer.create(email: self.email, card: card_token)
+      self.stripe_customer_id = customer.id
+    end
+  rescue Stripe::InvalidRequestError => e
+    logger.error "Stripe error while creating customer: #{e.message}"
+    errors.add :base, "Sorry, there was a problem with your credit card."
+    false
+  end
 
   private
 

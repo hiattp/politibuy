@@ -47,14 +47,18 @@ class PledgesController < ApplicationController
   # POST /pledges
   # POST /pledges.json
   def create
-    @pledge = Pledge.new(params[:pledge])
-    if current_user.stripe_customer_id?
-      @pledge.save!
-      redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
-    elsif @pledge.save_with_payment
-      redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
+    if current_user.update_without_password(params[:user])
+      @pledge = Pledge.new(params[:pledge])
+      if current_user.stripe_customer_id?
+        @pledge.save!
+        redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
+      elsif @pledge.save_with_payment
+        redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
+      else
+        render :new
+      end
     else
-      render :new
+      render :new      
     end
   end
 

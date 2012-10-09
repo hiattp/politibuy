@@ -29,8 +29,7 @@ class RegistrationsController < Devise::RegistrationsController
       @customer = false
     end
     render :edit
-  end
-  
+  end  
   
   def update
     @user = User.find(current_user.id)
@@ -42,11 +41,12 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     successfully_updated = if email_changed or password_changed
-      puts 'HEREEE IN WITH PASSWORD'
       @user.update_with_password(params[:user])
     else
-      puts 'HEREEREREEE'
       params[:user].delete("current_password")
+      if !params[:user][:stripe_card_token].empty?
+        @user.update_payment(params[:user][:stripe_card_token])
+      end
       @user.update_without_password(params[:user])
     end
 
@@ -58,6 +58,22 @@ class RegistrationsController < Devise::RegistrationsController
       render "edit"
     end
   end
+  
+  
+  
+  # pledge ex
+  # def create
+  #   @pledge = Pledge.new(params[:pledge])
+  #   if current_user.stripe_customer_id?
+  #     @pledge.save!
+  #     redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
+  #   elsif @pledge.save_with_payment
+  #     redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
+  #   else
+  #     render :new
+  #   end
+  # end
+  # end pledge ex
   
   
 
