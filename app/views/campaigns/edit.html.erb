@@ -5,11 +5,11 @@
   
   <h2 class="campaign-edit">Add/Edit Key Policy Makers</h2>
   <ul class="current-recipient-list">
-    <% @campaign.recipients.each do |r| %>
-    <li class="current-recipient-list"><%= r.policy_maker.first_name %></li>
+    <% @campaign.key_policy_makers.each do |kpm| %>
+    <li class="current-recipient-list"><%= kpm.policy_maker.first_name %></li>
     <% end %>
   </ul>
-  <%= render 'recipient_form' %>
+  <%= render 'key_form' %>
   <p class="add-policy-maker-prompt">Need to add a policy maker to the list? Click <span id="policy-maker-form-show">here</span>.</p>
   <%= render 'policy_maker_form' %>
 

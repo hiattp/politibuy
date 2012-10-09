@@ -1,8 +1,8 @@
 class PolicyMaker < ActiveRecord::Base
   attr_accessible :bio, :first_name, :home_state, :last_name, :party, :salutation, :profile_image, :vehicle
   
-  has_many :recipients
-  has_many :campaigns, :through => :recipients
+  has_many :key_policy_makers
+  has_many :campaigns, :through => :key_policy_makers
   
   has_attached_file :profile_image,
     :storage => :s3,

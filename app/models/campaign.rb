@@ -1,9 +1,8 @@
 class Campaign < ActiveRecord::Base
   has_many :updates
   
-  # recipients are specific policy makers that benefit (aka key policy makers)
-  has_many :recipients
-  has_many :policy_makers, :through => :recipients
+  has_many :key_policy_makers
+  has_many :policy_makers, :through => :key_policy_makers
   
   has_many :pledges
   has_many :users, :through => :pledges

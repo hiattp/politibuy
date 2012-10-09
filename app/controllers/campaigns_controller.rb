@@ -56,9 +56,10 @@ class CampaignsController < ApplicationController
     end
     
     @new_policy_maker = PolicyMaker.new
-    @new_recipient = Recipient.new
-    @new_beneficiary = Beneficiary.new
+    @new_key_policy_maker = KeyPolicyMaker.new
+    
     @new_vehicle = Vehicle.new
+    @new_beneficiary = Beneficiary.new
   end
 
   # POST /campaigns

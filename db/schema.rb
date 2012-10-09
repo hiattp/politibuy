@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009025219) do
+ActiveRecord::Schema.define(:version => 20121009155924) do
 
   create_table "beneficiaries", :force => true do |t|
     t.integer  "vehicle_id"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(:version => 20121009025219) do
     t.datetime "main_image_updated_at"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "key_policy_makers", :force => true do |t|
+    t.integer  "campaign_id"
+    t.integer  "policy_maker_id"
+    t.string   "reason"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "pledges", :force => true do |t|

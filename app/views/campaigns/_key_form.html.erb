@@ -1,5 +1,5 @@
 <div class="new-recipient-form-wrapper">
-<%= form_for(@new_recipient, :html => {:class => "new-recipient-form"}) do |f| %>
+<%= form_for([@campaign,@new_key_policy_maker], :html => {:class => "new-recipient-form"}) do |f| %>
 
   <%= f.hidden_field :campaign_id, :value => @campaign.id %>
   
@@ -18,7 +18,7 @@
   </div>
   
   <div class="actions">
-    <%= f.submit "Create Recipient", :class => "create-recipient-submit" %>
+    <%= f.submit "Add Key Policy Maker", :class => "create-recipient-submit" %>
   </div>
   
 <% end %>

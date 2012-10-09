@@ -20,12 +20,13 @@ Politibuy::Application.routes.draw do
   resources :campaigns do
     resources :updates
     resources :pledges
+    resources :key_policy_makers
+    resources :beneficiaries
   end
 
   resources :policy_makers
-  resources :recipients
+  # resources :recipients (deprecated in favor of 'key policy makers')
   resources :vehicles
-  resources :beneficiaries
   
   match "admin" => "users#index"
   

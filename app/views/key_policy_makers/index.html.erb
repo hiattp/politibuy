@@ -1,0 +1,23 @@
+<h1>Listing key_policy_makers</h1>
+
+<table>
+  <tr>
+    <th>Reason</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @key_policy_makers.each do |key_policy_maker| %>
+  <tr>
+    <td><%= key_policy_maker.reason %></td>
+    <td><%= link_to 'Show', key_policy_maker %></td>
+    <td><%= link_to 'Edit', edit_key_policy_maker_path(key_policy_maker) %></td>
+    <td><%= link_to 'Destroy', key_policy_maker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Key policy maker', new_key_policy_maker_path %>

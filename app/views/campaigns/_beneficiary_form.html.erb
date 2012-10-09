@@ -1,5 +1,5 @@
 <div class="new-recipient-form-wrapper">
-<%= form_for(@new_beneficiary, :html => {:class => "new-recipient-form"}) do |f| %>
+<%= form_for([@campaign,@new_beneficiary], :html => {:class => "new-recipient-form"}) do |f| %>
 
   <%= f.hidden_field :campaign_id, :value => @campaign.id %>
   
