@@ -1,6 +1,10 @@
 <div id="majority-left-wrapper">
   <h1 class="campaign-show-title"><%= @campaign.title %></h1>
   
+  <% if user_signed_in? and can? :update, @campaign %>
+  <%= link_to "Edit Campaign", edit_campaign_path(@campaign) %>
+  <% end %>
+  
   <div class="campaign-show-pledge-banner-outer">
     <div class="campaign-show-pledge-banner-inner">
       <div class="campaign-show-amount-wrapper">
@@ -39,9 +43,7 @@
   </div>
   
   <h2 class="campaign-section">Description:</h2>
-  <p class="campaign-show-description">
-    <%= @campaign.description %>
-  </p>
+  <%= simple_format(@campaign.description, :class => "campaign-show-description") %>
   
   <div class="campaign-participants-section">
     <% total_participants = 40 %>

@@ -60,7 +60,7 @@ class PolicyMakersController < ApplicationController
 
     respond_to do |format|
       if @policy_maker.update_attributes(params[:policy_maker])
-        format.html { redirect_to @policy_maker, notice: 'Policy maker was successfully updated.' }
+        format.html { redirect_to edit_policy_maker_path(@policy_maker), notice: 'Policy maker was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

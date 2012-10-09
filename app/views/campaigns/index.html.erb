@@ -6,14 +6,15 @@
     <p class="campaign-description">
       <%= truncate(campaign.description, :length => 500) %>
     </p>
+    <%= link_to campaign_path campaign do %>
     <div class="campaign-image-wrapper-outer">
-      
       <div class="campaign-image-wrapper-inner">
-        <%= link_to (image_tag campaign.main_image, :class => "campaign-index-image"), campaign_path(campaign) %>
+        <%= image_tag campaign.main_image, :class => "campaign-index-image" %>
         <%= image_tag "campaign_ribbon.png", :class => "campaign-ribbon" %>
-        <h3 class="campaign-pledge-ribbon-amount">$<%= total_pledged(campaign.pledges) %> pledged so far</h3>
+        <h3 class="campaign-pledge-ribbon-amount"><%= number_to_currency(total_pledged(campaign.pledges)) %> pledged so far</h3>
       </div>
     </div>
+    <% end %>
   </li>
   <% end %>
 </ul>

@@ -1,24 +1,33 @@
-<div class="new-recipient-form-wrapper">
-<%= form_for([@campaign,@new_beneficiary], :html => {:class => "new-recipient-form"}) do |f| %>
+<div class="new-recipient-form-wrapper <%= index == @campaign.beneficiaries.count ? "last-recipient-form" : "" %>">
+  
+<%= form_for([@campaign,beneficiary], :html => {:class => "new-recipient-form"}) do |f| %>
 
   <%= f.hidden_field :campaign_id, :value => @campaign.id %>
   
+  <% if beneficiary.vehicle.nil? %>
   <div class="field">
-    <%= f.label :new_vehicle, :class => "new-recipient-select-label" %>
+    <%= f.label :vehicle_id, "New Benefitting Vehicle", :class => "new-recipient-select-label" %>
     <% if @vehicle_selections.count > 0 %>
     <%= f.select :vehicle_id, @vehicle_selections %>
     <% else %>
     <span><i>(No vehicles found)</i></span>
     <% end %>
-  </div>  
-
+  </div>
+  <% else %>
+    <%= f.hidden_field :vehicle_id, :value => beneficiary.vehicle.id %>
+    <p class="key-policy-maker-name"><%= beneficiary.vehicle.name %> 
+      (<%= link_to 'Remove', [@campaign,beneficiary], method: :delete, data: { confirm: 'Are you sure?' } %> | 
+      <%= link_to 'Edit Vehicle Info', edit_vehicle_path(beneficiary.vehicle) %>)
+    </p>
+  <% end %>
+  
   <div class="field new-recipient-reason">
     <%= f.label :reason %><br />
     <%= f.text_field :reason %>
   </div>
   
   <div class="actions">
-    <%= f.submit "Add Beneficiary", :class => "create-recipient-submit" %>
+    <%= f.submit "Add/Edit Beneficiary", :class => "create-recipient-submit" %>
   </div>
   
 <% end %>

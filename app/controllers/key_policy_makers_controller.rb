@@ -76,7 +76,7 @@ class KeyPolicyMakersController < ApplicationController
     @key_policy_maker.destroy
 
     respond_to do |format|
-      format.html { redirect_to key_policy_makers_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

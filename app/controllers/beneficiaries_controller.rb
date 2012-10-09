@@ -60,7 +60,7 @@ class BeneficiariesController < ApplicationController
 
     respond_to do |format|
       if @beneficiary.update_attributes(params[:beneficiary])
-        format.html { redirect_to @beneficiary, notice: 'Beneficiary was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Beneficiary was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class BeneficiariesController < ApplicationController
     @beneficiary.destroy
 
     respond_to do |format|
-      format.html { redirect_to beneficiaries_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

@@ -263,3 +263,16 @@ p#affiliation{
 #gplus-footer{
     
 }
+
+h1.general-edit{
+  width: 615px;
+  font-size: 18px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px black;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+input.general-input{
+  width: 605px;
+}
