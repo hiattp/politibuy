@@ -79,26 +79,28 @@ h1.campaign-show-title{
 }
 
 p.campaign-show-description{
-  font-size: 20px;
-  font-weight: bold;
-  color: gray;
+  font-size: 17px;
   line-height: 1.2em;
-  border-bottom: dashed 1px #0000AA;
   padding-bottom: 10px;
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
 
 h2.campaign-show-objective{
   font-size: 20px;
   margin-top: 10px;
   margin-bottom: 2px;
+/*  border-top: dashed 1px #0000AA;*/
+  padding-top: 7px;
 }
 
 p.campaign-show-objective{
   font-size: 18px;
   color: #444444;
-  border-bottom: dashed 1px #0000AA;
+/*  border-bottom: dashed 1px #0000AA;*/
   padding-bottom: 7px;
   line-height: 1.4em;
+  margin-bottom: 10px;
 }
 
 .campaign-show-pledge-banner-outer{
@@ -121,7 +123,7 @@ p.campaign-show-objective{
   background: linear-gradient(to bottom,  #dd0000 0%,#aa0000 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd0000', endColorstr='#aa0000',GradientType=0 ); /* IE6-9 */
   
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .campaign-show-pledge-banner-inner{
