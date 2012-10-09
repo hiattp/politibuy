@@ -1,4 +1,5 @@
 <div id="majority-left-wrapper">
+  <a href="#top"></a>
   <h1 class="campaign-show-title"><%= @campaign.title %></h1>
   
   <% if user_signed_in? and can? :update, @campaign %>
@@ -38,12 +39,42 @@
         <p class="campaign-recipient-bio">Jensen isn't involved at all, we just want to send her money. That being said, she is really nice.</p>
         <%= image_tag "senator_image_2.jpeg", :class => "campaign-recipient-image-small"%>
       </div>
-      <%= link_to "See 23 more", "", :class => "campaign-show-see-more-recipients"%>
+      <%= link_to "See 23 more", campaign_key_policy_makers_path(@campaign), :class => "campaign-show-see-more-recipients"%>
     </div>
   </div>
   
   <h2 class="campaign-section">Description:</h2>
   <%= simple_format(@campaign.description, :class => "campaign-show-description") %>
+  
+  <h2 class="campaign-section">Where your money would go:</h2>
+  <ul class="campaign-beneficiaries">
+    <li class="campaign-beneficiaries">
+      <%= image_tag "coal_plant.jpeg", :class => "campaign-beneficiary-logo" %>
+      <h3 class="campaign-beneficiary-name">Obama for America Fund</h3>
+      <p class="campaign-beneficiary-description">
+        The Obama for America fund is a very important fundraising vehicle for Obama,
+        who is trying to become the next president. This money primarily goes towards 
+        negative ads against Mitt Romney, who also wants to be the next president.
+      </p>
+      <h4 class="campaign-beneficiary-reason">Why put money here?</h4>
+      <p class="campaign-beneficiary-reason">
+        This is just a solid idea all around, no one disputes that.
+      </p>
+    </li>
+    <li class="campaign-beneficiaries">
+      <%= image_tag "coal_plant.jpeg", :class => "campaign-beneficiary-logo" %>
+      <h3 class="campaign-beneficiary-name">Obama for America Fund</h3>
+      <p class="campaign-beneficiary-description">
+        The Obama for America fund is a very important fundraising vehicle for Obama,
+        who is trying to become the next president. This money primarily goes towards 
+        negative ads against Mitt Romney, who also wants to be the next president.
+      </p>
+      <h4 class="campaign-beneficiary-reason">Why put money here?</h4>
+      <p class="campaign-beneficiary-reason">
+        This is just a solid idea all around, no one disputes that.
+      </p>
+    </li>
+  </ul>
   
   <div class="campaign-participants-section">
     <% total_participants = 40 %>
@@ -96,30 +127,36 @@
   </div>
   
   <div class="campaign-bottom-action-links">
-    <%= link_to "<< back to all campaigns", campaigns_path, :class => "campaign-bottom-links", :id => "return-to-campaigns" %>
+    <%= link_to "back to all campaigns", campaigns_path, :class => "campaign-bottom-links", :id => "return-to-campaigns" %>
+    <%= link_to "back to top", "#top", :class => "campaign-bottom-links", :id => "back-to-top" %>
+<%
+=begin%>
     <%= link_to "like", "", :class => "campaign-bottom-links", :id => "like-bottom" %>
     <%= link_to "tweet", "", :class => "campaign-bottom-links", :id => "tweet-bottom" %>
     <%= link_to "pledge", "", :class => "campaign-bottom-links", :id => "pledge-bottom" %>
+<%
+=end
+%>
   </div>
   
 </div>
 
 
 <div id="minority-right-wrapper">
-  <%= image_tag "ad_demo.png", :id => "ad-demo" %>
-  
-  <h4 class="campaign-show-other-campaigns">More Campaigns:</h4>
-  <ul class="campaign-show-other-campaigns">
-    <li class="campaign-show-other-campaign">
-      <%= link_to "Repeal Amendment 15 in South Dakota", "", :class => "other-campaigns-link"%>
-    </li>
-    <li class="campaign-show-other-campaign">
-      <%= link_to "Veto new gun ownership law in Arkansas ", "", :class => "other-campaigns-link"%>
-    </li>
-    <li class="campaign-show-other-campaign">
-      <%= link_to "Implement fines for beach loitering in Hawaii", "", :class => "other-campaigns-link"%>
-    </li>
-  </ul>
+  <div class="campaign-sidebar">
+    <h4 class="campaign-show-other-campaigns">More Campaigns:</h4>
+    <ul class="campaign-show-other-campaigns">
+      <li class="campaign-show-other-campaign">
+        <%= link_to "Repeal Amendment 15 in South Dakota", "", :class => "other-campaigns-link"%>
+      </li>
+      <li class="campaign-show-other-campaign">
+        <%= link_to "Veto new gun ownership law in Arkansas ", "", :class => "other-campaigns-link"%>
+      </li>
+      <li class="campaign-show-other-campaign">
+        <%= link_to "Implement fines for beach loitering in Hawaii", "", :class => "other-campaigns-link"%>
+      </li>
+    </ul>
+  </div>
 </div>
 
 

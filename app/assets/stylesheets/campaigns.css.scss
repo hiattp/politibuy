@@ -317,6 +317,44 @@ h4.participant-amount{
   }
 }
 
+ul.campaign-beneficiaries{
+  margin-top: 15px;
+}
+
+li.campaign-beneficiaries{
+  position: relative;
+  padding-left: 110px;
+  margin-bottom: 20px;
+}
+  
+img.campaign-beneficiary-logo{
+  position: absolute;
+  left: 0px;
+  width: 100px;
+}
+
+h3.campaign-beneficiary-name{
+  margin: 0px;
+  position: relative;
+  top: -5px;
+  color: #800;
+}
+
+p.campaign-beneficiary-description{
+  line-height: 1.2em;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+h4.campaign-beneficiary-reason{
+  margin-bottom: 5px;
+}
+
+p.campaign-beneficiary-reason{
+  
+}
+
+
 .campaign-updates-section{
   margin-bottom: 50px;
 }
@@ -378,6 +416,12 @@ p.campaign-update-date-year{
   height: 40px;
   background-color: #BB0000;
   position: relative;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 
@@ -408,6 +452,10 @@ a#pledge-bottom{
   right: 15px;
 }
 
+a#back-to-top{
+  right: 15px;
+}
+
 
 /*
   CAMPAIGN SHOW RIGHT SIDE
@@ -417,6 +465,10 @@ img#ad-demo{
   position: relative;
   margin-top: 32px;
 /*  left: 18px;*/
+}
+
+div.campaign-sidebar{
+  margin-top: 30px;
 }
 
 h4.campaign-show-other-campaigns{
@@ -435,7 +487,7 @@ li.campaign-show-other-campaign{
 
 a.other-campaigns-link{
   color: #0000AA;
-  text-decoration: underline;
+/*  text-decoration: underline;*/
 }
 
 /*

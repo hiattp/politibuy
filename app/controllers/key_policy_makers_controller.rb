@@ -2,12 +2,8 @@ class KeyPolicyMakersController < ApplicationController
   # GET /key_policy_makers
   # GET /key_policy_makers.json
   def index
-    @key_policy_makers = KeyPolicyMaker.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @key_policy_makers }
-    end
+    @campaign = Campaign.find(params[:campaign_id])
+    @key_policy_makers = @campaign.key_policy_makers
   end
 
   # GET /key_policy_makers/1

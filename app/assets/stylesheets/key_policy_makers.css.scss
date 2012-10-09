@@ -6,3 +6,53 @@ p.key-policy-maker-name{
   font-weight: bold;
   margin-bottom: 10px;
 }
+
+ul.key-policy-makers-index{
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+  
+li.key-policy-makers-index{
+  position: relative;
+  padding-left: 110px;
+  margin-bottom: 20px;
+}
+  
+img.key-policy-makers-index{
+  position: absolute;
+  left: 0px;
+  width: 100px;
+}
+
+h3.key-policy-maker-name{
+  position: relative;
+  top: -3px;
+  font-size: 17px;
+  color: #800;
+}
+
+p.key-policy-maker-subline{
+  font-style: italic;
+  font-size: 15px;
+}
+
+p.key-policy-maker-bio{
+  margin-top: 6px;
+  line-height: 1.3em;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+h4.key-policy-maker-reason{
+  font-size: 15px;
+}
+
+p.key-policy-maker-reason{
+  line-height: 1.3em;
+    font-size: 15px;
+}
+
+a.campaign-nav-link{
+  color: #00A;
+}

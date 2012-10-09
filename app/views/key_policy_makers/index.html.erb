@@ -1,23 +1,69 @@
-<h1>Listing key_policy_makers</h1>
+<div id="majority-left-wrapper">
+  <a href="#top"></a>
+  <h1 class="campaign-show-title"><%= @campaign.title %></h1>
+  
+  <%= link_to "Back to Campaign", campaign_path(@campaign), :class => "campaign-nav-link"%>
+    
+  <div class="campaign-show-pledge-banner-outer">
+    <div class="campaign-show-pledge-banner-inner">
+      <div class="campaign-show-amount-wrapper">
+        <h2 class="campaign-show-amount"><%= number_to_currency(total_pledged(@campaign.pledges)) %></h2>
+        <h4 class="campaign-show-subtext">pledged so far</h4>
+      </div>
+      <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+    </div>
+  </div>
+  
+  <h2 class="campaign-show-objective">Campaign Objective:</h2>
+  <p class="campaign-show-objective"><%= @campaign.objective %></p>
+    
+  <h2 class="campaign-section">Key Policy Makers:</h2>
+  <ul class="key-policy-makers-index">
+    <li class="key-policy-makers-index">
+      <%= image_tag "senator_image_1.jpeg", :class => "key-policy-makers-index" %>
+      <h3 class="key-policy-maker-name">Senator Tim O'Brian</h3>
+      <p class="key-policy-maker-subline">Republican from Florida</p>
+      <p class="key-policy-maker-bio">
+        This is a bio this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio. 
+        This is a bio this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio.
+      </p>
+      <h4 class="key-policy-maker-reason">How is O'Brian important to this campaign?</h4>
+      <p class="key-policy-maker-reason">
+        This is a reason this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio. 
+      </p>
+    </li>
+    <li class="key-policy-makers-index">
+      <%= image_tag "senator_image_1.jpeg", :class => "key-policy-makers-index" %>
+      <h3 class="key-policy-maker-name">Senator Tim O'Brian</h3>
+      <p class="key-policy-maker-subline">Republican from Florida</p>
+      <p class="key-policy-maker-bio">
+        This is a bio this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio. 
+        This is a bio this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio.
+      </p>
+      <h4 class="key-policy-maker-reason">How is O'Brian important to this campaign?</h4>
+      <p class="key-policy-maker-reason">
+        This is a reason this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio. 
+      </p>
+    </li>
+  </ul>
+  
+    
+</div>
 
-<table>
-  <tr>
-    <th>Reason</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @key_policy_makers.each do |key_policy_maker| %>
-  <tr>
-    <td><%= key_policy_maker.reason %></td>
-    <td><%= link_to 'Show', key_policy_maker %></td>
-    <td><%= link_to 'Edit', edit_key_policy_maker_path(key_policy_maker) %></td>
-    <td><%= link_to 'Destroy', key_policy_maker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Key policy maker', new_key_policy_maker_path %>
+<div id="minority-right-wrapper">
+  <div class="campaign-sidebar">
+    <h4 class="campaign-show-other-campaigns">More Campaigns:</h4>
+    <ul class="campaign-show-other-campaigns">
+      <li class="campaign-show-other-campaign">
+        <%= link_to "Repeal Amendment 15 in South Dakota", "", :class => "other-campaigns-link"%>
+      </li>
+      <li class="campaign-show-other-campaign">
+        <%= link_to "Veto new gun ownership law in Arkansas ", "", :class => "other-campaigns-link"%>
+      </li>
+      <li class="campaign-show-other-campaign">
+        <%= link_to "Implement fines for beach loitering in Hawaii", "", :class => "other-campaigns-link"%>
+      </li>
+    </ul>
+  </div>
+</div>
