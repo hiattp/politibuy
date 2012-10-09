@@ -6,7 +6,7 @@
   <h2 class="campaign-edit">Add/Edit Key Policy Makers</h2>
   <ul class="current-recipient-list">
     <% @campaign.recipients.each do |r| %>
-    <li><%= r.policy_maker.first_name %></li>
+    <li class="current-recipient-list"><%= r.policy_maker.first_name %></li>
     <% end %>
   </ul>
   <%= render 'recipient_form' %>
@@ -16,7 +16,7 @@
   <h2 class="campaign-edit">Add/Edit Contribution Vehicles</h2>
   <ul class="current-recipient-list">
     <% @campaign.beneficiaries.each do |b| %>
-    <li><%= b.vehicle.name %></li>
+    <li class="current-recipient-list"><%= b.vehicle.name %></li>
     <% end %>
   </ul>
   <%= render 'beneficiary_form' %>

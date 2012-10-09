@@ -1,8 +1,4 @@
 Politibuy::Application.routes.draw do
-  
-  resources :beneficiaries
-
-  resources :vehicles
 
   authenticated :user do
     root :to => "campaigns#index"
@@ -28,6 +24,8 @@ Politibuy::Application.routes.draw do
 
   resources :policy_makers
   resources :recipients
+  resources :vehicles
+  resources :beneficiaries
   
   match "admin" => "users#index"
   

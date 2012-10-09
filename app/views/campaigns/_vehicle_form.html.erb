@@ -1,18 +1,18 @@
 <div class="vehicle-form-wrapper">
 
-  <%= form_for(@new_vehicle, :html => {:class => "policy-maker"}) do |f| %>
+  <%= form_for(@new_vehicle, :html => {:class => "vehicle"}) do |f| %>
 
     <div class="field">
       <%= f.label :name %><br />
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :class => "vehicle-input" %>
     </div>
     <div class="field">
       <%= f.label :info_link %><br />
-      <%= f.text_field :info_link %>
+      <%= f.text_field :info_link, :class => "vehicle-input" %>
     </div>
     <div class="field">
       <%= f.label :description %><br />
-      <%= f.text_area :description %>
+      <%= f.text_area :description, :class => "vehicle-input" %>
     </div>
     <div class="field policy-maker-image-upload">
       <%= f.label :logo_image %><br />
@@ -20,7 +20,7 @@
     </div>
   
     <div class="actions">
-      <%= f.submit "Create Policy Maker", :class => "create-policy-maker-button" %>
+      <%= f.submit "Create Vehicle", :class => "create-vehicle-button" %>
     </div>
   
   <% end %>

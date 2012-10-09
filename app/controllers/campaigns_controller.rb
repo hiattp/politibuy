@@ -14,6 +14,8 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1.json
   def show
     @campaign = Campaign.find(params[:id])
+    # puts @campaign.deadline
+    @deadline = @campaign.deadline.utc
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @campaign }

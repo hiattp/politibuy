@@ -536,12 +536,6 @@ img.current-campaign-image{
   margin-top: 20px;
 }
 
-.vehicle-form-wrapper{
-  display: none;
-  position: relative;
-  margin-top: 20px;
-}
-
 span#policy-maker-form-show{
   color: #0000AA;
   text-decoration: underline;
@@ -617,4 +611,12 @@ p.campaign-stats{
 span.stat-title{
   font-weight: bold;
   color: #666;
+}
+
+ul.current-recipient-list{
+  margin: 20px;
+}
+
+li.current-recipient-list{
+  margin-top: 10px;
 }

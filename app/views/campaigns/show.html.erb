@@ -19,7 +19,7 @@
       <%= image_tag "coal_plant.jpeg" %>
       <div class="campaign-deadline-backdrop"></div>
       <h4 class="campaign-deadling-header">Deadline:</h4>
-      <h1 class="campaign-deadline">6 weeks, 3 days, 1:39:23</h1>
+      <h1 id="countdown-timer" class="campaign-deadline">6 weeks, 3 days, 1:39:23</h1>
       <!-- put deadline countdown here -->
     </div>
     <div class="campaign-recipients-wrapper">
@@ -121,13 +121,20 @@
 </div>
 
 
+<script>
+var deadlineDate = new Date("<%= @deadline %>");
+// countdown from http://www.webmuse.co.uk/projects/jcountdown-jquery-plugin/
+$(document).ready(function(){
 
+  $("#countdown-timer").countdown({
+      "date" : deadlineDate,
+      "offset" : -4,
+      "htmlTemplate": "%d days, %h:%i:%s",
+      "leadingZero":true,
+      "onComplete" : function(event) {
+          $(this).html("Completed");
+      }
+  });
 
-
-<%
-=begin%>
-<%= link_to 'Edit', edit_campaign_path(@campaign) %> |
-<%= link_to 'Back', campaigns_path %>
-<%
-=end
-%>
+});
+</script>
