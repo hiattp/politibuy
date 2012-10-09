@@ -536,7 +536,21 @@ img.current-campaign-image{
   margin-top: 20px;
 }
 
+.vehicle-form-wrapper{
+  display: none;
+  position: relative;
+  margin-top: 20px;
+}
+
 span#policy-maker-form-show{
+  color: #0000AA;
+  text-decoration: underline;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+span#vehicle-form-show{
   color: #0000AA;
   text-decoration: underline;
   &:hover{

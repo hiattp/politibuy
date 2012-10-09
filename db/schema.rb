@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005212332) do
+ActiveRecord::Schema.define(:version => 20121009025219) do
+
+  create_table "beneficiaries", :force => true do |t|
+    t.integer  "vehicle_id"
+    t.integer  "campaign_id"
+    t.string   "reason"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "campaigns", :force => true do |t|
     t.string   "title"
@@ -119,5 +127,17 @@ ActiveRecord::Schema.define(:version => 20121005212332) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "vehicles", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "info_link"
+    t.string   "logo_image_file_name"
+    t.string   "logo_image_content_type"
+    t.integer  "logo_image_file_size"
+    t.datetime "logo_image_updated_at"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
 
 end

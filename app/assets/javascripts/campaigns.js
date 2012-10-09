@@ -18,4 +18,10 @@ $(document).ready(function(){
     $(".policy-maker-form-wrapper").toggle();
   });
   
+  $("#vehicle-form-show").click(function(e){
+    e.preventDefault();
+    $(".vehicle-form-wrapper").toggle();
+  });
+  
+  
 });

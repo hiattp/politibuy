@@ -1,5 +1,9 @@
 Politibuy::Application.routes.draw do
   
+  resources :beneficiaries
+
+  resources :vehicles
+
   authenticated :user do
     root :to => "campaigns#index"
   end

@@ -46,8 +46,17 @@ class CampaignsController < ApplicationController
       @policy_makers_selections << [name, pm.id]
     end
     
+    vehicles = Vehicle.all
+    @vehicle_selections = []
+    vehicles.map do |v|
+      name = v.name
+      @vehicle_selections << [name, v.id]
+    end
+    
     @new_policy_maker = PolicyMaker.new
     @new_recipient = Recipient.new
+    @new_beneficiary = Beneficiary.new
+    @new_vehicle = Vehicle.new
   end
 
   # POST /campaigns
