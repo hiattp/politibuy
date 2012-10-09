@@ -29,17 +29,22 @@
     </div>
     <div class="campaign-recipients-wrapper">
       <h3 class="campaign-subsection">Key Policy Makers</h3>
-      <div class="campaign-recipient-wrapper">
-        <h4 class="campaign-recipient-name">George Watson</h4>
-        <p class="campaign-recipient-bio">Watson is on the energy committee, and his vote is needed to pass this bill.</p>
-        <%= image_tag "senator_image_1.jpeg", :class => "campaign-recipient-image-small"%>
-      </div>
-      <div class="campaign-recipient-wrapper">
-        <h4 class="campaign-recipient-name">Stephanie Jensen</h4>
-        <p class="campaign-recipient-bio">Jensen isn't involved at all, we just want to send her money. That being said, she is really nice.</p>
-        <%= image_tag "senator_image_2.jpeg", :class => "campaign-recipient-image-small"%>
-      </div>
-      <%= link_to "See 23 more", campaign_key_policy_makers_path(@campaign), :class => "campaign-show-see-more-recipients"%>
+      <% fpm = @campaign.key_policy_makers[0] %>
+      <% spm = @campaign.key_policy_makers[1] %>
+      <% [fpm,spm].each do |kpm| %>
+        <% if kpm %>
+        <div class="campaign-recipient-wrapper">
+          <h4 class="campaign-recipient-name"><%= full_name(kpm.policy_maker.first_name, kpm.policy_maker.last_name )%></h4>
+          <p class="campaign-recipient-bio"><%= kpm.reason %></p>
+          <% if kpm.policy_maker.profile_image? %>
+            <%= image_tag kpm.policy_maker.profile_image.url, :class => "campaign-recipient-image-small"%>
+          <% else %>
+            <%= image_tag "sam.jpeg", :class => "campaign-recipient-image-small"%>
+          <% end %>
+        </div>
+        <% end %>
+      <% end %>
+      <%= link_to "See all key policy makers", campaign_key_policy_makers_path(@campaign), :class => "campaign-show-see-more-recipients"%>
     </div>
   </div>
   
@@ -48,32 +53,23 @@
   
   <h2 class="campaign-section">Where your money would go:</h2>
   <ul class="campaign-beneficiaries">
+    <% @campaign.beneficiaries.each do |b| %>
     <li class="campaign-beneficiaries">
-      <%= image_tag "coal_plant.jpeg", :class => "campaign-beneficiary-logo" %>
-      <h3 class="campaign-beneficiary-name">Obama for America Fund</h3>
+      <% if b.vehicle.logo_image? %>
+        <%= image_tag b.vehicle.logo_image.url, :class => "campaign-beneficiary-logo" %>
+      <% else %>
+        <%= image_tag "sam.jpeg", :class => "campaign-beneficiary-logo" %>
+      <% end %>
+      <h3 class="campaign-beneficiary-name"><%= b.vehicle.name %></h3>
       <p class="campaign-beneficiary-description">
-        The Obama for America fund is a very important fundraising vehicle for Obama,
-        who is trying to become the next president. This money primarily goes towards 
-        negative ads against Mitt Romney, who also wants to be the next president.
+        <%= b.vehicle.description %>
       </p>
       <h4 class="campaign-beneficiary-reason">Why put money here?</h4>
       <p class="campaign-beneficiary-reason">
-        This is just a solid idea all around, no one disputes that.
+        <%= b.reason %>
       </p>
     </li>
-    <li class="campaign-beneficiaries">
-      <%= image_tag "coal_plant.jpeg", :class => "campaign-beneficiary-logo" %>
-      <h3 class="campaign-beneficiary-name">Obama for America Fund</h3>
-      <p class="campaign-beneficiary-description">
-        The Obama for America fund is a very important fundraising vehicle for Obama,
-        who is trying to become the next president. This money primarily goes towards 
-        negative ads against Mitt Romney, who also wants to be the next president.
-      </p>
-      <h4 class="campaign-beneficiary-reason">Why put money here?</h4>
-      <p class="campaign-beneficiary-reason">
-        This is just a solid idea all around, no one disputes that.
-      </p>
-    </li>
+    <% end %>
   </ul>
   
   <div class="campaign-participants-section">
@@ -171,7 +167,7 @@ $(document).ready(function(){
       "htmlTemplate": "%d days, %h:%i:%s",
       "leadingZero":true,
       "onComplete" : function(event) {
-          $(this).html("Completed");
+          $(this).html("Campaign Completed");
       }
   });
 
