@@ -1,6 +1,6 @@
 class PledgesController < ApplicationController
   before_filter :authenticate_user!
-  force_ssl
+  # force_ssl
   
   # GET /pledges
   # GET /pledges.json
