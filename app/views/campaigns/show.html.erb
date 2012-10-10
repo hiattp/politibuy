@@ -25,7 +25,11 @@
     
   <div class="campaign-image-recipient-wrapper">
     <div class="campaign-main-image-wrapper">
-      <%= image_tag "coal_plant.jpeg" %>
+      <% if @campaign.main_image %>
+        <%= image_tag @campaign.main_image.url %>
+      <% else %>
+        <%= image_tag "coal_plant.jpeg"%>
+      <% end %>
       <div class="campaign-deadline-backdrop"></div>
       <h4 class="campaign-deadling-header">Deadline:</h4>
       <h1 id="countdown-timer" class="campaign-deadline"></h1>
@@ -64,7 +68,7 @@
       <% else %>
         <%= image_tag "sam.jpeg", :class => "campaign-beneficiary-logo" %>
       <% end %>
-      <h3 class="campaign-beneficiary-name"><%= b.vehicle.name %></h3>
+      <h3 class="campaign-beneficiary-name"><%= link_to b.vehicle.name, ensure_http(b.vehicle.info_link), :target => "_blank", :class => "campaign-beneficiary-name" %></h3>
       <p class="campaign-beneficiary-description">
         <%= b.vehicle.description %>
       </p>
