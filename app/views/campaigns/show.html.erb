@@ -35,7 +35,7 @@
         <% if kpm %>
         <div class="campaign-recipient-wrapper">
           <h4 class="campaign-recipient-name"><%= full_name(kpm.policy_maker.first_name, kpm.policy_maker.last_name )%></h4>
-          <p class="campaign-recipient-bio"><%= kpm.reason %></p>
+          <p class="campaign-recipient-bio"><%= truncate(kpm.reason, :length => 95) %></p>
           <% if kpm.policy_maker.profile_image? %>
             <%= image_tag kpm.policy_maker.profile_image.url, :class => "campaign-recipient-image-small"%>
           <% else %>
@@ -44,7 +44,7 @@
         </div>
         <% end %>
       <% end %>
-      <%= link_to "See all key policy makers", campaign_key_policy_makers_path(@campaign), :class => "campaign-show-see-more-recipients"%>
+      <%= link_to "See more info", campaign_key_policy_makers_path(@campaign), :class => "campaign-show-see-more-recipients"%>
     </div>
   </div>
   
@@ -129,17 +129,13 @@
 
 <div id="minority-right-wrapper">
   <div class="campaign-sidebar">
-    <h4 class="campaign-show-other-campaigns">More Campaigns:</h4>
+    <h4 class="campaign-show-other-campaigns">Live Campaigns:</h4>
     <ul class="campaign-show-other-campaigns">
+      <% @campaigns.each do |c| %>
       <li class="campaign-show-other-campaign">
-        <%= link_to "Repeal Amendment 15 in South Dakota", "", :class => "other-campaigns-link"%>
+        <%= link_to c.title, campaign_path(c), :class => "other-campaigns-link"%>
       </li>
-      <li class="campaign-show-other-campaign">
-        <%= link_to "Veto new gun ownership law in Arkansas ", "", :class => "other-campaigns-link"%>
-      </li>
-      <li class="campaign-show-other-campaign">
-        <%= link_to "Implement fines for beach loitering in Hawaii", "", :class => "other-campaigns-link"%>
-      </li>
+      <% end %>
     </ul>
   </div>
 </div>

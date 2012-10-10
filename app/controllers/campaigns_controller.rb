@@ -2,7 +2,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
   def index
-    @campaigns = Campaign.all
+    @campaigns = Campaign.where(:live => true)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,6 +13,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
+    @campaigns = Campaign.where(:live => true)
     @campaign = Campaign.find(params[:id])
     # puts @campaign.deadline
     @deadline = @campaign.deadline.utc

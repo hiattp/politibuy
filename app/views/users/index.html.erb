@@ -1,11 +1,12 @@
+<div id="majority-left-wrapper">
 <h1 id="campaigns-index">Users (<%= @users.count %>)</h1>
 <p>
   Send Bulk Invitations:
-  <%= link_to "10 &#183;".html_safe, bulk_invite_path(:quantity => '10') %>
-  <%= link_to "50 &#183;".html_safe, bulk_invite_path(:quantity => '50') %>
-  <%= link_to "100 &#183;".html_safe, bulk_invite_path(:quantity => '100') %>
-  <%= link_to "500 &#183;".html_safe, bulk_invite_path(:quantity => '500') %>
-  <%= link_to "1000", bulk_invite_path(:quantity => '1000') %>
+  <%= link_to "10 &#183;".html_safe, bulk_invite_path(:quantity => '10'), data: { confirm: 'Are you sure? This will email a bunch of people.' } %>
+  <%= link_to "50 &#183;".html_safe, bulk_invite_path(:quantity => '50'), data: { confirm: 'Are you sure? This will email a bunch of people.' } %>
+  <%= link_to "100 &#183;".html_safe, bulk_invite_path(:quantity => '100'), data: { confirm: 'Are you sure? This will email a bunch of people.' } %>
+  <%= link_to "500 &#183;".html_safe, bulk_invite_path(:quantity => '500'), data: { confirm: 'Are you sure? This will email a bunch of people.' } %>
+  <%= link_to "1000", bulk_invite_path(:quantity => '1000'), data: { confirm: 'Are you sure? This will email a bunch of people.' } %>
 </p>
 <table class="admin-table">
   <tr class="admin-table">
@@ -25,3 +26,7 @@
   </tr>
   <% end %>
 </table>
+</div>
+<div id="minority-right-wrapper">
+  
+</div>
