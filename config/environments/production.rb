@@ -71,7 +71,7 @@ Politibuy::Application.configure do
   # exception notification
   config.middleware.use ExceptionNotifier,
     :email_prefix => "[Exception] ",
-    :sender_address => %{"Exception Notifier" <support@politibuy.org>},
+    :sender_address => %{"Politibuy Exception Notifier" <support@politibuy.org>},
     :exception_recipients => %w{hiattp@gmail.com}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
