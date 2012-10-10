@@ -1,8 +1,10 @@
 module CampaignsHelper
   
-  def total_pledged(pledges)
-    pledges.reduce(0) do |sum, p|
-      sum + p.amount
+  def ensure_http(url)
+    if url.include? "http"
+      url
+    else
+      "http://"+url
     end
   end
   

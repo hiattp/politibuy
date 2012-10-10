@@ -22,4 +22,14 @@ class Campaign < ActiveRecord::Base
     },
     :path => "campaigns/:attachment/:id/:style.:extension"
   
+  def ordered_updates
+    updates.sort! {|a,b| b.published_date <=> a.published_date}
+  end
+
+  def total_pledged
+    pledges.reduce(0) do |sum, p|
+      sum + p.amount
+    end
+  end
+  
 end

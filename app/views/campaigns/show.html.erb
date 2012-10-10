@@ -9,7 +9,7 @@
   <div class="campaign-show-pledge-banner-outer">
     <div class="campaign-show-pledge-banner-inner">
       <div class="campaign-show-amount-wrapper">
-        <h2 class="campaign-show-amount"><%= number_to_currency(total_pledged(@campaign.pledges)) %></h2>
+        <h2 class="campaign-show-amount"><%= number_to_currency(@campaign.total_pledged) %></h2>
         <h4 class="campaign-show-subtext">pledged so far</h4>
       </div>
       <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
@@ -24,7 +24,7 @@
       <%= image_tag "coal_plant.jpeg" %>
       <div class="campaign-deadline-backdrop"></div>
       <h4 class="campaign-deadling-header">Deadline:</h4>
-      <h1 id="countdown-timer" class="campaign-deadline">6 weeks, 3 days, 1:39:23</h1>
+      <h1 id="countdown-timer" class="campaign-deadline"></h1>
       <!-- put deadline countdown here -->
     </div>
     <div class="campaign-recipients-wrapper">
@@ -73,16 +73,19 @@
   </ul>
   
   <div class="campaign-participants-section">
-    <% total_participants = 40 %>
-    <h2 class="campaign-section"><%= pluralize(total_participants, 'person') %> <%= total_participants == 1 ? "has" : "have" %> pledged to this campaign:</h2>
+    <h2 class="campaign-section"><%= pluralize(@campaign.pledges.count, 'person') %> <%= @campaign.pledges.count == 1 ? "has" : "have" %> pledged to this campaign:</h2>
     <ul class="campaign-participants-wrapper">
-      <% total_participants.times do |i| %>
+      <% @campaign.pledges.each_with_index do |pledge,i| %>
       <li class="participant-wrapper <%= i%13 == 12 ? "edge-participant" : "" %>">
         <div class="participant-image-wrapper">
-          <%= image_tag "profile_pic.jpeg", :class => "participant-pic" %>
+        <% if pledge.user.profile_image? %>
+          <%= image_tag pledge.user.profile_image.url, :class => "participant-pic" %>
+        <% else %>
+          <%= image_tag "sam.jpg", :class => "participant-pic" %>
+        <% end %>
         </div>
         <div class="participant-amount-wrapper"></div>
-        <h4 class="participant-amount">$12</h4>
+        <h4 class="participant-amount"><%= number_to_currency(pledge.amount, :precision => 0) %></h4>
       </li>
       <% end %>
     </ul>
@@ -91,34 +94,20 @@
   <div class="campaign-updates-section">
     <h2 class="campaign-section">Campaign News and Updates:</h2>
     <ul class="campaign-updates">
+      <% @campaign.ordered_updates.each do |u| %>
       <li class="campaign-update">
-        <%= link_to "New coal plant opens in Cary", "", :class => "campaign-update" %>
+        <%= link_to u.title, ensure_http(u.reference_url), :class => "campaign-update" %>
         <p class="campaign-update-preview">
           <span>
-          The new coal plant is supposed to be the largest and most 'efficient' Duke Energy has
-          ever constructed, says spokesperson Rodney Simson. "We look forward to saving our customers
-          money on their energy bill, while also mitigating our environmental footprint."
+            <%= u.preview %>
           </span> 
-          <span class="campaign-update-read-more"><%= link_to "read more", "", :class => "campaign-update-read-more" %></span>
+          <span class="campaign-update-read-more"><%= link_to "read more", ensure_http(u.reference_url), :class => "campaign-update-read-more" %></span>
         </p>
-        <p class="campaign-update-date campaign-update-date-month">Jan</p>
-        <p class="campaign-update-date campaign-update-date-day">27</p>
-        <p class="campaign-update-date campaign-update-date-year">2012</p>
+        <p class="campaign-update-date campaign-update-date-month"><%= u.published_date.strftime("%b")%></p>
+        <p class="campaign-update-date campaign-update-date-day"><%= u.published_date.strftime("%d")%></p>
+        <p class="campaign-update-date campaign-update-date-year"><%= u.published_date.strftime("%Y")%></p>
       </li>
-      <li class="campaign-update">
-        <%= link_to "Mass grave discovered 3 miles from High Rock plant", "", :class => "campaign-update" %>
-        <p class="campaign-update-preview">
-          <span>
-          "Frankly, we don't know how it got there," says Highland Energy President Jamal Kasim. The EPA is 
-          currently investigating blood samples from the victims--or what was left of them--to determine whether 
-          water or air contaminants were involved in the mortalities, but preliminary findings are inconclusive.
-          </span> 
-          <span class="campaign-update-read-more"><%= link_to "read more", "", :class => "campaign-update-read-more" %></span>
-        </p>
-        <p class="campaign-update-date campaign-update-date-month">Dec</p>
-        <p class="campaign-update-date campaign-update-date-day">01</p>
-        <p class="campaign-update-date campaign-update-date-year">2011</p>
-      </li>
+      <% end %>
     </ul>
   </div>
   

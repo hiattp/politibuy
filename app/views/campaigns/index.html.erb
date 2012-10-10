@@ -11,7 +11,7 @@
       <div class="campaign-image-wrapper-inner">
         <%= image_tag campaign.main_image, :class => "campaign-index-image" %>
         <%= image_tag "campaign_ribbon.png", :class => "campaign-ribbon" %>
-        <h3 class="campaign-pledge-ribbon-amount"><%= number_to_currency(total_pledged(campaign.pledges)) %> pledged so far</h3>
+        <h3 class="campaign-pledge-ribbon-amount"><%= number_to_currency(campaign.total_pledged) %> pledged so far</h3>
       </div>
     </div>
     <% end %>

@@ -7,7 +7,7 @@
   <div class="campaign-show-pledge-banner-outer">
     <div class="campaign-show-pledge-banner-inner">
       <div class="campaign-show-amount-wrapper">
-        <h2 class="campaign-show-amount"><%= number_to_currency(total_pledged(@campaign.pledges)) %></h2>
+        <h2 class="campaign-show-amount"><%= number_to_currency(@campaign.total_pledged) %></h2>
         <h4 class="campaign-show-subtext">pledged so far</h4>
       </div>
       <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
