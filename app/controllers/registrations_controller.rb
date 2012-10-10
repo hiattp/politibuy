@@ -23,6 +23,7 @@ class RegistrationsController < Devise::RegistrationsController
   
   # GET /resource/edit
   def edit
+    force_ssl
     if current_user.stripe_customer_id?
       @customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
     else
