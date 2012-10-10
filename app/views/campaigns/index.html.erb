@@ -1,23 +1,23 @@
 <h1 id="campaigns-index">Active Campaigns</h1>
+<% if user_signed_in? and can? :update, @campaign %>
+<%= link_to "Create Campaign", new_campaign_path %>
+<% end %>
 <ul id="campaign-list">
   <% @campaigns.each do |campaign| %>
   <li class="campaign">
-    <%= link_to "Ban carbon emissions for all coal-fired power plants in North Carolina", campaign_path(campaign), :class => "campaign-title"%>
+    <%= link_to campaign.title, campaign_path(campaign), :class => "campaign-title"%>
     <p class="campaign-description">
-      Emissions from coal fired power plants cause, among
-      other travesties, birth deformities among children
-      within a 200 mile radius of the emission source.
-      Unless you were near a power plant at birth, rendering
-      you unable to type for lack of sufficient digits, you
-      should participate in limiting these emissions.
+      <%= truncate(campaign.description, :length => 400) %>
     </p>
+    <%= link_to campaign_path campaign do %>
     <div class="campaign-image-wrapper-outer">
       <div class="campaign-image-wrapper-inner">
-        <%= image_tag "coal_plant.jpeg", :class => "campaign-index-image" %>
+        <%= image_tag campaign.main_image, :class => "campaign-index-image" %>
         <%= image_tag "campaign_ribbon.png", :class => "campaign-ribbon" %>
-        <h3 class="campaign-pledge-ribbon-amount">$8,230 pledged so far</h3>
+        <h3 class="campaign-pledge-ribbon-amount"><%= number_to_currency(campaign.total_pledged) %> pledged so far</h3>
       </div>
     </div>
+    <% end %>
   </li>
   <% end %>
 </ul>

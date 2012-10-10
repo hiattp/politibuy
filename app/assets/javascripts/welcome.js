@@ -2,7 +2,9 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function(){
-  jQuery(function($){
+  
+  if($(".twitter-feed").length > 0){
+    jQuery(function($){
       $(".twitter-feed").tweet({
           username: "politibuy",
           join_text: "auto",
@@ -15,7 +17,23 @@ $(document).ready(function(){
           auto_join_text_url: ":",
           loading_text: "loading tweets..."
       });
+    });
+  }
+  
+  $("#landing-signup-button").click(function(e){
+    e.preventDefault();
+    $("#landing-call-buttons-wrapper-outer").animate({left:-800},"slow");
+    $("form#request-invite-form").animate({left:0},"slow", function(){
+      $("img#landing-back-arrow").fadeIn();
+    });
   });
+  
+  $("img#landing-back-arrow").click(function(){
+    $("img#landing-back-arrow").fadeOut();
+    $("#landing-call-buttons-wrapper-outer").animate({left:0},"slow");
+    $("form#request-invite-form").animate({left:800},"slow");
+  });
+  
 });
 
 

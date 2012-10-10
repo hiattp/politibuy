@@ -1,0 +1,44 @@
+<%= form_for(@vehicle) do |f| %>
+  <% if @vehicle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
+
+      <ul>
+      <% @vehicle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "general-input" %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :info_link %><br />
+    <%= f.text_field :info_link, :class => "general-input" %>
+  </div>
+  
+  <% if @vehicle.logo_image? %>
+  <p class="current-image-label">Current Logo</p>
+  <%= image_tag @vehicle.logo_image.url, :class => "current-campaign-image" %>
+  <div class="field">
+    <%= f.label :logo_image, "Change Logo Image" %><br />
+    <%= f.file_field :logo_image, :class => "general-input" %>
+  </div>
+  <% else %>
+  <div class="field">
+    <%= f.label :logo_image, "Change Logo" %><br />
+    <%= f.file_field :logo_image, :class => "general-input" %>
+  </div>
+  <% end %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

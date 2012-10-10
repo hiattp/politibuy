@@ -1,6 +1,111 @@
-<h1>Editing pledge</h1>
+<div id="majority-left-wrapper">
+  <% if @pledge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pledge.errors.count, "error") %> prohibited this pledge from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @pledge.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table id="new-pledge">
+    <tr class="new-pledge-header green-gradient">
+      <th colspan="2" class="new-pledge">Edit your pledge</th>
+    </tr>
+    <tr class="new-pledge-note">
+      <td colspan="2" class="new-pledge-note">Note: You will <b>NOT</b> be charged unless the campaign is successful.</td>
+    </tr>
+    <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
+    <%= form_for([@campaign, @pledge], :html => {:id =>"new-pledge-form", :class => "payment-form"}) do |f| %>
+    <%= f.hidden_field :campaign_id, :value => @campaign.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :stripe_card_token, :class => "hidden-token-field" %>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Amount</td>
+      <td class="new-pledge-input">$ <%= f.text_field :amount, :id => "new-pledge-amount", :class => "new-pledge-input", :placeholder => "0.00" %></td>
+    </tr>
+    <tr class="new-pledge-payment-intro">
+      <td colspan="2" class="new-pledge-payment-intro">Payment</td>
+    </tr>
+    <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
+    
+    <%= fields_for current_user do |uf| %>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">First Name</td>
+      <td class="new-pledge-payment-input"><%= uf.text_field :first_name, :class => "new-pledge-input req-user-info" %></td>
+    </tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Last Name</td>
+      <td class="new-pledge-payment-input"><%= uf.text_field :last_name, :class => "new-pledge-input req-user-info" %></td>
+    </tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Address</td>
+      <td class="new-pledge-payment-input"><%= uf.text_field :address_line_one, :class => "new-pledge-input req-user-info" %></td>
+    </tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label"></td>
+      <td class="new-pledge-payment-input"><%= uf.text_field :address_line_two, :class => "new-pledge-input" %></td>
+    </tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Zip Code</td>
+      <td class="new-pledge-payment-input"><%= uf.text_field :zip_code, :class => "new-pledge-input req-user-info pledge-zip", :maxlength => 5 %></td>
+    </tr>
+    <% end %>
+    
+    <% if @customer %>
+    <tr class="pledge-existing-customer">
+      <td colspan="2" class="pledge-existing-customer">
+        Using card that ends with <%= @customer.active_card.last4 %>. To update payment information, 
+        please visit your <%= link_to "account page", edit_user_registration_path, :class => "edit-account-link" %>.
+      </td>
+    </tr>
+    <% else %>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Credit Card</td>
+      <td class="new-pledge-payment-input"><%= text_field_tag :card_number, nil, name: nil, :class => "new-pledge-input" %></td>
+    </tr>
+    <tr class="new-pledge">
+      <td class="new-pledge-label">Expiration</td>
+      <td class="new-pledge-payment-input">
+      <%= text_field_tag :card_month, nil, name: nil, :class => "new-pledge-input", :placeholder => "01", :maxlength => 2 %> / 
+      <%= text_field_tag :card_year, nil, name: nil, :class => "new-pledge-input", :placeholder => "2014", :maxlength => 4 %>
+      <span id="cvc-label">CVC</span>
+      <%= text_field_tag :card_code, nil, name: nil, :class => "new-pledge-input", :placeholder => "1234", :maxlength => 4 %>
+      </td>
+    </tr>
+    <% end %>
+    <tr class="new-pledge-payment-intro">
+      <td colspan="2" class="new-pledge-payment-intro">Disclaimer</td>
+    </tr>
+    <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">You <span class="disclaimer-highlight">will not</span> be billed unless the campaign objective is met.</td>
+    </tr>
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">You <span class="disclaimer-highlight">will</span> be able to change or cancel this pledge at any time.</td>
+    </tr>
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">
+        By submitting this form, you give Politibuy.org the right to charge you the amount 
+        specified above upon successful completion of this campaign.
+      </td>
+    </tr>
+    <tr class="new-pledge-submit">
+      <td id="new-pledge-cancel" class="new-pledge-actions"></td>
+      <td id="new-pledge-submit" class="new-pledge-actions"><%= link_to "Cancel", campaign_path(@campaign), :class => "form-cancel-button"%><%= f.submit "Submit Pledge", :id => "pledge-submit-button", :class => "green-gradient"%></td>
+    </tr>
+    <% end %>
+  </table>
+  <p class="cancel-pledge"><%= link_to 'Cancel Pledge', [@campaign,@pledge], method: :delete, data: { confirm: 'Are you sure?' }, :class => "cancel-pledge" %></p>
+  
+</div>
 
-<%= link_to 'Show', @pledge %> |
-<%= link_to 'Back', pledges_path %>
+<div id="minority-right-wrapper">
+  <%= render "sidebar", :campaigns => @campaigns, :campaign => @campaign %>
+</div>
+
+<script>
+var requirePaymentFields = true;
+</script>

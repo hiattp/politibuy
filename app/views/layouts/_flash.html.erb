@@ -1,0 +1,16 @@
+<% unless flash.empty? %>
+<div id="flash-wrapper-outer">
+<% if flash[:notice]  %>
+  <div class="flash-wrapper-inner">
+    <%= image_tag "checkmark.png", :class => "notice" %>
+    <p class="notice"><%= notice %></p>
+  </div>
+<% end %>
+<% if flash[:alert] %>
+  <div class="flash-wrapper-inner">
+    <%= image_tag "alert.png", :class => "notice" %>
+    <p class="alert"><%= alert %></p>
+  </div>
+<% end %>
+</div>
+<% end %>

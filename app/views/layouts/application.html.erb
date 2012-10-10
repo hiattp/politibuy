@@ -11,7 +11,7 @@
     
   <%= stylesheet_link_tag    "application", :media => "all" %>
   
-  <% if @new_pledge %>
+  <% if @new_pledge || request.fullpath == "/users/edit" %>
   <%= javascript_include_tag "https://js.stripe.com/v1/" %>
   <script>
     var politibuyPaymentNeeded = true;
@@ -46,28 +46,22 @@
         <%= link_to((image_tag "politibuy.png", :id => "main-logo"), root_path) %>
 
         <div id="login-links">
-          <span class="divider-star"><%= image_tag "small_star.png"%></span>
-          <%= link_to "About", about_path, :class => "footer-link", :id => "footer-about-link" %>
-          <span class="divider-star"><%= image_tag "small_star.png"%></span>
-<%
-=begin%>          
           <%= link_to "Browse Campaigns", campaigns_path, :class => "header-links" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <% if user_signed_in? %>
+          <%= link_to "Account", edit_user_registration_path, :class => "header-links" %>
+          <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => "header-links "%>
           <% else %>
           <%= link_to "Sign In", new_user_session_path, :class => "header-links" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Register", new_user_registration_path, :class => "header-links" %>
           <% end %>
-<%
-=end
-%>
         </div>
 
       </div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      
+      <%= render :partial => 'layouts/flash', :locals => { :flash => flash } %>
 
       <%= yield %>
     </div>
@@ -120,21 +114,12 @@
       <%= image_tag "intro_text.png", :id => "landing-intro-text" %>
     </div>
   </div>
+  
   <div id="landing-call-to-action-outer">
-    <div id="landing-call-to-action-inner">
-      
-<%
-=begin%>
-      <div id="landing-call-buttons-wrapper">
-        <%= link_to "Browse Campaigns", campaigns_path, :class => "landing-callaction-button", :id => "landing-browse-button" %>
-        <%= image_tag "seal.png", :id => "landing-seal" %>
-        <%= link_to "Join the Movement", new_user_registration_path, :class => "landing-callaction-button", :id => "landing-signup-button" %>        
-      </div>
-<%
-=end
-%>
+    <div id="landing-call-to-action-inner">      
     </div>
   </div>
+  
   <div id="landing-how-works-outer">
     <div id="landing-how-works-inner">
       <div class="landing-how-step">

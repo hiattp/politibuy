@@ -30,7 +30,7 @@ $(document).ready(function(){
           $('input[type=submit]').attr('disabled', false);
           return false;
         } else {
-          $("form#request-invite-form").hide();
+          $("div#invitation-form-wrapper").hide();
           $("div#invitation-thank-you").show();
           return false;
         }
@@ -42,5 +42,10 @@ $(document).ready(function(){
     return false;
   });
   
+  $("a.edit-card-info").click(function(e){
+    e.preventDefault();
+    $(".pledge-existing-customer").toggle();
+    $(".account-edit-card-entry").toggle();
+  });
   
 });

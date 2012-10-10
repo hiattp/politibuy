@@ -1,0 +1,21 @@
+<%= form_for(@key_policy_maker) do |f| %>
+  <% if @key_policy_maker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@key_policy_maker.errors.count, "error") %> prohibited this key_policy_maker from being saved:</h2>
+
+      <ul>
+      <% @key_policy_maker.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :reason %><br />
+    <%= f.text_field :reason %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

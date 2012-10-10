@@ -1,6 +1,3 @@
-<h1>Editing policy_maker</h1>
+<h1 class="general-edit">Editing <%= full_name(@policy_maker.first_name, @policy_maker.last_name)%></h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @policy_maker %> |
-<%= link_to 'Back', policy_makers_path %>

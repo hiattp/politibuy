@@ -1,0 +1,21 @@
+<div id="majority-left-wrapper">
+<h1 id="campaigns-index">Campaigns (<%= @campaigns.count %>)</h1>
+<table class="admin-table">
+  <tr class="admin-table">
+    <th class="admin-table">Campaign</th>
+    <th class="admin-actions">Actions</th>
+  </tr>
+  <% @campaigns.each_with_index do |c, i| %>
+  <tr class="admin-table <%= i.odd? ? "odd-row": ""%>">
+    <td class="admin-table"><%= truncate(c.title, :length => 40) %></td>
+    <td class="admin-actions">
+      <%= link_to "show", c %> | <%= link_to "edit", edit_campaign_path(c) %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "Create Campaign", new_campaign_path %>
+</div>
+<div id="minority-right-wrapper">
+  <%= render "tools" %>
+</div>

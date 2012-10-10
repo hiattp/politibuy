@@ -60,7 +60,7 @@ class RecipientsController < ApplicationController
 
     respond_to do |format|
       if @recipient.update_attributes(params[:recipient])
-        format.html { redirect_to @recipient, notice: 'Recipient was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Recipient was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

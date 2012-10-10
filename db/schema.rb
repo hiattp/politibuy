@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928181334) do
+ActiveRecord::Schema.define(:version => 20121009155924) do
+
+  create_table "beneficiaries", :force => true do |t|
+    t.integer  "vehicle_id"
+    t.integer  "campaign_id"
+    t.string   "reason"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "campaigns", :force => true do |t|
     t.string   "title"
@@ -25,6 +33,14 @@ ActiveRecord::Schema.define(:version => 20120928181334) do
     t.datetime "main_image_updated_at"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "key_policy_makers", :force => true do |t|
+    t.integer  "campaign_id"
+    t.integer  "policy_maker_id"
+    t.string   "reason"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "pledges", :force => true do |t|
@@ -58,6 +74,17 @@ ActiveRecord::Schema.define(:version => 20120928181334) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "updates", :force => true do |t|
     t.integer  "campaign_id"
@@ -94,9 +121,31 @@ ActiveRecord::Schema.define(:version => 20120928181334) do
     t.string   "stripe_customer_id"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+    t.string   "address_line_one"
+    t.string   "address_line_two"
+    t.string   "zip_code"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "users_roles", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "vehicles", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "info_link"
+    t.string   "logo_image_file_name"
+    t.string   "logo_image_content_type"
+    t.integer  "logo_image_file_size"
+    t.datetime "logo_image_updated_at"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
 
 end

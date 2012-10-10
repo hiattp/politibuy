@@ -1,47 +1,60 @@
-<div id="invitation-thank-you">
-  <p id="invitation-thank-you">Thank you, we'll be in touch soon. Meanwhile, spread the word!</p>
-  <div id="invitation-social-media-buttons">
-    <div id="tweet" style="display:inline-block;">
-      <a class="twitter-share-button" data-count="horizontal" data-text="I joined the revolution!" data-url="http://www.politibuy.org/" data-via="politibuy" data-related="lessig" href="https://twitter.com/share"></a>
+<% if request.fullpath == "/" %>
+  <div id="invitation-thank-you">
+    <p id="invitation-thank-you">Thanks! Please check your email for activation instructions.</p>
+    <div id="invitation-social-media-buttons">
+      <div id="tweet" style="display:inline-block;">
+        <a class="twitter-share-button" data-count="horizontal" data-text="I joined the revolution!" data-url="http://www.politibuy.org/" data-via="politibuy" data-related="lessig" href="https://twitter.com/share"></a>
+      </div>
+      <span class="fb-like-span" style="display:inline-block;">
+        <div class="fb-like" data-href="http://www.politibuy.org/" data-layout="button_count" data-send="false" data-show-faces="false" data-width="90"></div>
+      </span>
     </div>
-    <span class="fb-like-span" style="display:inline-block;">
-      <div class="fb-like" data-href="http://www.politibuy.org/" data-layout="button_count" data-send="false" data-show-faces="false" data-width="90"></div>
-    </span>
   </div>
-</div>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "request-invite-form"}) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.email_field :email, :placeholder => "user@example.com", :id => "invite-email-field"%>
-  <%= f.submit "Join Beta Launch", :id => "request-invite-button" %>
-<% end %>
-
-
-<%
-=begin%>
-
-<div class="register-box-outer">
-
-  <h2 class="register-header">Sign up <%= link_to "(sign in)", new_session_path(resource_name), :class => "register-alt-link" %></h2>
-  
-  <div class="register-form-wrapper">
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <div id="invitation-form-wrapper">
+    <%= image_tag "landing_back_arrow.png", :id => "landing-back-arrow"%>
+    <div id="landing-call-buttons-wrapper-outer">
+        <%= link_to "Browse Campaigns", campaigns_path, :class => "landing-callaction-button", :id => "landing-browse-button" %>
+        <%= image_tag "seal.png", :id => "landing-seal" %>
+        <%= link_to "Join the Movement", new_user_registration_path, :class => "landing-callaction-button", :id => "landing-signup-button" %>        
+    </div>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "request-invite-form"}) do |f| %>
       <%= devise_error_messages! %>
-
-      <div><%= f.label :email %><br />
-      <%= f.email_field :email %></div>
-
-      <div><%= f.label :password %><br />
-      <%= f.password_field :password %></div>
-
-      <div><%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %></div>
-
-      <div><%= f.submit "Sign up", :class => "devise-register" %></div>
+      <%= f.email_field :email, :placeholder => "user@example.com", :id => "invite-email-field"%>
+      <%= f.submit "Register", :id => "request-invite-button" %>
     <% end %>
   </div>
-</div>
+<% else %>
+<div id="majority-left-wrapper">
+  <div class="register-box-outer">
 
-<%
-=end
-%>
+    <h2 class="register-header">Sign up <%= link_to "(sign in instead)", new_session_path(resource_name), :class => "register-alt-link" %></h2>
+
+    <div class="register-form-wrapper">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <div class="devise-form-errors">
+        <%= devise_error_messages! %>
+      </div>
+
+        <div><%= f.label :email %><br />
+        <%= f.email_field :email %></div>
+
+        <div><%= f.label :password %><br />
+        <%= f.password_field :password %></div>
+
+        <div><%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation %></div>
+
+        <div><%= f.submit "Sign up", :class => "devise-register" %></div>
+      <% end %>
+    </div>
+  </div>
+    
+  <p class="resend-confirmation">
+    Didn't receive confirmation instructions? <%= link_to "Click here.", new_confirmation_path(resource_name), :class => "resend-confirmation" %>
+  </p>
+  
+</div>
+<div id="minority-right-wrapper">
+  <%= render :partial => 'layouts/right_sidebar' %>
+</div>
+<% end %>

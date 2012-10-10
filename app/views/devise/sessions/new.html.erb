@@ -1,10 +1,13 @@
+<div id="majority-left-wrapper">
 <div class="register-box-outer">
-  
-  <h2 class="register-header">Sign in <%= link_to "(sign up)", new_user_registration_path, :class => "register-alt-link" %></h2>
+  <h2 class="register-header">Sign in <%= link_to "(sign up instead)", new_user_registration_path, :class => "register-alt-link" %></h2>
 
   <div class="register-form-wrapper">
     
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <div class="devise-form-errors">
+        <%= devise_error_messages! %>
+      </div>
       <div><%= f.label :email %><br />
       <%= f.email_field :email %></div>
 
@@ -19,4 +22,11 @@
     <% end %>
     
   </div>
+</div>
+<p class="resend-confirmation">
+  Didn't receive confirmation instructions? <%= link_to "Click here.", new_confirmation_path(resource_name), :class => "resend-confirmation" %>
+</p>
+</div>
+<div id="minority-right-wrapper">
+  <%= render :partial => 'layouts/right_sidebar' %>
 </div>

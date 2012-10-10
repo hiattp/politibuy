@@ -1,0 +1,32 @@
+// Place all the styles related to the Vehicles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.vehicle-form-wrapper{
+  display: none;
+  position: relative;
+  margin-top: 20px;
+}
+
+form.vehicle{
+  overflow: hidden;
+  position: relative;
+  left: 20px;
+  margin-bottom: 30px;
+}
+
+form.vehicle textarea{
+  width: 400px;
+  height: 150px;
+  margin-bottom: 15px;
+}
+
+form.vehicle input{
+  width: 400px;
+}
+
+form.vehicle .create-vehicle-button{
+  float: right;
+  margin-right: 206px;
+  width: 200px;
+}

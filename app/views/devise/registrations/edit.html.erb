@@ -1,25 +1,131 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="edit-account-outer">
+  <div class="account-devise-form-errors">
+    <%= devise_error_messages! %>
+  </div>
+  <div id="edit-profile-section" class="register-box-outer edit-account-section">
+    <h2 class="register-header">Edit Profile</h2>
+    <div class="register-form-wrapper">
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+        
+        <% if current_user.profile_image? %>
+          <%= image_tag current_user.profile_image, :class => "edit-profile-image" %>
+        <% else %>
+          <%= image_tag "sam.jpeg", :class => "edit-profile-image" %>
+        <% end %>
+        <div><%= f.label :profile_image, "New Profile Image" %><br />
+        <%= f.file_field :profile_image, :class => "register-form-field" %></div>
+      
+        <div><%= f.label :email %><br />
+        <%= f.email_field :email, :class => "register-form-field" %></div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+        <div><%= f.label :password, "New Password" %><br/>
+        <%= f.password_field :password, :class => "register-form-field", :autocomplete => "off" %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+        <div><%= f.label :password_confirmation, "New Password Confirmation" %><br />
+        <%= f.password_field :password_confirmation, :class => "register-form-field" %></div>
+    
+        <div><%= f.label :current_password, "Current Password" %><br/> <i>(only if changing email or password)</i><br />
+        <%= f.password_field :current_password, :class => "register-form-field" %></div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+        <div><%= f.submit "Update Profile", :class => "devise-register account-edit-submit" %></div>
+    
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="register-box-outer edit-account-section">
+    <h2 class="register-header">Edit Payment Info</h2>
+    <div class="register-form-wrapper">
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => "edit-account-payment", :class => "payment-form" }) do |f| %>
+        <%= f.hidden_field :stripe_card_token, :class => "hidden-token-field" %>
+        <%= f.hidden_field :email, :value => current_user.email %>
+        
+        <div><%= f.label :first_name, "First Name" %><br />
+        <%= f.text_field :first_name, :class => "register-form-field" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+        <div><%= f.label :last_name, "Last Name" %><br />
+        <%= f.text_field :last_name, :class => "register-form-field" %></div>
+        
+        <div><%= f.label :address_line_one, "Address" %><br />
+        <%= f.text_field :address_line_one, :class => "register-form-field" %>
+        <%= f.text_field :address_line_two, :class => "address-line-two register-form-field" %></div>
+        
+        <div><%= f.label :zip_code, "U.S. Zip Code" %><br />
+        <%= f.text_field :zip_code, :class => "zip-code register-form-field", :maxlength => 5 %></div>
+        
+        <div>Credit Card</div>
+        <% if @customer %>
+        <p class="pledge-existing-customer">
+            Using card that ends with <%= @customer.active_card.last4 %>. To update card information, 
+            click <%= link_to "here", "", :class => "edit-card-info" %>.
+        </p>
+        <% end %>
+        <table class="account-edit-card-entry <%= @customer ? 'hidden' : ''%>">
+          <tr>
+            <td class="new-pledge-payment-input"><%= text_field_tag :card_number, nil, name: nil, :class => "new-pledge-input edit-account-cardnumber" %></td>
+          </tr>
+          <tr class="new-pledge">
+            <td class="new-pledge-payment-input">
+            <%= text_field_tag :card_month, nil, name: nil, :class => "new-pledge-input", :placeholder => "01", :maxlength => 2 %> / 
+            <%= text_field_tag :card_year, nil, name: nil, :class => "new-pledge-input", :placeholder => "2014", :maxlength => 4 %>
+            <span id="cvc-label" class="cvc-account-edit">CVC</span>
+            <%= text_field_tag :card_code, nil, name: nil, :class => "new-pledge-input", :placeholder => "1234", :maxlength => 4 %>
+            </td>
+          </tr>
+          
+        </table>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+        <div><%= f.submit "Update Payment Info", :class => "devise-register account-edit-submit" %></div>
+    
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="pledge-history-outer">
+    <h3 class="pledge-history-title">Active Pledges</h3>
+    <% if current_user.pledges.count == 0 %>
+    <p class="no-active-message">No active pledges</p>
+    <% else %>
+    <ul class="account-pledges">
+      <% current_user.pledges.each do |p| %>
+      <li class="account-pledges">
+        <%= link_to p.campaign.title, campaign_path(p.campaign), :class => "account-pledges" %>
+        <p class="account-pledges">Pledged: <%= number_to_currency(p.amount) %></p>
+        <div class="account-pledge-actions">
+          <%= link_to "view", campaign_path(p.campaign), :class => "account-pledge-action"%> | 
+          <%= link_to "edit", edit_campaign_pledge_path(p.campaign, p), :class => "account-pledge-action"%> | 
+          <%= link_to "cancel", [p.campaign,p], method: :delete, data: { confirm: 'Are you sure?' }, :class => "account-pledge-action"%>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+<%
+=begin%>    
+    <h3 class="pledge-history-title">Pledge History</h3>
+    <% if false %>
+    <p class="no-active-message">No historic pledges</p>
+    <% else %>
+    <ul class="account-pledges">
+      <% current_user.pledges.each do |p| %>
+      <li class="account-pledges">
+        <%= link_to p.campaign.title, campaign_path(p.campaign), :class => "account-pledges" %>
+        <p class="account-pledges">Pledged: <%= number_to_currency(p.amount)%></p>
+        <p class="account-pledges">Campaign Successful</p>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+<%
+=end
+%>
+  </div>
+  
+</div>
 
-<h3>Cancel my account</h3>
+<p id="cancel-account">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure? There is no going back." }, :method => :delete, :id => "cancel-account" %>.</p>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+<script>
+var requirePaymentFields = false;
+</script>

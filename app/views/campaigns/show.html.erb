@@ -1,61 +1,95 @@
 <div id="majority-left-wrapper">
-  <h1 class="campaign-show-title">Ban carbon emissions for all coal-fired power plants in North Carolina</h1>
-  <p class="campaign-show-description">
-    Emissions from coal fired power plants cause, among
-    other travesties, birth deformities among children
-    within a 200 mile radius of the emission source.
-    Unless you were near a power plant at birth, rendering
-    you unable to type for lack of sufficient digits, you
-    should participate in limiting these emissions.
-  </p>
-  <h2 class="campaign-show-objective">Campaign Objective:</h2>
-  <p class="campaign-show-objective">Pass NC Amendment 15 in the House of Representatives at the vote on October 20, 2012.</p>
+  <a href="#top"></a>
+  <h1 class="campaign-show-title"><%= @campaign.title %></h1>
+  
+  <% if user_signed_in? and can? :update, @campaign %>
+  <%= link_to "Edit Campaign", edit_campaign_path(@campaign) %>
+  <% end %>
   
   <div class="campaign-show-pledge-banner-outer">
     <div class="campaign-show-pledge-banner-inner">
       <div class="campaign-show-amount-wrapper">
-        <h2 class="campaign-show-amount">$10,000.00</h2>
+        <h2 class="campaign-show-amount"><%= number_to_currency(@campaign.total_pledged) %></h2>
         <h4 class="campaign-show-subtext">pledged so far</h4>
       </div>
-      <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+      <% if @user_pledge %>
+        <%= link_to "Change Your Pledge", edit_campaign_pledge_path(@campaign, @user_pledge), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+      <% else %>
+        <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+      <% end %>
     </div>
   </div>
   
+  <h2 class="campaign-show-objective">Campaign Objective:</h2>
+  <p class="campaign-show-objective"><%= @campaign.objective %></p>
+    
   <div class="campaign-image-recipient-wrapper">
     <div class="campaign-main-image-wrapper">
       <%= image_tag "coal_plant.jpeg" %>
       <div class="campaign-deadline-backdrop"></div>
       <h4 class="campaign-deadling-header">Deadline:</h4>
-      <h1 class="campaign-deadline">6 weeks, 3 days, 1:39:23</h1>
+      <h1 id="countdown-timer" class="campaign-deadline"></h1>
       <!-- put deadline countdown here -->
     </div>
     <div class="campaign-recipients-wrapper">
-      <h3 class="campaign-subsection">Recipients</h3>
-      <div class="campaign-recipient-wrapper">
-        <h4 class="campaign-recipient-name">George Watson</h4>
-        <p class="campaign-recipient-bio">Watson is on the energy committee, and his vote is needed to pass this bill.</p>
-        <%= image_tag "senator_image_1.jpeg", :class => "campaign-recipient-image-small"%>
-      </div>
-      <div class="campaign-recipient-wrapper">
-        <h4 class="campaign-recipient-name">Stephanie Jensen</h4>
-        <p class="campaign-recipient-bio">Jensen isn't involved at all, we just want to send her money. That being said, she is really nice.</p>
-        <%= image_tag "senator_image_2.jpeg", :class => "campaign-recipient-image-small"%>
-      </div>
-      <%= link_to "See 23 more", "", :class => "campaign-show-see-more-recipients"%>
+      <h3 class="campaign-subsection">Key Policy Makers</h3>
+      <% fpm = @campaign.key_policy_makers[0] %>
+      <% spm = @campaign.key_policy_makers[1] %>
+      <% [fpm,spm].each do |kpm| %>
+        <% if kpm %>
+        <div class="campaign-recipient-wrapper">
+          <h4 class="campaign-recipient-name"><%= full_name(kpm.policy_maker.first_name, kpm.policy_maker.last_name )%></h4>
+          <p class="campaign-recipient-bio"><%= truncate(kpm.reason, :length => 95) %></p>
+          <% if kpm.policy_maker.profile_image? %>
+            <%= image_tag kpm.policy_maker.profile_image.url, :class => "campaign-recipient-image-small"%>
+          <% else %>
+            <%= image_tag "sam.jpeg", :class => "campaign-recipient-image-small"%>
+          <% end %>
+        </div>
+        <% end %>
+      <% end %>
+      <%= link_to "See more info", campaign_key_policy_makers_path(@campaign), :class => "campaign-show-see-more-recipients"%>
     </div>
   </div>
   
+  <h2 class="campaign-section">Description:</h2>
+  <%= simple_format(@campaign.description, :class => "campaign-show-description") %>
+  
+  <h2 class="campaign-section">Where your money would go:</h2>
+  <ul class="campaign-beneficiaries">
+    <% @campaign.beneficiaries.each do |b| %>
+    <li class="campaign-beneficiaries">
+      <% if b.vehicle.logo_image? %>
+        <%= image_tag b.vehicle.logo_image.url, :class => "campaign-beneficiary-logo" %>
+      <% else %>
+        <%= image_tag "sam.jpeg", :class => "campaign-beneficiary-logo" %>
+      <% end %>
+      <h3 class="campaign-beneficiary-name"><%= b.vehicle.name %></h3>
+      <p class="campaign-beneficiary-description">
+        <%= b.vehicle.description %>
+      </p>
+      <h4 class="campaign-beneficiary-reason">Why put money here?</h4>
+      <p class="campaign-beneficiary-reason">
+        <%= b.reason %>
+      </p>
+    </li>
+    <% end %>
+  </ul>
+  
   <div class="campaign-participants-section">
-    <% total_participants = 40 %>
-    <h2 class="campaign-section"><%= pluralize(total_participants, 'person') %> <%= total_participants == 1 ? "has" : "have" %> pledged to this campaign:</h2>
+    <h2 class="campaign-section"><%= pluralize(@campaign.pledges.count, 'person') %> <%= @campaign.pledges.count == 1 ? "has" : "have" %> pledged to this campaign:</h2>
     <ul class="campaign-participants-wrapper">
-      <% total_participants.times do |i| %>
+      <% @campaign.pledges.each_with_index do |pledge,i| %>
       <li class="participant-wrapper <%= i%13 == 12 ? "edge-participant" : "" %>">
         <div class="participant-image-wrapper">
-          <%= image_tag "profile_pic.jpeg", :class => "participant-pic" %>
+        <% if pledge.user.profile_image? %>
+          <%= image_tag pledge.user.profile_image.url, :class => "participant-pic" %>
+        <% else %>
+          <%= image_tag "sam.jpg", :class => "participant-pic" %>
+        <% end %>
         </div>
         <div class="participant-amount-wrapper"></div>
-        <h4 class="participant-amount">$12</h4>
+        <h4 class="participant-amount"><%= number_to_currency(pledge.amount, :precision => 0) %></h4>
       </li>
       <% end %>
     </ul>
@@ -64,72 +98,70 @@
   <div class="campaign-updates-section">
     <h2 class="campaign-section">Campaign News and Updates:</h2>
     <ul class="campaign-updates">
+      <% @campaign.ordered_updates.each do |u| %>
       <li class="campaign-update">
-        <%= link_to "New coal plant opens in Cary", "", :class => "campaign-update" %>
+        <%= link_to u.title, ensure_http(u.reference_url), :class => "campaign-update" %>
         <p class="campaign-update-preview">
           <span>
-          The new coal plant is supposed to be the largest and most 'efficient' Duke Energy has
-          ever constructed, says spokesperson Rodney Simson. "We look forward to saving our customers
-          money on their energy bill, while also mitigating our environmental footprint."
+            <%= u.preview %>
           </span> 
-          <span class="campaign-update-read-more"><%= link_to "read more", "", :class => "campaign-update-read-more" %></span>
+          <span class="campaign-update-read-more"><%= link_to "read more", ensure_http(u.reference_url), :class => "campaign-update-read-more" %></span>
         </p>
-        <p class="campaign-update-date campaign-update-date-month">Jan</p>
-        <p class="campaign-update-date campaign-update-date-day">27</p>
-        <p class="campaign-update-date campaign-update-date-year">2012</p>
+        <p class="campaign-update-date campaign-update-date-month"><%= u.published_date.strftime("%b")%></p>
+        <p class="campaign-update-date campaign-update-date-day"><%= u.published_date.strftime("%d")%></p>
+        <p class="campaign-update-date campaign-update-date-year"><%= u.published_date.strftime("%Y")%></p>
       </li>
-      <li class="campaign-update">
-        <%= link_to "Mass grave discovered 3 miles from High Rock plant", "", :class => "campaign-update" %>
-        <p class="campaign-update-preview">
-          <span>
-          "Frankly, we don't know how it got there," says Highland Energy President Jamal Kasim. The EPA is 
-          currently investigating blood samples from the victims--or what was left of them--to determine whether 
-          water or air contaminants were involved in the mortalities, but preliminary findings are inconclusive.
-          </span> 
-          <span class="campaign-update-read-more"><%= link_to "read more", "", :class => "campaign-update-read-more" %></span>
-        </p>
-        <p class="campaign-update-date campaign-update-date-month">Dec</p>
-        <p class="campaign-update-date campaign-update-date-day">01</p>
-        <p class="campaign-update-date campaign-update-date-year">2011</p>
-      </li>
+      <% end %>
     </ul>
   </div>
   
   <div class="campaign-bottom-action-links">
-    <%= link_to "<< back to all campaigns", campaigns_path, :class => "campaign-bottom-links", :id => "return-to-campaigns" %>
+    <%= link_to "back to all campaigns", campaigns_path, :class => "campaign-bottom-links", :id => "return-to-campaigns" %>
+    <%= link_to "back to top", "#top", :class => "campaign-bottom-links", :id => "back-to-top" %>
+<%
+=begin%>
     <%= link_to "like", "", :class => "campaign-bottom-links", :id => "like-bottom" %>
     <%= link_to "tweet", "", :class => "campaign-bottom-links", :id => "tweet-bottom" %>
     <%= link_to "pledge", "", :class => "campaign-bottom-links", :id => "pledge-bottom" %>
+<%
+=end
+%>
   </div>
   
 </div>
 
 
 <div id="minority-right-wrapper">
-  <%= image_tag "ad_demo.png", :id => "ad-demo" %>
-  
-  <h4 class="campaign-show-other-campaigns">More Campaigns:</h4>
-  <ul class="campaign-show-other-campaigns">
-    <li class="campaign-show-other-campaign">
-      <%= link_to "Repeal Amendment 15 in South Dakota", "", :class => "other-campaigns-link"%>
-    </li>
-    <li class="campaign-show-other-campaign">
-      <%= link_to "Veto new gun ownership law in Arkansas ", "", :class => "other-campaigns-link"%>
-    </li>
-    <li class="campaign-show-other-campaign">
-      <%= link_to "Implement fines for beach loitering in Hawaii", "", :class => "other-campaigns-link"%>
-    </li>
-  </ul>
+  <div class="campaign-sidebar">
+    <h4 class="campaign-show-other-campaigns">Live Campaigns:</h4>
+    <ul class="campaign-show-other-campaigns">
+      <% @campaigns.each do |c| %>
+      <li class="campaign-show-other-campaign">
+        <%= link_to c.title, campaign_path(c), :class => "other-campaigns-link"%>
+      </li>
+      <% end %>
+    </ul>
+    <% if user_signed_in? and can? :update, @campaign %>
+      <%= render "admin/tools" %>
+    <% end %>
+  </div>
 </div>
 
 
+<script>
+var deadlineDate = new Date("<%= @deadline %>");
+// countdown from http://www.webmuse.co.uk/projects/jcountdown-jquery-plugin/
+$(document).ready(function(){
 
+  $("#countdown-timer").countdown({
+      "date" : deadlineDate,
+      "offset" : -4,
+      "htmlTemplate": "%d days, %h:%i:%s",
+      "leadingZero":true,
+      "onComplete" : function(event) {
+          $(this).html("Campaign Completed");
+      }
+  });
 
-
-<%
-=begin%>
-<%= link_to 'Edit', edit_campaign_path(@campaign) %> |
-<%= link_to 'Back', campaigns_path %>
-<%
-=end
-%>
+});
+</script>

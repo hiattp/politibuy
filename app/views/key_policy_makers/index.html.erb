@@ -1,0 +1,62 @@
+<div id="majority-left-wrapper">
+  <a href="#top"></a>
+  <h1 class="campaign-show-title"><%= @campaign.title %></h1>
+  
+  <%= link_to "Back to Campaign", campaign_path(@campaign), :class => "campaign-nav-link"%>
+    
+  <div class="campaign-show-pledge-banner-outer">
+    <div class="campaign-show-pledge-banner-inner">
+      <div class="campaign-show-amount-wrapper">
+        <h2 class="campaign-show-amount"><%= number_to_currency(@campaign.total_pledged) %></h2>
+        <h4 class="campaign-show-subtext">pledged so far</h4>
+      </div>
+      <% if @user_pledge %>
+        <%= link_to "Change Your Pledge", edit_campaign_pledge_path(@campaign, @user_pledge), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+      <% else %>
+        <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+      <% end %>
+    </div>
+  </div>
+  
+  <h2 class="campaign-show-objective">Campaign Objective:</h2>
+  <p class="campaign-show-objective"><%= @campaign.objective %></p>
+    
+  <h2 class="campaign-section">Key Policy Makers:</h2>
+  <ul class="key-policy-makers-index">
+    <% @key_policy_makers.each do |kpm|%>
+    <li class="key-policy-makers-index">
+      <% if kpm.policy_maker.profile_image? %>
+        <%= image_tag kpm.policy_maker.profile_image.url, :class => "key-policy-makers-index" %>
+      <% else %>
+        <%= image_tag "sam.jpeg", :class => "key-policy-makers-index" %>
+      <% end %>
+      <h3 class="key-policy-maker-name"><%= kpm.policy_maker.salutation + full_name(kpm.policy_maker.first_name, kpm.policy_maker.last_name) %></h3>
+      <p class="key-policy-maker-subline"><%= kpm.policy_maker.party.capitalize + " from " + lengthen_state(kpm.policy_maker.home_state) %></p>
+      <p class="key-policy-maker-bio">
+        <%= kpm.policy_maker.bio %>
+      </p>
+      <h4 class="key-policy-maker-reason">How is <%= kpm.policy_maker.last_name %> important to this campaign?</h4>
+      <p class="key-policy-maker-reason">
+        <%= kpm.reason %>
+      </p>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+
+<div id="minority-right-wrapper">
+  <div class="campaign-sidebar">
+    <h4 class="campaign-show-other-campaigns">Live Campaigns:</h4>
+    <ul class="campaign-show-other-campaigns">
+      <% @campaigns.each do |c| %>
+      <li class="campaign-show-other-campaign">
+        <%= link_to c.title, campaign_path(c), :class => "other-campaigns-link"%>
+      </li>
+      <% end %>
+    </ul>
+    <% if user_signed_in? and can? :update, @campaign %>
+      <%= render "admin/tools" %>
+    <% end %>
+  </div>
+</div>

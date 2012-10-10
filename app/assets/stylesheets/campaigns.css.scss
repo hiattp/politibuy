@@ -38,7 +38,7 @@ p.campaign-description{
 
 .campaign-image-wrapper-outer{
   position: absolute;
-  top: 0px;
+  top: 3px;
   left: 15px;
 }
 
@@ -65,6 +65,7 @@ h3.campaign-pledge-ribbon-amount{
   color: white;
   text-shadow: 1px 1px 5px rgba(40, 40, 40, 0.8);
   font-size: 20px;
+  font-weight: 500;
 }
 
 /*
@@ -78,26 +79,28 @@ h1.campaign-show-title{
 }
 
 p.campaign-show-description{
-  font-size: 20px;
-  font-weight: bold;
-  color: gray;
+  font-size: 17px;
   line-height: 1.2em;
-  border-bottom: dashed 1px #0000AA;
   padding-bottom: 10px;
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
 
 h2.campaign-show-objective{
   font-size: 20px;
   margin-top: 10px;
   margin-bottom: 2px;
+/*  border-top: dashed 1px #0000AA;*/
+  padding-top: 7px;
 }
 
 p.campaign-show-objective{
   font-size: 18px;
   color: #444444;
-  border-bottom: dashed 1px #0000AA;
+/*  border-bottom: dashed 1px #0000AA;*/
   padding-bottom: 7px;
   line-height: 1.4em;
+  margin-bottom: 10px;
 }
 
 .campaign-show-pledge-banner-outer{
@@ -120,7 +123,7 @@ p.campaign-show-objective{
   background: linear-gradient(to bottom,  #dd0000 0%,#aa0000 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd0000', endColorstr='#aa0000',GradientType=0 ); /* IE6-9 */
   
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .campaign-show-pledge-banner-inner{
@@ -191,9 +194,9 @@ h4.campaign-deadling-header{
 h1.campaign-deadline{
   position: absolute;
   color: white;
-  bottom: 15px;
+  bottom: 9px;
   text-align: center;
-  font-size: 21px;
+  font-size: 25px;
   width: 100%;
   text-shadow: 1px 1px 5px rgba(40, 40, 40, 0.8);  
 }
@@ -314,6 +317,44 @@ h4.participant-amount{
   }
 }
 
+ul.campaign-beneficiaries{
+  margin-top: 15px;
+}
+
+li.campaign-beneficiaries{
+  position: relative;
+  padding-left: 110px;
+  margin-bottom: 20px;
+}
+  
+img.campaign-beneficiary-logo{
+  position: absolute;
+  left: 0px;
+  width: 100px;
+}
+
+h3.campaign-beneficiary-name{
+  margin: 0px;
+  position: relative;
+  top: -5px;
+  color: #800;
+}
+
+p.campaign-beneficiary-description{
+  line-height: 1.2em;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+h4.campaign-beneficiary-reason{
+  margin-bottom: 5px;
+}
+
+p.campaign-beneficiary-reason{
+  
+}
+
+
 .campaign-updates-section{
   margin-bottom: 50px;
 }
@@ -338,7 +379,8 @@ a.campaign-update{
 p.campaign-update-preview{
   margin-top: 5px;
   font-size: 16px;
-  color: #333333;
+  color: #222;
+  line-height: 1.2em;
 }
 
 a.campaign-update-read-more{
@@ -375,6 +417,12 @@ p.campaign-update-date-year{
   height: 40px;
   background-color: #BB0000;
   position: relative;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 
@@ -405,6 +453,10 @@ a#pledge-bottom{
   right: 15px;
 }
 
+a#back-to-top{
+  right: 15px;
+}
+
 
 /*
   CAMPAIGN SHOW RIGHT SIDE
@@ -414,6 +466,10 @@ img#ad-demo{
   position: relative;
   margin-top: 32px;
 /*  left: 18px;*/
+}
+
+div.campaign-sidebar{
+  margin-top: 30px;
 }
 
 h4.campaign-show-other-campaigns{
@@ -432,7 +488,7 @@ li.campaign-show-other-campaign{
 
 a.other-campaigns-link{
   color: #0000AA;
-  text-decoration: underline;
+/*  text-decoration: underline;*/
 }
 
 /*
@@ -541,6 +597,14 @@ span#policy-maker-form-show{
   }
 }
 
+span#vehicle-form-show{
+  color: #0000AA;
+  text-decoration: underline;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
 /*update form stuff*/
 
 .update-form-wrapper{
@@ -562,6 +626,10 @@ form.update-form input {
   width: 605px;
 }
 
+form.update-form input[type="submit"] {
+  width: 200px;
+}
+
 form.update-form textarea {
   height: 80px;
   width: 605px;
@@ -578,4 +646,26 @@ form.update-form input[type="submit"]{
   position: absolute;
   bottom: 15px;
   margin-bottom: 0px;
+}
+
+#new-pledge-sidebar{
+  margin-top: 50px;
+}
+
+h3.campaign-stats{
+  margin-top: 25px;
+  padding-bottom: 5px;
+  border-bottom: solid 1px black;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+p.campaign-stats{
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+span.stat-title{
+  font-weight: bold;
+  color: #666;
 }

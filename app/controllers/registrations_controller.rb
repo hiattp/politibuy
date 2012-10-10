@@ -21,15 +21,69 @@ class RegistrationsController < Devise::RegistrationsController
     
   end
   
+  # GET /resource/edit
+  def edit
+    if current_user.stripe_customer_id?
+      @customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
+    else
+      @customer = false
+    end
+    render :edit
+  end  
+  
+  def update
+    @user = User.find(current_user.id)
+    email_changed = @user.email != params[:user][:email]
+    if not params[:user][:password].nil?
+      password_changed = !params[:user][:password].empty?
+    else 
+      password_changed = false
+    end
+
+    successfully_updated = if email_changed or password_changed
+      @user.update_with_password(params[:user])
+    else
+      params[:user].delete("current_password")
+      if !params[:user][:stripe_card_token].empty?
+        @user.update_payment(params[:user][:stripe_card_token])
+      end
+      @user.update_without_password(params[:user])
+    end
+
+    if successfully_updated
+      # Sign in the user bypassing validation in case his password changed
+      sign_in @user, :bypass => true
+      redirect_to edit_user_registration_path
+    else
+      render "edit"
+    end
+  end
+  
+  
+  
+  # pledge ex
+  # def create
+  #   @pledge = Pledge.new(params[:pledge])
+  #   if current_user.stripe_customer_id?
+  #     @pledge.save!
+  #     redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
+  #   elsif @pledge.save_with_payment
+  #     redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
+  #   else
+  #     render :new
+  #   end
+  # end
+  # end pledge ex
+  
   
 
   protected
 
   def after_inactive_sign_up_path_for(resource)
-    # the page prelaunch visitors will see after they request an invitation
-    '/thankyou.html'
+    flash[:notice] = "Thanks! Please check your email for activation instructions."
+    respond_to?(:root_path) ? root_path : "/"
   end
-  
+    
   def after_sign_up_path_for(resource)
     # the page new users will see after sign up (after launch, when no invitation is needed)
     redirect_to root_path

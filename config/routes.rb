@@ -1,23 +1,35 @@
 Politibuy::Application.routes.draw do
-  
+
   authenticated :user do
-    root :to => 'campaigns#index'
+    root :to => "campaigns#index"
   end
 
   devise_scope :user do
     root :to => "devise/registrations#new"
+    match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation
   end
 
-  devise_for :users, :controllers => { :registrations => "registrations" }
-  # add limiter here
+  devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "confirmations" }
   
-  # resources :campaigns do
-  #   resources :updates
-  #   resources :pledges
-  # end
+  match 'users/bulk_invite/:quantity' => 'users#bulk_invite', :via => :get, :as => :bulk_invite
+  
+  resources :users, :only => [:show, :index] do
+    get 'invite', :on => :member
+  end
+  
+  resources :campaigns do
+    resources :updates
+    resources :pledges
+    resources :key_policy_makers
+    resources :beneficiaries
+  end
 
-  # resources :policy_makers
-  # resources :recipients
+  resources :policy_makers
+  # resources :recipients (deprecated in favor of 'key policy makers')
+  resources :vehicles
+  
+  match "admin" => "admin#index"
+  match "admin/campaigns" => "admin#campaigns"
   
   match "about" => "welcome#about"
   match "terms" => "welcome#terms"
@@ -74,7 +86,7 @@ Politibuy::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'welcome#index'
+  root :to => "welcome#index"
 
   # See how all your routes lay out with "rake routes"
 

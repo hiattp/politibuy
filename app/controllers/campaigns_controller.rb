@@ -2,7 +2,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
   def index
-    @campaigns = Campaign.all
+    @campaigns = Campaign.where(:live => true)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,16 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
+    @campaigns = Campaign.where(:live => true)
     @campaign = Campaign.find(params[:id])
+    @deadline = @campaign.deadline.utc
+    if user_signed_in? and @campaign.users.include? current_user
+      @user_pledge = current_user.pledges.where(:campaign_id => @campaign.id).first
+    else
+      @user_pledge = false
+    end
+    puts @user_pledge
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @campaign }
@@ -23,6 +32,9 @@ class CampaignsController < ApplicationController
   # GET /campaigns/new
   # GET /campaigns/new.json
   def new
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @campaign = Campaign.new
     @updating = false
 
@@ -34,6 +46,9 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/1/edit
   def edit
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @campaign = Campaign.find(params[:id])
     
     @updating = true
@@ -46,13 +61,28 @@ class CampaignsController < ApplicationController
       @policy_makers_selections << [name, pm.id]
     end
     
+    vehicles = Vehicle.all
+    @vehicle_selections = []
+    vehicles.map do |v|
+      name = v.name
+      @vehicle_selections << [name, v.id]
+    end
+    
     @new_policy_maker = PolicyMaker.new
-    @new_recipient = Recipient.new
+    @new_key_policy_maker = @campaign.key_policy_makers.build
+    # KeyPolicyMaker.new
+    
+    @new_vehicle = Vehicle.new
+    # @new_beneficiary = Beneficiary.new
+    @new_beneficiary = @campaign.beneficiaries.build
   end
 
   # POST /campaigns
   # POST /campaigns.json
   def create
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @campaign = Campaign.new(params[:campaign])
 
     respond_to do |format|
@@ -69,6 +99,9 @@ class CampaignsController < ApplicationController
   # PUT /campaigns/1
   # PUT /campaigns/1.json
   def update
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @campaign = Campaign.find(params[:id])
     
     respond_to do |format|
@@ -85,6 +118,9 @@ class CampaignsController < ApplicationController
   # DELETE /campaigns/1
   # DELETE /campaigns/1.json
   def destroy
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @campaign = Campaign.find(params[:id])
     @campaign.destroy
 
