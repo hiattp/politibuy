@@ -15,7 +15,7 @@ class ConfirmationsController < Devise::PasswordsController
     if successfully_sent?(resource)
       respond_with({}, :location => after_resending_confirmation_instructions_path_for(resource_name))
     else
-      respond_with(resource)
+      render 'devise/confirmations/new'
     end
   end
   

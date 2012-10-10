@@ -39,17 +39,17 @@ class User < ActiveRecord::Base
     end
   end
   
-  # prelaunch settings
+  # prelaunch settings - comment out to send conf emails immediately
   # override Devise method
-  # def confirmation_required?
-  #   false
-  # end
+  def confirmation_required?
+    false
+  end
   
-  # prelaunch settings
+  # prelaunch settings - comment out to send conf emails immediately
   # override Devise method
-  # def active_for_authentication?
-  #   confirmed? || confirmation_period_valid?
-  # end
+  def active_for_authentication?
+    confirmed? || confirmation_period_valid?
+  end
   
   # new function to set the password
   def attempt_set_password(params)

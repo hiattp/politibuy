@@ -1,6 +1,7 @@
 <% if request.fullpath == "/" %>
   <div id="invitation-thank-you">
-    <p id="invitation-thank-you">Thanks! Please check your email for activation instructions.</p>
+    <!-- <p id="invitation-thank-you">Thanks! Please check your email for activation instructions.</p> -->
+    <p id="invitation-thank-you">Thanks, we'll get back to you soon! Meanwhile, spread the word:</p>
     <div id="invitation-social-media-buttons">
       <div id="tweet" style="display:inline-block;">
         <a class="twitter-share-button" data-count="horizontal" data-text="I joined the revolution!" data-url="http://www.politibuy.org/" data-via="politibuy" data-related="lessig" href="https://twitter.com/share"></a>
@@ -20,7 +21,7 @@
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "request-invite-form"}) do |f| %>
       <%= devise_error_messages! %>
       <%= f.email_field :email, :placeholder => "user@example.com", :id => "invite-email-field"%>
-      <%= f.submit "Register", :id => "request-invite-button" %>
+      <%= f.submit "Join Beta Launch", :id => "request-invite-button" %>
     <% end %>
   </div>
 <% else %>

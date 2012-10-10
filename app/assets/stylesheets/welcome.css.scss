@@ -95,6 +95,7 @@ img#landing-intro-text{
   margin: auto;
   position: relative;
   margin-top: 363px;
+  left: -800px;
 }
 
 #landing-call-buttons-wrapper-inner{
@@ -224,7 +225,8 @@ form#request-invite-form{
   margin: auto;
   position: relative;
   margin-top: 385px;
-  left: 800px;
+/*  left: 800px;*/
+  left: 0px;
   z-index: 5;
 }
 

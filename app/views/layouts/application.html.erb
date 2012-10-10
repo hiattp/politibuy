@@ -46,16 +46,30 @@
         <%= link_to((image_tag "politibuy.png", :id => "main-logo"), root_path) %>
 
         <div id="login-links">
+<%
+=begin%>          
           <%= link_to "Browse Campaigns", campaigns_path, :class => "header-links" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
+<%
+=end
+%>
           <% if user_signed_in? %>
+          <%= link_to "Browse Campaigns", campaigns_path, :class => "header-links" %>
+          <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Account", edit_user_registration_path, :class => "header-links" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => "header-links "%>
           <% else %>
+          <%= link_to "About", about_path, :class => "header-links "%>
+          <span class="divider-star"><%= image_tag "small_star.png"%></span>          
           <%= link_to "Sign In", new_user_session_path, :class => "header-links" %>
+<%
+=begin%>          
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Register", new_user_registration_path, :class => "header-links" %>
+<%
+=end
+%>
           <% end %>
         </div>
 
@@ -76,15 +90,10 @@
         </div>
 
         <div id="footer-links">
-<%
-=begin%>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
-          <%= link_to "Blog", "http://blog.politibuy.org", :class => "footer-link", :id => "footer-blog-link" %>
-<%
-=end
-%>
+           <%= link_to "About", about_path, :class => "footer-link", :id => "footer-about-link" %>          
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
-           <%= link_to "About", about_path, :class => "footer-link", :id => "footer-about-link" %>
+          <%= link_to "Blog", "http://blog.politibuy.org", :class => "footer-link", :id => "footer-blog-link", :target => "_blank" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>
           <%= link_to "Terms", terms_path, :class => "footer-link", :id => "footer-terms-link" %>
           <span class="divider-star"><%= image_tag "small_star.png"%></span>

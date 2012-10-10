@@ -83,6 +83,8 @@ input.register-form-field{
 }
 
 .register-alt-link{
+  display: none;
+  /* get this out after launch */
   color: #FFF;
   font-size: 15px;
   position: relative;
@@ -90,6 +92,8 @@ input.register-form-field{
 }
 
 #forgot-password-link{
+  display: none;
+  /* get this out after launch */
   color: #6C7ACC;
   font-size: 13px;
 }
