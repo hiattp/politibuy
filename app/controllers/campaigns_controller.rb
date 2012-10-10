@@ -1,4 +1,7 @@
 class CampaignsController < ApplicationController
+  # remove before filter after closed beta
+  before_filter :authenticate_user! 
+  
   # GET /campaigns
   # GET /campaigns.json
   def index
