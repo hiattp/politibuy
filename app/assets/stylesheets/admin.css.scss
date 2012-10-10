@@ -1,0 +1,48 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+  INDEX PAGE
+*/
+
+table.admin-table{
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+th.admin-table{
+  font-weight: bold;
+  background-color: #00A;
+  text-align: center;
+  height: 40px;
+  padding: 3px;
+  color: white;
+}
+
+th.admin-actions{
+  text-align: center;
+  background-color: #00A;
+  padding: 3px;
+  color: white;
+}
+
+tr.admin-table{
+  background-color: #EEE;
+}
+
+tr.odd-row{
+  background-color: #DDD;
+}
+
+td.admin-table{
+  text-align: left;
+  width: 300px;
+  padding: 5px;
+}
+
+td.admin-actions{
+  text-align: left;
+  padding: 5px;
+}

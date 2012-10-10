@@ -15,8 +15,14 @@ class CampaignsController < ApplicationController
   def show
     @campaigns = Campaign.where(:live => true)
     @campaign = Campaign.find(params[:id])
-    # puts @campaign.deadline
     @deadline = @campaign.deadline.utc
+    if user_signed_in? and @campaign.users.include? current_user
+      @user_pledge = current_user.pledges.where(:campaign_id => @campaign.id).first
+    else
+      @user_pledge = false
+    end
+    puts @user_pledge
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @campaign }
@@ -26,6 +32,9 @@ class CampaignsController < ApplicationController
   # GET /campaigns/new
   # GET /campaigns/new.json
   def new
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @campaign = Campaign.new
     @updating = false
 
@@ -37,6 +46,9 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/1/edit
   def edit
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @campaign = Campaign.find(params[:id])
     
     @updating = true
@@ -68,6 +80,9 @@ class CampaignsController < ApplicationController
   # POST /campaigns
   # POST /campaigns.json
   def create
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @campaign = Campaign.new(params[:campaign])
 
     respond_to do |format|
@@ -84,6 +99,9 @@ class CampaignsController < ApplicationController
   # PUT /campaigns/1
   # PUT /campaigns/1.json
   def update
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @campaign = Campaign.find(params[:id])
     
     respond_to do |format|
@@ -100,6 +118,9 @@ class CampaignsController < ApplicationController
   # DELETE /campaigns/1
   # DELETE /campaigns/1.json
   def destroy
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @campaign = Campaign.find(params[:id])
     @campaign.destroy
 

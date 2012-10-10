@@ -10,7 +10,11 @@
         <h2 class="campaign-show-amount"><%= number_to_currency(@campaign.total_pledged) %></h2>
         <h4 class="campaign-show-subtext">pledged so far</h4>
       </div>
-      <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+      <% if @user_pledge %>
+        <%= link_to "Change Your Pledge", edit_campaign_pledge_path(@campaign, @user_pledge), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+      <% else %>
+        <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+      <% end %>
     </div>
   </div>
   
@@ -19,51 +23,40 @@
     
   <h2 class="campaign-section">Key Policy Makers:</h2>
   <ul class="key-policy-makers-index">
+    <% @key_policy_makers.each do |kpm|%>
     <li class="key-policy-makers-index">
-      <%= image_tag "senator_image_1.jpeg", :class => "key-policy-makers-index" %>
-      <h3 class="key-policy-maker-name">Senator Tim O'Brian</h3>
-      <p class="key-policy-maker-subline">Republican from Florida</p>
+      <% if kpm.policy_maker.profile_image? %>
+        <%= image_tag kpm.policy_maker.profile_image.url, :class => "key-policy-makers-index" %>
+      <% else %>
+        <%= image_tag "sam.jpeg", :class => "key-policy-makers-index" %>
+      <% end %>
+      <h3 class="key-policy-maker-name"><%= kpm.policy_maker.salutation + full_name(kpm.policy_maker.first_name, kpm.policy_maker.last_name) %></h3>
+      <p class="key-policy-maker-subline"><%= kpm.policy_maker.party.capitalize + " from " + lengthen_state(kpm.policy_maker.home_state) %></p>
       <p class="key-policy-maker-bio">
-        This is a bio this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio. 
-        This is a bio this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio.
+        <%= kpm.policy_maker.bio %>
       </p>
-      <h4 class="key-policy-maker-reason">How is O'Brian important to this campaign?</h4>
+      <h4 class="key-policy-maker-reason">How is <%= kpm.policy_maker.last_name %> important to this campaign?</h4>
       <p class="key-policy-maker-reason">
-        This is a reason this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio. 
+        <%= kpm.reason %>
       </p>
     </li>
-    <li class="key-policy-makers-index">
-      <%= image_tag "senator_image_1.jpeg", :class => "key-policy-makers-index" %>
-      <h3 class="key-policy-maker-name">Senator Tim O'Brian</h3>
-      <p class="key-policy-maker-subline">Republican from Florida</p>
-      <p class="key-policy-maker-bio">
-        This is a bio this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio. 
-        This is a bio this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio.
-      </p>
-      <h4 class="key-policy-maker-reason">How is O'Brian important to this campaign?</h4>
-      <p class="key-policy-maker-reason">
-        This is a reason this a bio This is a bio this a bio This is a bio this a bio This is a bio this a bio. 
-      </p>
-    </li>
+    <% end %>
   </ul>
-  
-    
 </div>
 
 
 <div id="minority-right-wrapper">
   <div class="campaign-sidebar">
-    <h4 class="campaign-show-other-campaigns">More Campaigns:</h4>
+    <h4 class="campaign-show-other-campaigns">Live Campaigns:</h4>
     <ul class="campaign-show-other-campaigns">
+      <% @campaigns.each do |c| %>
       <li class="campaign-show-other-campaign">
-        <%= link_to "Repeal Amendment 15 in South Dakota", "", :class => "other-campaigns-link"%>
+        <%= link_to c.title, campaign_path(c), :class => "other-campaigns-link"%>
       </li>
-      <li class="campaign-show-other-campaign">
-        <%= link_to "Veto new gun ownership law in Arkansas ", "", :class => "other-campaigns-link"%>
-      </li>
-      <li class="campaign-show-other-campaign">
-        <%= link_to "Implement fines for beach loitering in Hawaii", "", :class => "other-campaigns-link"%>
-      </li>
+      <% end %>
     </ul>
+    <% if user_signed_in? and can? :update, @campaign %>
+      <%= render "admin/tools" %>
+    <% end %>
   </div>
 </div>

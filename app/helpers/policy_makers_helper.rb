@@ -56,6 +56,14 @@ module PolicyMakersHelper
       ]
   end
   
+  def lengthen_state(abbr)
+    state_dict = {}
+    us_states.each do |pair|
+      state_dict[pair[1]] = pair[0]
+    end
+    state_dict[abbr]
+  end
+  
   def party_affiliations
     [
       ['Republican', 'republican'],

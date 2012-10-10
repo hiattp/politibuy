@@ -1,10 +1,13 @@
 <h1 id="campaigns-index">Active Campaigns</h1>
+<% if user_signed_in? and can? :update, @campaign %>
+<%= link_to "Create Campaign", new_campaign_path %>
+<% end %>
 <ul id="campaign-list">
   <% @campaigns.each do |campaign| %>
   <li class="campaign">
     <%= link_to campaign.title, campaign_path(campaign), :class => "campaign-title"%>
     <p class="campaign-description">
-      <%= truncate(campaign.description, :length => 500) %>
+      <%= truncate(campaign.description, :length => 400) %>
     </p>
     <%= link_to campaign_path campaign do %>
     <div class="campaign-image-wrapper-outer">

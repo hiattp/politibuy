@@ -25,6 +25,11 @@ class PledgesController < ApplicationController
   # GET /pledges/new
   # GET /pledges/new.json
   def new
+    @campaigns = Campaign.all
+    @campaign = Campaign.find(params[:campaign_id])
+    if @campaign.users.include? current_user
+      # redirect_to edit_pledge_path finish this
+    end
     @new_pledge = true
     @pledge = Pledge.new
     if current_user.stripe_customer_id?
@@ -32,7 +37,6 @@ class PledgesController < ApplicationController
     else
       @customer = false
     end
-    @campaign = Campaign.find(params[:campaign_id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @pledge }
@@ -41,7 +45,16 @@ class PledgesController < ApplicationController
 
   # GET /pledges/1/edit
   def edit
+    @campaigns = Campaign.all
+    @campaign = Campaign.find(params[:campaign_id])
+    @new_pledge = true
     @pledge = Pledge.find(params[:id])
+    if current_user.stripe_customer_id?
+      @customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
+    else
+      @customer = false
+    end
+    
   end
 
   # POST /pledges
@@ -66,10 +79,11 @@ class PledgesController < ApplicationController
   # PUT /pledges/1.json
   def update
     @pledge = Pledge.find(params[:id])
+    @campaign = Campaign.find(params[:campaign_id])
 
     respond_to do |format|
       if @pledge.update_attributes(params[:pledge])
-        format.html { redirect_to @pledge, notice: 'Pledge was successfully updated.' }
+        format.html { redirect_to campaign_path(@campaign), notice: 'Pledge was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -81,11 +95,13 @@ class PledgesController < ApplicationController
   # DELETE /pledges/1
   # DELETE /pledges/1.json
   def destroy
+    @campaign = Campaign.find(params[:campaign_id])
+    
     @pledge = Pledge.find(params[:id])
     @pledge.destroy
 
     respond_to do |format|
-      format.html { redirect_to pledges_url }
+      format.html { redirect_to campaign_path(@campaign), notice: 'You have canceled your pledge.' }
       format.json { head :no_content }
     end
   end

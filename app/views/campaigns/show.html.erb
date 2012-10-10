@@ -12,7 +12,11 @@
         <h2 class="campaign-show-amount"><%= number_to_currency(@campaign.total_pledged) %></h2>
         <h4 class="campaign-show-subtext">pledged so far</h4>
       </div>
-      <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+      <% if @user_pledge %>
+        <%= link_to "Change Your Pledge", edit_campaign_pledge_path(@campaign, @user_pledge), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+      <% else %>
+        <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+      <% end %>
     </div>
   </div>
   
@@ -137,6 +141,9 @@
       </li>
       <% end %>
     </ul>
+    <% if user_signed_in? and can? :update, @campaign %>
+      <%= render "admin/tools" %>
+    <% end %>
   </div>
 </div>
 

@@ -28,7 +28,8 @@ Politibuy::Application.routes.draw do
   # resources :recipients (deprecated in favor of 'key policy makers')
   resources :vehicles
   
-  match "admin" => "users#index"
+  match "admin" => "admin#index"
+  match "admin/campaigns" => "admin#campaigns"
   
   match "about" => "welcome#about"
   match "terms" => "welcome#terms"

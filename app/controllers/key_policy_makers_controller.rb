@@ -2,8 +2,14 @@ class KeyPolicyMakersController < ApplicationController
   # GET /key_policy_makers
   # GET /key_policy_makers.json
   def index
+    @campaigns = Campaign.all
     @campaign = Campaign.find(params[:campaign_id])
     @key_policy_makers = @campaign.key_policy_makers
+    if user_signed_in? and @campaign.users.include? current_user
+      @user_pledge = current_user.pledges.where(:campaign_id => @campaign.id).first
+    else
+      @user_pledge = false
+    end
   end
 
   # GET /key_policy_makers/1
