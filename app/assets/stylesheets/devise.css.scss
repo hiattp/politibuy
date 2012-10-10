@@ -117,6 +117,8 @@ input.register-form-field{
 }
 
 p.resend-confirmation{
+  display: none;
+  /*remove this after private beta*/
   margin-top: 40px;
   font-size: 13px;
   text-align: center;
