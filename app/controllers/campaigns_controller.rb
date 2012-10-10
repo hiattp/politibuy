@@ -125,6 +125,12 @@ class CampaignsController < ApplicationController
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
     
     @campaign = Campaign.find(params[:id])
+    
+    @campaign.pledges.destroy_all
+    @campaign.key_policy_makers.destroy_all
+    @campaign.beneficiaries.destroy_all
+    @campaign.updates.destroy_all
+    
     @campaign.destroy
 
     respond_to do |format|

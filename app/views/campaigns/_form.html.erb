@@ -50,7 +50,7 @@
     <div class="form-edit-actions">
       <% if @updating %>
         <%= f.submit "Update Campaign", :class => "edit-form-button" %>
-        <%= link_to 'Destroy Campaign', @campaign, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete-button" %>
+        <%= link_to 'Destroy Campaign', @campaign, method: :delete, data: { confirm: 'Are you sure? This will destroy all associated records, including pledge information.' }, :class => "delete-button" %>
       <% else %>
         <%= f.submit "Create Campaign", :class => "edit-form-button" %>
       <% end %>
