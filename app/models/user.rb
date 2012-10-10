@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
       :access_key_id => ENV['S3_KEY'],
       :secret_access_key => ENV['S3_SECRET']
     },
+    :s3_protocol => "https",
     :path => "users/:attachment/:id/:style.:extension"
     
   after_create :add_user_to_mailchimp unless (Rails.env.test? or Rails.env.development?)
