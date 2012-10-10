@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  force_ssl
+  # force_ssl
 
   # override #create to respond to AJAX with a partial
   def create
