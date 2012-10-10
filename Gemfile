@@ -21,6 +21,10 @@ gem "hominid"
 gem "rolify"
 gem "cancan"
 
+# error notification
+gem 'exception_notification', :require => 'exception_notifier'
+
+# payment
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Gems used only for assets and not required
