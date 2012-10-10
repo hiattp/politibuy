@@ -15,6 +15,9 @@ class KeyPolicyMakersController < ApplicationController
   # GET /key_policy_makers/1
   # GET /key_policy_makers/1.json
   def show
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @key_policy_maker = KeyPolicyMaker.find(params[:id])
 
     respond_to do |format|
@@ -26,6 +29,9 @@ class KeyPolicyMakersController < ApplicationController
   # GET /key_policy_makers/new
   # GET /key_policy_makers/new.json
   def new
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @key_policy_maker = KeyPolicyMaker.new
 
     respond_to do |format|
@@ -36,12 +42,18 @@ class KeyPolicyMakersController < ApplicationController
 
   # GET /key_policy_makers/1/edit
   def edit
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @key_policy_maker = KeyPolicyMaker.find(params[:id])
   end
 
   # POST /key_policy_makers
   # POST /key_policy_makers.json
   def create
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @key_policy_maker = KeyPolicyMaker.new(params[:key_policy_maker])
 
     respond_to do |format|
@@ -58,6 +70,9 @@ class KeyPolicyMakersController < ApplicationController
   # PUT /key_policy_makers/1
   # PUT /key_policy_makers/1.json
   def update
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @key_policy_maker = KeyPolicyMaker.find(params[:id])
 
     respond_to do |format|
@@ -74,6 +89,9 @@ class KeyPolicyMakersController < ApplicationController
   # DELETE /key_policy_makers/1
   # DELETE /key_policy_makers/1.json
   def destroy
+    authenticate_user!
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @key_policy_maker = KeyPolicyMaker.find(params[:id])
     @key_policy_maker.destroy
 

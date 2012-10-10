@@ -1,7 +1,11 @@
 class VehiclesController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /vehicles
   # GET /vehicles.json
   def index
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @vehicles = Vehicle.all
 
     respond_to do |format|
@@ -13,6 +17,8 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @vehicle = Vehicle.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +30,8 @@ class VehiclesController < ApplicationController
   # GET /vehicles/new
   # GET /vehicles/new.json
   def new
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @vehicle = Vehicle.new
 
     respond_to do |format|
@@ -34,12 +42,16 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/1/edit
   def edit
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @vehicle = Vehicle.find(params[:id])
   end
 
   # POST /vehicles
   # POST /vehicles.json
   def create
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @vehicle = Vehicle.new(params[:vehicle])
 
     respond_to do |format|
@@ -56,6 +68,8 @@ class VehiclesController < ApplicationController
   # PUT /vehicles/1
   # PUT /vehicles/1.json
   def update
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @vehicle = Vehicle.find(params[:id])
 
     respond_to do |format|
@@ -72,6 +86,8 @@ class VehiclesController < ApplicationController
   # DELETE /vehicles/1
   # DELETE /vehicles/1.json
   def destroy
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @vehicle = Vehicle.find(params[:id])
     @vehicle.destroy
 
