@@ -1,8 +1,7 @@
 <div id="majority-left-wrapper">
   <% if @pledge.errors.any? %>
-    <div id="error_explanation">
+    <div class="account-devise-form-errors">
       <h2><%= pluralize(@pledge.errors.count, "error") %> prohibited this pledge from being saved:</h2>
-
       <ul>
       <% @pledge.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

@@ -32,8 +32,8 @@ class PledgesController < ApplicationController
       redirect_to campaign_path(@campaign) and return
     end
     @campaigns = Campaign.all
-    @new_pledge = true
     @pledge = Pledge.new
+    @stripe_needed = true
     if current_user.stripe_customer_id?
       @customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
     else
@@ -49,8 +49,8 @@ class PledgesController < ApplicationController
   def edit
     @campaigns = Campaign.all
     @campaign = Campaign.find(params[:campaign_id])
-    @new_pledge = true
     @pledge = Pledge.find(params[:id])
+    @stripe_needed = true
     if current_user.stripe_customer_id?
       @customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
     else
@@ -75,6 +75,10 @@ class PledgesController < ApplicationController
       elsif @pledge.save_with_payment
         redirect_to @pledge.campaign, :notice => "Pledge created successfully!"
       else
+        # redirect_to new_campaign_pledge_path(@pledge.campaign)
+        @campaign = @pledge.campaign
+        @campaigns = Campaign.all
+        @stripe_needed = true
         render :new
       end
     else

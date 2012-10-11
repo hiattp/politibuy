@@ -16,6 +16,10 @@ class Pledge < ActiveRecord::Base
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "Sorry, there was a problem with your credit card."
     false
+  rescue Stripe::CardError => e
+    logger.error "Stripe error while creating customer: #{e.message}"
+    errors.add :base, e.message
+    false
   end
     
 end

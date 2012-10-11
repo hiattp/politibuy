@@ -23,6 +23,7 @@ class RegistrationsController < Devise::RegistrationsController
   
   # GET /resource/edit
   def edit
+    @stripe_needed = true
     if current_user.stripe_customer_id?
       @customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
     else
@@ -56,6 +57,7 @@ class RegistrationsController < Devise::RegistrationsController
       sign_in @user, :bypass => true
       redirect_to edit_user_registration_path
     else
+      @stripe_needed = true
       render "edit"
     end
   end
