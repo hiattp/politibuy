@@ -23,6 +23,11 @@ $(document).ready(function(){
             }
           });
           
+          if($("#understanding").length && !$("#understanding").is(":checked")){
+            alertMessage = "Please check the box confirming our conditions."
+            $("#understanding").focus();
+          }
+          
           if(alertMessage){
             $('input[type=submit]').attr('disabled', false);
             alert(alertMessage);
