@@ -69,7 +69,7 @@ h3.campaign-pledge-ribbon-amount{
 }
 
 /*
-  CAMPAIGN SHOW LEFT SIDE
+  CAMPAIGN SHOW
 */
 
 h1.campaign-show-title{
@@ -79,7 +79,7 @@ h1.campaign-show-title{
 }
 
 p.campaign-show-description{
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.2em;
   padding-bottom: 10px;
   margin-top: 7px;
@@ -104,7 +104,7 @@ p.campaign-show-objective{
 }
 
 .campaign-show-pledge-banner-outer{
-  height: 100px;
+  height: 165px;
   width: 100%;
   border-top: solid 1px #AA0000;
   border-bottom: solid 1px #880000;
@@ -134,31 +134,36 @@ p.campaign-show-objective{
 }
 
 .campaign-show-amount-wrapper{
-  display: inline-block;
-  padding-left: 50px;
-  margin-top: 22px;
   color: white;
   text-shadow: 1px 1px 5px rgba(40, 40, 40, 0.8);
 }
 
 h2.campaign-show-amount{
-  font-size: 34px;
-  margin-bottom: 2px;
+  font-size: 38px;
+  margin: 0px;
   text-align: center;
+  position: relative;
+  top: 20px;
 }
 
 h4.campaign-show-subtext{
   font-size: 15px;
   text-align: center;
+  margin: 0px;
+  position: relative;
+  top: 20px;
+  left: 3px;
 }
 
 a#submit-pledge-link{
-  right: 40px;
+  position: absolute;
+  top: 100px;
+  left: 39px;
 }
 
 .campaign-image-recipient-wrapper{
   position: relative;
-/*  border: solid 1px purple;*/
+  border: solid 1px purple;
   height: 200px;
   margin-bottom: 20px;
 }
@@ -168,8 +173,11 @@ a#submit-pledge-link{
   width: 325px;
   height: 200px;
   overflow: hidden;
-  float: left;
+  float: right;
   position: relative;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-bottom: 15px;
 }
 
 .campaign-deadline-backdrop{
@@ -178,7 +186,7 @@ a#submit-pledge-link{
   height: 70px;
   width: 100%;
   background-color: black;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 h4.campaign-deadling-header{
@@ -264,8 +272,8 @@ ul.campaign-participants-wrapper{
   overflow: hidden;
 }
 
-$participant-width: 40px;
-$participant-spacing: 8px;
+$participant-width: 43px;
+$participant-spacing: 6px;
 
 li.participant-wrapper{
   width: $participant-width;
@@ -460,11 +468,6 @@ a#pledge-bottom{
 a#back-to-top{
   right: 15px;
 }
-
-
-/*
-  CAMPAIGN SHOW RIGHT SIDE
-*/
 
 img#ad-demo{
   position: relative;

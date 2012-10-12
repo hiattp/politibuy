@@ -1,40 +1,33 @@
-<div id="majority-left-wrapper">
+<div id="slightly-more-left-wrapper">
   <a href="#top"></a>
   <h1 class="campaign-show-title"><%= @campaign.title %></h1>
   
+<%
+=begin%>
   <% if user_signed_in? and can? :update, @campaign %>
   <%= link_to "Edit Campaign", edit_campaign_path(@campaign) %>
   <% end %>
+<%
+=end
+%>
   
-  <div class="campaign-show-pledge-banner-outer">
-    <div class="campaign-show-pledge-banner-inner">
-      <div class="campaign-show-amount-wrapper">
-        <h2 class="campaign-show-amount"><%= number_to_currency(@campaign.total_pledged) %></h2>
-        <h4 class="campaign-show-subtext">pledged so far</h4>
-      </div>
-      <% if @user_pledge %>
-        <%= link_to "Change Your Pledge", edit_campaign_pledge_path(@campaign, @user_pledge), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
-      <% else %>
-        <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
-      <% end %>
-    </div>
-  </div>
-  
-  <h2 class="campaign-show-objective">Campaign Objective:</h2>
+  <h2 class="campaign-show-objective">Campaign Objective</h2>
   <p class="campaign-show-objective"><%= @campaign.objective %></p>
     
+  <div class="campaign-main-image-wrapper">
+    <% if @campaign.main_image %>
+      <%= image_tag @campaign.main_image.url %>
+    <% else %>
+      <%= image_tag "coal_plant.jpeg"%>
+    <% end %>
+    <div class="campaign-deadline-backdrop"></div>
+    <h4 class="campaign-deadling-header">Deadline:</h4>
+    <h1 id="countdown-timer" class="campaign-deadline"></h1>
+    <!-- put deadline countdown here -->
+  </div>
+<%
+=begin%>
   <div class="campaign-image-recipient-wrapper">
-    <div class="campaign-main-image-wrapper">
-      <% if @campaign.main_image %>
-        <%= image_tag @campaign.main_image.url %>
-      <% else %>
-        <%= image_tag "coal_plant.jpeg"%>
-      <% end %>
-      <div class="campaign-deadline-backdrop"></div>
-      <h4 class="campaign-deadling-header">Deadline:</h4>
-      <h1 id="countdown-timer" class="campaign-deadline"></h1>
-      <!-- put deadline countdown here -->
-    </div>
     <div class="campaign-recipients-wrapper">
       <h3 class="campaign-subsection">Key Policy Makers</h3>
       <% fpm = @campaign.key_policy_makers[0] %>
@@ -55,11 +48,15 @@
       <%= link_to "See more info", campaign_key_policy_makers_path(@campaign), :class => "campaign-show-see-more-recipients"%>
     </div>
   </div>
+<%
+=end
+%>
+
   
-  <h2 class="campaign-section">Description:</h2>
+  <h2 class="campaign-section">Description</h2>
   <%= simple_format(@campaign.description, :class => "campaign-show-description") %>
   
-  <h2 class="campaign-section">Where your money would go:</h2>
+  <h2 class="campaign-section">Where your money would go</h2>
   <ul class="campaign-beneficiaries">
     <% @campaign.beneficiaries.each do |b| %>
     <li class="campaign-beneficiaries">
@@ -80,27 +77,8 @@
     <% end %>
   </ul>
   
-  <div class="campaign-participants-section">
-    <h2 class="campaign-section"><%= pluralize(@campaign.pledges.count, 'person') %> <%= @campaign.pledges.count == 1 ? "has" : "have" %> pledged to this campaign:</h2>
-    <ul class="campaign-participants-wrapper">
-      <% @campaign.pledges.each_with_index do |pledge,i| %>
-      <li class="participant-wrapper <%= i%13 == 12 ? "edge-participant" : "" %>">
-        <div class="participant-image-wrapper">
-        <% if pledge.user.profile_image? %>
-          <%= image_tag pledge.user.profile_image.url, :class => "participant-pic" %>
-        <% else %>
-          <%= image_tag "sam.jpg", :class => "participant-pic" %>
-        <% end %>
-        </div>
-        <div class="participant-amount-wrapper"></div>
-        <h4 class="participant-amount"><%= number_to_currency(pledge.amount, :precision => 0) %></h4>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-  
   <div class="campaign-updates-section">
-    <h2 class="campaign-section">Campaign News and Updates:</h2>
+    <h2 class="campaign-section">Campaign News and Updates</h2>
     <ul class="campaign-updates">
       <% @campaign.ordered_updates.each do |u| %>
       <li class="campaign-update">
@@ -135,9 +113,42 @@
 </div>
 
 
-<div id="minority-right-wrapper">
+<div id="slightly-less-right-wrapper">
   <div class="campaign-sidebar">
-    <h4 class="campaign-show-other-campaigns">Live Campaigns:</h4>
+    <div class="campaign-show-pledge-banner-outer">
+      <div class="campaign-show-pledge-banner-inner">
+        <div class="campaign-show-amount-wrapper">
+          <h2 class="campaign-show-amount"><%= number_to_currency(@campaign.total_pledged) %></h2>
+          <h4 class="campaign-show-subtext">pledged so far</h4>
+        </div>
+        <% if @user_pledge %>
+          <%= link_to "Change Your Pledge", edit_campaign_pledge_path(@campaign, @user_pledge), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+        <% else %>
+          <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="campaign-participants-section">
+      <h2 class="campaign-section">Join <%= @campaign.pledges.count %> other Americans:</h2>
+      <ul class="campaign-participants-wrapper">
+        <% @campaign.pledges.each_with_index do |pledge,i| %>
+        <li class="participant-wrapper <%= i%6 == 5 ? "edge-participant" : "" %>">
+          <div class="participant-image-wrapper">
+          <% if pledge.user.profile_image? %>
+            <%= image_tag pledge.user.profile_image.url, :class => "participant-pic" %>
+          <% else %>
+            <%= image_tag "sam.jpg", :class => "participant-pic" %>
+          <% end %>
+          </div>
+          <div class="participant-amount-wrapper"></div>
+          <h4 class="participant-amount"><%= number_to_currency(pledge.amount, :precision => 0) %></h4>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    
+    <h4 class="campaign-show-other-campaigns">All Live Campaigns:</h4>
     <ul class="campaign-show-other-campaigns">
       <% @campaigns.each do |c| %>
       <li class="campaign-show-other-campaign">
@@ -145,9 +156,14 @@
       </li>
       <% end %>
     </ul>
+<%
+=begin%>
     <% if user_signed_in? and can? :update, @campaign %>
       <%= render "admin/tools" %>
     <% end %>
+<%
+=end
+%>
   </div>
 </div>
 

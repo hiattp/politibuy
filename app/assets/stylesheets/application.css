@@ -168,6 +168,22 @@ p.alert{
   position: relative;
 }
 
+#slightly-more-left-wrapper{
+/*  border: solid 1px green;*/
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  width: 570px;
+  float: left;
+}
+
+#slightly-less-right-wrapper{
+/*  border: solid 1px red;*/
+  width: 290px;
+  float: right;
+  position: relative;
+}
+
 #header{
   width: 100%;
   height: 101px;
