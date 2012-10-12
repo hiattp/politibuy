@@ -35,6 +35,7 @@ class PolicyMakersController < ApplicationController
   # GET /policy_makers/1/edit
   def edit
     @policy_maker = PolicyMaker.find(params[:id])
+    @breadcrumb_campaign_id = params[:breadcrumb_campaign_id]
   end
 
   # POST /policy_makers
@@ -57,10 +58,12 @@ class PolicyMakersController < ApplicationController
   # PUT /policy_makers/1.json
   def update
     @policy_maker = PolicyMaker.find(params[:id])
-
+    # only applicable when you can only edit a policy maker from a campaign page
+    # in future, list campaigns a policy maker is involved in on the right to navigate back
+    @breadcrumb_campaign = Campaign.find(params[:breadcrumb_campaign_id])
     respond_to do |format|
       if @policy_maker.update_attributes(params[:policy_maker])
-        format.html { redirect_to edit_policy_maker_path(@policy_maker), notice: 'Policy maker was successfully updated.' }
+        format.html { redirect_to edit_campaign_path(@breadcrumb_campaign), notice: 'Policy maker was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

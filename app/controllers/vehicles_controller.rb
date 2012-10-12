@@ -43,7 +43,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1/edit
   def edit
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
-    
+    @breadcrumb_campaign_id = params[:breadcrumb_campaign_id]
     @vehicle = Vehicle.find(params[:id])
   end
 
@@ -71,10 +71,10 @@ class VehiclesController < ApplicationController
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
     
     @vehicle = Vehicle.find(params[:id])
-
+    @breadcrumb_campaign = Campaign.find(params[:breadcrumb_campaign_id])
     respond_to do |format|
       if @vehicle.update_attributes(params[:vehicle])
-        format.html { redirect_to edit_vehicle_path(@vehicle), notice: 'Vehicle was successfully updated.' }
+        format.html { redirect_to edit_campaign_path(@breadcrumb_campaign), notice: 'Vehicle was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -17,7 +17,7 @@
     <%= f.hidden_field :policy_maker_id, :value => kpm.policy_maker.id %>
     <p class="key-policy-maker-name"><%= full_name(kpm.policy_maker.first_name, kpm.policy_maker.last_name) %> 
       (<%= link_to 'Remove', [@campaign,kpm], method: :delete, data: { confirm: 'Are you sure?' } %> | 
-      <%= link_to 'Edit Policy Maker', edit_policy_maker_path(kpm.policy_maker) %>)
+      <%= link_to 'Edit Policy Maker', edit_policy_maker_path(kpm.policy_maker, :breadcrumb_campaign_id => @campaign.id) %>)
     </p>
   <% end %>
   

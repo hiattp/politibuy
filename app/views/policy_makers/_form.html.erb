@@ -1,4 +1,5 @@
 <%= form_for(@policy_maker) do |f| %>
+  <%= hidden_field_tag :breadcrumb_campaign_id, @breadcrumb_campaign_id %>
   <% if @policy_maker.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@policy_maker.errors.count, "error") %> prohibited this policy_maker from being saved:</h2>

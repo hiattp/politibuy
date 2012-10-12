@@ -17,7 +17,7 @@
     <%= f.hidden_field :vehicle_id, :value => beneficiary.vehicle.id %>
     <p class="key-policy-maker-name"><%= beneficiary.vehicle.name %> 
       (<%= link_to 'Remove', [@campaign,beneficiary], method: :delete, data: { confirm: 'Are you sure?' } %> | 
-      <%= link_to 'Edit Vehicle Info', edit_vehicle_path(beneficiary.vehicle) %>)
+      <%= link_to 'Edit Vehicle Info', edit_vehicle_path(beneficiary.vehicle, :breadcrumb_campaign_id => @campaign.id) %>)
     </p>
   <% end %>
   
