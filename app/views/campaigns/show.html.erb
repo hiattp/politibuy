@@ -104,7 +104,7 @@
     <ul class="campaign-updates">
       <% @campaign.ordered_updates.each do |u| %>
       <li class="campaign-update">
-        <%= link_to u.title, ensure_http(u.reference_url), :class => "campaign-update" %>
+        <%= link_to u.title, ensure_http(u.reference_url), :class => "campaign-update", :target => "_blank" %>
         <p class="campaign-update-preview">
           <span>
             <%= u.preview %>
