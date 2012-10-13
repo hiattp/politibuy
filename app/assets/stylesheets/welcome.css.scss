@@ -236,7 +236,7 @@ form#request-invite-form{
 }
 
 input#invite-email-field{
-  height: 33px;
+  height: 34px;
   font-size: 18px;
   position: relative;
   width: 305px;
@@ -250,15 +250,15 @@ input#invite-email-field{
 
 input#request-invite-button{
   
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 /*  font-weight: bold;*/
   background-color: blue;
   color: white;
   border-bottom: solid 1px black;
   border-right: solid 1px  black;
   width: 210px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 11px;
+  padding-bottom: 11px;
   text-align: center;
   font-size: 18px; 
   float: right;
@@ -331,7 +331,7 @@ p#invitation-thank-you{
 */
 
 h1.info-page{
-  margin-top: 40px;
+  margin-top: 30px;
   border-bottom: solid 1px #A00;
   margin-bottom: 18px;
   font-size: 20px;
@@ -361,12 +361,12 @@ ul.info-page{
 }
 
 ul.about-list{
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   padding-left: 20px;
 }
 
 li.info-page{
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 15px;
 }
 
@@ -391,7 +391,7 @@ p.last-about{
 }
 
 .about-right-wrapper{
-  padding-top: 13px;
+  padding-top: 1px;
 }
 
 h3.about-right{

@@ -22,17 +22,17 @@ ul#campaign-list{
 li.campaign{
   position: relative;
   padding-left: 380px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 a.campaign-title{
   color: #AA0000;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 p.campaign-description{
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 17px;
   color: #333333;
 }
 
@@ -54,12 +54,12 @@ img.campaign-index-image{
 img.campaign-ribbon{
   position: absolute;
   left: -15px;
-  top: 112px;
+  top: 90px;
 }
 
 h3.campaign-pledge-ribbon-amount{
   position: absolute;
-  top: 150px;
+  top: 125px;
   width: 100%;
   text-align: center;
   color: white;
@@ -73,17 +73,17 @@ h3.campaign-pledge-ribbon-amount{
 */
 
 h1.campaign-show-title{
-  margin-top: 25px;
+  margin-top: 20px;
   font-size: 26px;
-  margin-bottom: 12px;
+  margin-bottom: 5px;
 }
 
 p.campaign-show-description{
   font-size: 15px;
   line-height: 1.2em;
   padding-bottom: 10px;
-  margin-top: 7px;
-  margin-bottom: 7px;
+  margin-top: 0px;
+  margin-bottom: 5px;
 }
 
 h2.campaign-show-objective{
@@ -95,7 +95,7 @@ h2.campaign-show-objective{
 }
 
 p.campaign-show-objective{
-  font-size: 18px;
+  font-size: 16px;
   color: #444444;
 /*  border-bottom: dashed 1px #0000AA;*/
   padding-bottom: 7px;
@@ -104,7 +104,7 @@ p.campaign-show-objective{
 }
 
 .campaign-show-pledge-banner-outer{
-  height: 165px;
+  height: 265px;
   width: 100%;
   border-top: solid 1px #AA0000;
   border-bottom: solid 1px #880000;
@@ -157,7 +157,7 @@ h4.campaign-show-subtext{
 
 a#submit-pledge-link{
   position: absolute;
-  top: 100px;
+  top: 105px;
   left: 39px;
 }
 
@@ -170,31 +170,36 @@ a#submit-pledge-link{
 
 .campaign-main-image-wrapper{
 /*  border: solid 1px green;*/
-  width: 325px;
+  width: 100%;
   height: 200px;
   overflow: hidden;
-  float: right;
+/*  float: right;*/
   position: relative;
-  margin-top: 30px;
-  margin-left: 20px;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .campaign-deadline-backdrop{
   position: absolute;
-  bottom: 0px;
-  height: 70px;
   width: 100%;
-  background-color: black;
-  opacity: 0.6;
-}
+  bottom: 0px;
+  background-color: #700;
+  height: 85px;
+  opacity: 0.3;
+  
+  -webkit-border-bottom-right-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;}
 
 h4.campaign-deadling-header{
   position: absolute;
   color: white;
-  bottom: 40px;
+  bottom: 50px;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   width: 100%;
   text-shadow: 1px 1px 5px rgba(40, 40, 40, 0.8);    
 }
@@ -202,7 +207,7 @@ h4.campaign-deadling-header{
 h1.campaign-deadline{
   position: absolute;
   color: white;
-  bottom: 9px;
+  bottom: 14px;
   text-align: center;
   font-size: 25px;
   width: 100%;
@@ -263,7 +268,7 @@ a.campaign-show-see-more-recipients{
 }
 
 h2.campaign-section{
-  font-size: 20px;
+  font-size: 18px;
 }
 
 ul.campaign-participants-wrapper{
@@ -339,13 +344,15 @@ img.campaign-beneficiary-logo{
   position: absolute;
   left: 0px;
   width: 100px;
+  top: 5px;
 }
 
 h3.campaign-beneficiary-name{
   margin: 0px;
   position: relative;
-  top: -5px;
+/*  top: -5px;*/
   color: #800;
+  font-size: 17px;
 }
 
 a.campaign-beneficiary-name{
@@ -355,15 +362,17 @@ a.campaign-beneficiary-name{
 p.campaign-beneficiary-description{
   line-height: 1.2em;
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  font-size: 15px;
 }
 
 h4.campaign-beneficiary-reason{
   margin-bottom: 5px;
+  font-size: 15px;
 }
 
 p.campaign-beneficiary-reason{
-  
+  font-size: 15px;
 }
 
 
@@ -390,8 +399,7 @@ a.campaign-update{
 
 p.campaign-update-preview{
   margin-top: 5px;
-  font-size: 16px;
-  color: #222;
+  font-size: 15px;
   line-height: 1.2em;
 }
 
@@ -405,23 +413,24 @@ p.campaign-update-date{
 /*  border: solid 1px green;*/
   position: absolute;
   left: 0px;
-  min-width: 32px;
+  min-width: 36px;
   text-align: right;
   font-size: 12px;
-  color: #555555;
+  color: #888;
 }
 
 p.campaign-update-date-month{
-  top: 0px;
+  top: 2px;
 }
 
 p.campaign-update-date-day{
   top: 12px;
   font-size: 32px;
+  left: 1px;
 }
 
 p.campaign-update-date-year{
-  top: 42px;
+  top: 46px;
 }
 
 .campaign-bottom-action-links{
@@ -443,7 +452,7 @@ a.campaign-bottom-links{
   color: white;
   font-size: 14px;
   font-weight: bold;
-  top: 14px;
+  top: 13px;
   &:hover{
     text-decoration: underline;
   }
@@ -675,4 +684,8 @@ p.campaign-stats{
 span.stat-title{
   font-weight: bold;
   color: #666;
+}
+
+a.edit-campaign-link{
+  font-size: 15px;
 }

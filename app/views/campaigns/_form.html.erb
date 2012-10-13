@@ -29,12 +29,12 @@
     <p class="current-image-label">Current Campaign Image</p>
     <%= image_tag @campaign.main_image.url, :class => "current-campaign-image" %>
     <div class="field">
-      <%= f.label :main_image, "Change Campaign Image (325w x 200h)" %><br />
+      <%= f.label :main_image, "Change Campaign Image (570w x 200h)" %><br />
       <%= f.file_field :main_image %>
     </div>
     <% else %>
     <div class="field">
-      <%= f.label :main_image, "Add Campaign Image (325w x 200h)" %><br />
+      <%= f.label :main_image, "Add Campaign Image (570w x 200h)" %><br />
       <%= f.file_field :main_image %>
     </div>
     <% end %>

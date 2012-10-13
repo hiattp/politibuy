@@ -1,2 +1,5 @@
 <h4 class="campaign-show-other-campaigns">Admin Tools:</h4>
+<% unless @campaign.nil? %>
+<%= link_to "Edit Campaign", edit_campaign_path(@campaign) %> |
+<% end %>
 <%= link_to "Users", admin_path %> | <%= link_to "Campaigns", admin_campaigns_path %>

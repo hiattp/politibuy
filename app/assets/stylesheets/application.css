@@ -16,7 +16,7 @@
 html, body {
  padding: 0px;
  margin: 0px;
- font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
  width: 100%;
  height: 100%;
  background-color: #000077;
@@ -201,7 +201,7 @@ p.alert{
   font-size: 18px;
   position: absolute;
   right: 0px;
-  top: 24px;
+  top: 22px;
 }
 
 .header-links{
@@ -234,7 +234,7 @@ h1#intro-text{
   margin: auto;
   font-size: 18px;
   position: relative;
-  margin-top: 50px;
+  margin-top: 38px;
 }
 
 .footer-link{
@@ -242,13 +242,15 @@ h1#intro-text{
 }
 
 span.divider-star{
+  position: relative;
+  top: -1px;
   margin-right: 4px;
   margin-left: 4px;
 }
 
 div#footer-legal-disclaimers{
   position: relative;
-  margin-top: 30px;
+  margin-top: 25px;
   color: white;
   font-size: 12px;
 }

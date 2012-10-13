@@ -1,18 +1,9 @@
 <div id="slightly-more-left-wrapper">
   <a href="#top"></a>
   <h1 class="campaign-show-title"><%= @campaign.title %></h1>
-  
-<%
-=begin%>
-  <% if user_signed_in? and can? :update, @campaign %>
-  <%= link_to "Edit Campaign", edit_campaign_path(@campaign) %>
-  <% end %>
-<%
-=end
-%>
-  
-  <h2 class="campaign-show-objective">Campaign Objective</h2>
-  <p class="campaign-show-objective"><%= @campaign.objective %></p>
+
+  <!-- <h2 class="campaign-show-objective">Campaign Objective</h2> -->
+  <p class="campaign-show-objective">Objective: <%= @campaign.objective %></p>
     
   <div class="campaign-main-image-wrapper">
     <% if @campaign.main_image %>
@@ -20,10 +11,6 @@
     <% else %>
       <%= image_tag "coal_plant.jpeg"%>
     <% end %>
-    <div class="campaign-deadline-backdrop"></div>
-    <h4 class="campaign-deadling-header">Deadline:</h4>
-    <h1 id="countdown-timer" class="campaign-deadline"></h1>
-    <!-- put deadline countdown here -->
   </div>
 <%
 =begin%>
@@ -53,7 +40,7 @@
 %>
 
   
-  <h2 class="campaign-section">Description</h2>
+  <!-- <h2 class="campaign-section">Description</h2> -->
   <%= simple_format(@campaign.description, :class => "campaign-show-description") %>
   
   <h2 class="campaign-section">Where your money would go</h2>
@@ -126,6 +113,9 @@
         <% else %>
           <%= link_to "Submit Your Pledge", new_campaign_pledge_path(@campaign), :class => "landing-callaction-button", :id => "submit-pledge-link" %>
         <% end %>
+        <div class="campaign-deadline-backdrop"></div>
+        <h4 class="campaign-deadling-header">Policy Deadline:</h4>
+        <h1 id="countdown-timer" class="campaign-deadline"></h1>
       </div>
     </div>
     
@@ -156,14 +146,10 @@
       </li>
       <% end %>
     </ul>
-<%
-=begin%>
+
     <% if user_signed_in? and can? :update, @campaign %>
       <%= render "admin/tools" %>
     <% end %>
-<%
-=end
-%>
   </div>
 </div>
 
