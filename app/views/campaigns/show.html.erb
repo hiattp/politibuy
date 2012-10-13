@@ -72,7 +72,7 @@
         <%= link_to u.title, ensure_http(u.reference_url), :class => "campaign-update", :target => "_blank" %>
         <p class="campaign-update-preview">
           <span>
-            <%= u.preview %>
+            <%= u.long_preview %>
           </span> 
           <span class="campaign-update-read-more"><%= link_to "read more", ensure_http(u.reference_url), :class => "campaign-update-read-more" %></span>
         </p>

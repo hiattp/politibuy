@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009155924) do
+ActiveRecord::Schema.define(:version => 20121013211616) do
 
   create_table "beneficiaries", :force => true do |t|
     t.integer  "vehicle_id"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20121009155924) do
     t.string   "reference_url"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.text     "long_preview"
   end
 
   create_table "users", :force => true do |t|
