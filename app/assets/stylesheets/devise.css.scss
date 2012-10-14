@@ -189,8 +189,24 @@ input.address-line-two{
   margin-top: 0px;
 }
 
+#account-zipcode-wrapper{
+  position: relative;
+}
+
+img.account-page-loader{
+  display: none;
+  position: relative;
+  top: 6px;
+  left: 5px;
+}
+
 input.zip-code{
   
+}
+
+span.account-zip-city-state{
+  display: none;
+  color: gray;
 }
 
 input.edit-account-cardnumber{

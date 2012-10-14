@@ -48,4 +48,48 @@ $(document).ready(function(){
     $(".account-edit-card-entry").toggle();
   });
   
+  // Save current value of zipcode
+  $("input#user_zip_code").data('oldVal', $(this).val());
+
+  // Look for changes in the zipcode value
+  $("input#user_zip_code").bind("propertychange keyup input paste", function(event){
+    // If value has changed...
+    if ($(this).data('oldVal') != $(this).val()) {
+      // Updated stored value
+      $(this).data('oldVal', $(this).val());
+
+       // Do action
+      if($(this).val().length == 5){
+        getCityAndStateFromZip($(this).val());
+      }
+    }
+  });
+  
 });
+
+function getCityAndStateFromZip(zip){
+  $("img.account-page-loader").show();
+  $("span.account-zip-city-state").hide();
+  $.ajax('/users/unzip?zip='+zip, {
+    dataType: 'JSON',
+    type: 'GET',
+    success: function(result){
+      $("img.account-page-loader").hide();
+      $("span.account-zip-city-state").text(ucFirstAllWords(result.city.toLowerCase())+", "+result.state).show();
+    },
+    error: function(result){
+      // should probably add something else here to help user in this case
+      $("span.account-zip-city-state").hide();
+      $("img.account-page-loader").hide();
+    }
+  });
+}
+
+function ucFirstAllWords( str ) {
+  var pieces = str.split(" ");
+  for ( var i = 0; i < pieces.length; i++ ) {
+      var j = pieces[i].charAt(0).toUpperCase();
+      pieces[i] = j + pieces[i].substr(1);
+  }
+  return pieces.join(" ");
+}

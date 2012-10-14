@@ -50,8 +50,11 @@
         <%= f.text_field :address_line_one, :class => "register-form-field" %>
         <%= f.text_field :address_line_two, :class => "address-line-two register-form-field" %></div>
         
-        <div><%= f.label :zip_code, "U.S. Zip Code" %><br />
-        <%= f.text_field :zip_code, :class => "zip-code register-form-field", :maxlength => 5 %></div>
+        <div id="account-zipcode-wrapper"><%= f.label :zip_code, "U.S. Zip Code" %><br />
+        <%= f.text_field :zip_code, :class => "zip-code register-form-field", :maxlength => 5 %>
+        <%= image_tag "ajax-loader.gif", :class => "account-page-loader" %>
+        <span class="account-zip-city-state"></span>
+        </div>
         
         <div>Credit Card</div>
         <% if @customer %>

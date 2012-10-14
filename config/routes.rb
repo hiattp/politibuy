@@ -13,6 +13,8 @@ Politibuy::Application.routes.draw do
   
   match 'users/bulk_invite/:quantity' => 'users#bulk_invite', :via => :get, :as => :bulk_invite
   
+  match 'users/unzip' => "users#unzip_code", :via => :get
+  
   resources :users, :only => [:show, :index] do
     get 'invite', :on => :member
   end
