@@ -3,6 +3,7 @@
   <p class="campaign-stats"><span class="stat-title">Number of Pledges:</span> <%= campaign.pledges.count %></p>
   <p class="campaign-stats"><span class="stat-title">Total Pledged:</span> <%= number_to_currency(campaign.total_pledged) %></p>
   <p class="campaign-stats"><span class="stat-title">Deadline:</span> <%= campaign.deadline.strftime("%b %d, %Y") %></p>
+  <p class="campaign-stats"><span class="stat-title">Objective:</span><br/><%= campaign.objective %></p>
   <h3 class="campaign-stats">Active Campaigns</h3>
   <ul class="campaign-show-other-campaigns">
     <% campaigns.each do |c| %>
