@@ -45,7 +45,7 @@ class RegistrationsController < Devise::RegistrationsController
       @user.update_with_password(params[:user])
     else
       params[:user].delete("current_password")
-      if !params[:user][:stripe_card_token].nil?
+      if not params[:user][:stripe_card_token].nil? and not params[:user][:stripe_card_token].empty?
         @user.update_payment(params[:user][:stripe_card_token]) and @user.update_without_password(params[:user])
       else
         @user.update_without_password(params[:user])
