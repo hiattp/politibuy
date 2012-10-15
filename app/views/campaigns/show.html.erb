@@ -74,7 +74,7 @@
           <span>
             <%= u.long_preview %>
           </span> 
-          <span class="campaign-update-read-more"><%= link_to "read more", ensure_http(u.reference_url), :class => "campaign-update-read-more" %></span>
+          <span class="campaign-update-read-more"><%= link_to "read more", ensure_http(u.reference_url), :target => "_blank", :class => "campaign-update-read-more" %></span>
         </p>
         <p class="campaign-update-date campaign-update-date-month"><%= u.published_date.strftime("%b")%></p>
         <p class="campaign-update-date campaign-update-date-day"><%= u.published_date.strftime("%d")%></p>
