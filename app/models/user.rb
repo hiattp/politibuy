@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   has_many :campaigns, :through => :pledges
   
   has_attached_file :profile_image,
-    # :styles => {:thumb => "100x100#"},
     :storage => :s3,
     :bucket => ENV['S3_BUCKET'],
     :s3_credentials => {
@@ -26,6 +25,8 @@ class User < ActiveRecord::Base
     },
     :s3_protocol => "https",
     :path => "users/:attachment/:id/:style.:extension"
+    
+  validates_attachment :profile_image, :size => { :in => 0..100.kilobytes }
     
   after_create :add_user_to_mailchimp unless (Rails.env.test? or Rails.env.development?)
   before_destroy :remove_user_from_mailchimp unless (Rails.env.test? or Rails.env.development?)
