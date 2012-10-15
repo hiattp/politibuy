@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :campaigns, :through => :pledges
   
   has_attached_file :profile_image,
-    :styles => {:thumb => "100x100#"},
+    :styles => {:thumb => "100x100"},
     :storage => :s3,
     :bucket => ENV['S3_BUCKET'],
     :s3_credentials => {
