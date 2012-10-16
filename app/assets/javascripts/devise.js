@@ -50,6 +50,19 @@ $(document).ready(function(){
   
   // Save current value of zipcode
   $("input#user_zip_code").data('oldVal', $(this).val());
+  
+  // Zipcode tester for autocomplete
+  var testForZipAutoComplete = function testForZipAutoComplete(){
+    if($("input#user_zip_code").val().length == 0){
+      setTimeout(testForZipAutoComplete, 300);
+    } else if($("input#user_zip_code").val().length == 5){
+      getCityAndStateFromZip($("input#user_zip_code").val());
+    }
+  }
+  
+  if($("input#user_zip_code").length && $("input#user_zip_code").val().length == 0){
+    setTimeout(testForZipAutoComplete, 300);
+  }
 
   // Look for changes in the zipcode value
   $("input#user_zip_code").bind("propertychange keyup input paste", function(event){
