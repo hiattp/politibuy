@@ -13,9 +13,9 @@
     <tr class="new-pledge-header green-gradient">
       <th colspan="2" class="new-pledge">Submit your pledge</th>
     </tr>
-    <tr class="new-pledge-note">
+    <!-- <tr class="new-pledge-note">
       <td colspan="2" class="new-pledge-note">Note: You will <b>NOT</b> be charged unless the campaign is successful.</td>
-    </tr>
+    </tr> -->
     <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
     <%= form_for([@campaign, @pledge], :html => {:id =>"new-pledge-form", :class => "payment-form"}) do |f| %>
     <%= f.hidden_field :campaign_id, :value => @campaign.id %>
@@ -25,6 +25,30 @@
       <td class="new-pledge-label">Amount</td>
       <td class="new-pledge-input">$ <%= f.text_field :amount, :id => "new-pledge-amount", :class => "new-pledge-input", :placeholder => "0.00" %></td>
     </tr>
+    
+    <tr class="new-pledge-payment-intro">
+      <td colspan="2" class="new-pledge-payment-intro">Use of Money</td>
+    </tr>
+    <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">How would you like us to use your pledge?</td>
+    </tr>
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">
+        <%= radio_button_tag :legislator_today, nil, true, :class => "pledge-use-option" %> Make a contribution to a legislator <i>today</i>, tagged for this issue.
+      </td>
+    </tr>
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">
+        <%= radio_button_tag :non_profit, nil, false, :class => "pledge-use-option" %> Make a donation to a non-profit <b>only if</b> this campaign's objective is met.
+      </td>
+    </tr>
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">
+        <%= radio_button_tag :non_profit, nil, false, :class => "pledge-use-option" %> Give to a PAC supporting these legislators <b>only if</b> the objective is met.
+      </td>
+    </tr>
+    
     <tr class="new-pledge-payment-intro">
       <td colspan="2" class="new-pledge-payment-intro">Payment</td>
     </tr>
@@ -117,7 +141,7 @@
       <td colspan="2" class="new-pledge-payment-intro">Disclaimer</td>
     </tr>
     <tr class="new-pledge-vertical-spacer"><td colspan="2" class="new-pledge-vertical-spacer"></td></tr>
-    <tr class="new-pledge-disclaimer">
+    <!-- <tr class="new-pledge-disclaimer">
       <td colspan="2" class="new-pledge-disclaimer">You <span class="disclaimer-highlight">will not</span> be billed unless the campaign objective is met.</td>
     </tr>
     <tr class="new-pledge-disclaimer">
@@ -127,6 +151,12 @@
       <td colspan="2" class="new-pledge-disclaimer">
         By submitting this form, you give Politibuy.org the right to charge you the amount 
         specified above upon successful completion of this campaign.
+      </td>
+    </tr> -->
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">
+        By submitting this form, you give Politibuy.org the right to charge you the amount 
+        specified above.
       </td>
     </tr>
     <tr class="new-pledge-submit">

@@ -74,4 +74,9 @@ $(document).ready(function(){
     Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content')); 
     processPayment.setupForm();
   }
+  
+  $(".pledge-use-option").change(function(){
+    $(".pledge-use-option").prop('checked', false);
+    $(this).prop('checked', true);
+  });
 });
