@@ -35,7 +35,7 @@
     </tr>
     <tr class="new-pledge-disclaimer">
       <td colspan="2" class="new-pledge-disclaimer">
-        <%= radio_button_tag :legislator_today, nil, true, :class => "pledge-use-option" %> Make a contribution to a legislator <i>today</i>, tagged for this issue.
+        <%= radio_button_tag :legislator_today, nil, true, :class => "pledge-use-option" %> Make a contribution to a legislator <i>immediately</i>, tagged for this issue.
       </td>
     </tr>
     <tr class="new-pledge-disclaimer">
@@ -45,7 +45,12 @@
     </tr>
     <tr class="new-pledge-disclaimer">
       <td colspan="2" class="new-pledge-disclaimer">
-        <%= radio_button_tag :non_profit, nil, false, :class => "pledge-use-option" %> Give to a PAC supporting these legislators <b>only if</b> the objective is met.
+        <%= radio_button_tag :non_profit, nil, false, :class => "pledge-use-option" %> Give to a Super PAC supporting legislators responsible <b>only if</b> the objective is met.
+      </td>
+    </tr>
+    <tr class="new-pledge-disclaimer">
+      <td colspan="2" class="new-pledge-disclaimer">
+        <span class="disclaimer-highlight">Note:</span> For conditional pledges, your credit card information will be stored securely and only charged on if the campaign is successful.
       </td>
     </tr>
     
@@ -125,11 +130,11 @@
         This contribution is made from my own funds, and not those of another.
       </td>
     </tr>
-    <tr class="new-pledge-disclaimer">
+    <!-- <tr class="new-pledge-disclaimer">
       <td colspan="2" class="new-pledge-disclaimer">
         This contribution is made on a credit or debit card of the donor listed above for which the donor has legal obligation to pay, and is not made on the card of another.
       </td>
-    </tr>
+    </tr> -->
     <tr class="new-pledge-disclaimer">
       <td colspan="2" class="new-pledge-disclaimer">
         I am at least eighteen years old.

@@ -142,6 +142,7 @@ input#card_code{
 }
 
 td.new-pledge-disclaimer{
+  position: relative;
   padding-bottom: 10px;
   padding-left: 60px;
   padding-right: 20px;
@@ -241,4 +242,10 @@ p.cancel-pledge{
 a.cancel-pledge{
   font-size: 13px;
   color: #A00;
+}
+
+input.pledge-use-option{
+  position: absolute;
+  left: 36px;
+  top: -5px;
 }
